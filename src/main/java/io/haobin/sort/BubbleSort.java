@@ -25,7 +25,7 @@ public class BubbleSort {
         PrintUtil.printArray(table);
     }
     public static void main(String[] args) {
-        int[] arr =  {21,213,342,5432,1,234,234,5};
+        int[] arr =  {8,9,8,9,8,9,8,9};
         PrintUtil.printArray(arr);
         bubbleSort(arr);
     }

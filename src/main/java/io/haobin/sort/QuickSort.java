@@ -1,5 +1,7 @@
 package io.haobin.sort;
 
+import io.haobin.util.PrintUtil;
+
 /**
  * 快速排序
  *
@@ -49,5 +51,13 @@ public class QuickSort {
         }
         // 返回基准点左边的
         return left;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {123,456,324,5645,243234,45656,56,324,453,234};
+        PrintUtil.printArray(arr);
+        quickSort(arr, 0, arr.length-1);
+        System.out.println();
+        PrintUtil.printArray(arr);
     }
 }

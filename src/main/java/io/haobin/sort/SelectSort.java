@@ -32,7 +32,7 @@ public class SelectSort {
     }
 
     public static void main(String[] args) {
-        int[] intArr = {1,3,4,52,123,31};
+        int[] intArr = {100,908,1000001,100,0,9999};
         PrintUtil.printArray(intArr);
         selectSort(intArr);
     }
