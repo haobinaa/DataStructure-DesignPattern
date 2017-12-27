@@ -17,6 +17,8 @@ public class HeapSort {
         data[j] = data[i] - data[j];
         data[i] = data[i] - data[j];
     }
+
+    // 打印数组
     public static void print(int[] data) {
         for (int i = 0; i < data.length; i++) {
             System.out.print(data[i] + "\t");
@@ -24,6 +26,7 @@ public class HeapSort {
         System.out.println();
     }
 
+    // 堆排序
     public static void heapSort(int[] data) {
         for (int i = 0; i < data.length; i++) {
             createMaxdHeap(data, data.length - 1 - i);
@@ -35,8 +38,9 @@ public class HeapSort {
      * 将以i为根节点的树变为最大堆
      */
     public static void createMaxdHeap(int[] data, int lastIndex) {
+        // 只需要调整0 ~ (length-1)/2个数，其他都是叶子节点不需要调整
         for(int i = (lastIndex -1) / 2; i >= 0; i--) {
-            // 保存当前正在判断的点
+            // 保存当前正在判断的节点
             int k = i;
             // 若当前节点存在
             while(2 * k + 1 <= lastIndex) {
@@ -50,7 +54,7 @@ public class HeapSort {
                     }
                 }
                 if (data[k] < data[biggerIndex]) {
-                    // 若当前节点值比子节点最大值小，则交换2者得值，交换后将biggerIndex值赋值给k
+                    // 若当前节点值比子节点最大值小，则交换2 者得值，交换后将biggerIndex值赋值给k
                     swap(data, k, biggerIndex);
                     k = biggerIndex;
                 } else {
