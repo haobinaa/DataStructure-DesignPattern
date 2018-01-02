@@ -20,8 +20,6 @@ public class SelectSort {
             }
 
         }
-        System.out.println();
-        PrintUtil.printArray(table);
     }
 
     public static void main(String[] args) {

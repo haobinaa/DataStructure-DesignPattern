@@ -21,8 +21,6 @@ public class BubbleSort {
             }
             // 一趟比较完之后，i位置就像最大的一个泡泡一样冒到了尾部
         }
-        System.out.println();
-        PrintUtil.printArray(table);
     }
     public static void main(String[] args) {
         int[] arr =  {8,9,8,9,8,9,8,9};
