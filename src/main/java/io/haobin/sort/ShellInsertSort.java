@@ -9,7 +9,9 @@ import io.haobin.util.PrintUtil;
  * @Date 2017/12/25 18:57
  */
 public class ShellInsertSort {
-    // 插入法交换
+    /**
+     * 希尔排序
+     */
     public static void shellSort(int[] table) {
         // 增量最开始等于length/2，并逐渐减少
         for (int gap = table.length / 2; gap > 0; gap /= 2) {
@@ -29,6 +31,10 @@ public class ShellInsertSort {
         }
     }
 
+
+    /**
+     * 插入希尔排序的实现
+     */
     public static void insertShellSort(int[] table) {
         for(int gap = table.length/2; gap > 0; gap /= 2) {
             for (int i = gap; i < table.length; i++) {
