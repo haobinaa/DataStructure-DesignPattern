@@ -13,9 +13,11 @@ public class MergeSort {
     public static void mergeSort(int[] array, int low, int high) {
         if(low < high) {
             int middle = (low + high) / 2;
+            // 归并左边
             mergeSort(array, low, middle);
+            // 归并右边
             mergeSort(array, middle + 1, high);
-
+            // 合并数组
             merge(array, low, middle, high);
         }
     }
@@ -41,7 +43,7 @@ public class MergeSort {
 
         /**
          * 迭代访问helper数组，比较左右两半元素
-         * 并将较小的元素复制到原先的数组中
+         * 并将较小的元素复制到目标数组中
          */
         while(helperLeft <= middle && helperRight <= high){
             if(helper[helperLeft] <= helper[helperRight]){
@@ -55,7 +57,7 @@ public class MergeSort {
         }
 
         /**
-         * 将数组左半剩余元素复制到原先的数组中
+         * 将数组左半剩余元素复制到目标数组中
          */
         int remaining = middle - helperLeft;
         for(int i = 0; i <= remaining; i++){
