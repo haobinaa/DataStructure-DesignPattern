@@ -40,7 +40,7 @@ public class QuickSort {
                 temp= array[left];
                 array[left] = array[right];
                 array[right] = temp;
-                // 回退
+                // 遍历下一个
                 left++;
                 right--;
             }
