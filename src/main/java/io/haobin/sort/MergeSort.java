@@ -24,6 +24,7 @@ public class MergeSort {
 
     /**
      * 归并数组
+     * 对[low,......middle]  [middle+1,..... high]两部分进行归并
      *
      * 将目标数组的所有元素拷贝到临时数组helper中，记下左右位置
      * 迭代访问helper，将左右两半中较小的元素复制到目标数组
@@ -58,6 +59,9 @@ public class MergeSort {
 
         /**
          * 将数组左半剩余元素复制到目标数组中
+         * 因为归并的两边本来就是有序的
+         * 如果左边的有剩余，代表左边剩余所有大于现有数组
+         * 如果左边全部赋值完毕，右边有剩余，那么他们本来位置就是对的
          */
         int remaining = middle - helperLeft;
         for(int i = 0; i <= remaining; i++){
@@ -66,7 +70,7 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] intArr = {100,908,1000001,100,0,9999};
+        int[] intArr = {100,908,1000001,100,0,999,12319};
         PrintUtil.printArray(intArr);
         mergeSort(intArr, 0, intArr.length-1);
         System.out.println();
