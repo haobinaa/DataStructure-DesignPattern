@@ -1,6 +1,8 @@
 package io.haobin.collection.list;
 
 /**
+ * 单链表的linkedList
+ * 实际上LinkedList是用双向循环链表实现的
  * @Author: HaoBin
  * @Date 2018/1/23 22:01
  */
