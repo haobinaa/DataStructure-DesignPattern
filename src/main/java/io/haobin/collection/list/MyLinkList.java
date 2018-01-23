@@ -67,8 +67,29 @@ public class MyLinkList {
         temp.setValue(value);
     }
 
+    public Object get(int index) {
+        Node temp = head;
+        for (int i = 0;i < index; i++) {
+            temp = temp.getNext();
+        }
+        return temp.getValue();
+    }
+
     public void clear() {
         this.head = null;
         this.size = 0;
+    }
+
+    public void removeAt(int index) {
+        if (index == 0) {
+            this.head = this.head.getNext();
+        } else {
+            Node temp = head;
+            // 找到删除的前一个
+            for (int i = 0;i < index - 1; i++) {
+                temp = temp.getNext();
+            }
+            temp.setNext(temp.getNext().getNext());
+        }
     }
 }
