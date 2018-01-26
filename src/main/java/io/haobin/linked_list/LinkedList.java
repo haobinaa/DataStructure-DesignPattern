@@ -20,4 +20,12 @@ public class LinkedList<T> {
         }
         temp.next = newNode;
     }
+
+    public void show() {
+        Node<T> temp = this.head;
+        while (temp != null) {
+            System.out.print(temp.data + ",");
+            temp = temp.next;
+        }
+    }
 }

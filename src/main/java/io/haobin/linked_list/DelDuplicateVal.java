@@ -27,4 +27,18 @@ public class DelDuplicateVal {
             current = current.next;
         }
     }
+
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(44);
+        list.add(4);
+        list.add(6);
+        list.show();
+        deleteDuplicateValue(list.head);
+        System.out.println();
+        list.show();
+    }
 }
