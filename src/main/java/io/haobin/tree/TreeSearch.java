@@ -13,14 +13,11 @@ public class TreeSearch<T> {
 
 
     /**
-     * 前序遍历root查询item
-     * @return
+     * 遍历路径
+     * @param root
+     * @param data
      */
-    public void preorderTraversal(TreeNode<T> root, T data){
-        if(root == null){
-            return;
-        }
-
+    public void searchPath(TreeNode<T> root, T data) {
         if(!isSearched){
             if(!searchPath.toString().equals("")){
                 searchPath.append("->");
@@ -29,7 +26,17 @@ public class TreeSearch<T> {
             if(root.data.equals(data))
                 isSearched = true;
         }
+    }
 
+    /**
+     * 前序遍历root查询item
+     * @return
+     */
+    public void preorderTraversal(TreeNode<T> root, T data){
+        if(root == null){
+            return;
+        }
+        searchPath(root, data);
         if(!isSearched)
             preorderTraversal(root.left, data);
         if(!isSearched)
@@ -48,16 +55,7 @@ public class TreeSearch<T> {
 
         if(!isSearched)
             inorderTraversal(root.left, data);
-
-        if(!isSearched){
-            if(!searchPath.toString().equals("")){
-                searchPath.append("->");
-            }
-            searchPath.append(root.data);
-            if(root.data.equals(data))
-                isSearched = true;
-        }
-
+        searchPath(root, data);
         if(!isSearched)
             inorderTraversal(root.right, data);
     }
@@ -78,14 +76,6 @@ public class TreeSearch<T> {
 
         if(!isSearched)
             afterorderTraversal(root.right, data);
-
-        if(!isSearched){
-            if(!searchPath.toString().equals("")){
-                searchPath.append("->");
-            }
-            searchPath.append(root.data);
-            if(root.data.equals(data))
-                isSearched = true;
-        }
+        searchPath(root, data);
     }
 }
