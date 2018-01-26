@@ -47,7 +47,7 @@ public class BinarySearch {
         }else if(value > array[middle]){
             return searchRecursive(array, value, middle + 1, high);
         }else {
-            return array[middle];
+            return middle;
         }
     }
 }
