@@ -6,6 +6,12 @@ package io.haobin.tree;
  * @Date 2018/1/24 23:26
  */
 public class DoubleTree {
+
+    /**
+     * 定义根
+     */
+    public Node root;
+
     /**
      * 定义节点
      */
@@ -43,14 +49,59 @@ public class DoubleTree {
         }
     }
 
-    Node root;
 
+    /**
+     * 添加节点
+     * @param value
+     */
     public void add(int value) {
         Node newNode = new Node(value);
-        if (root == null) {
+        if (this.root == null) {
             this.root = newNode;
         } else {
-
+            Node temp = this.root;
+            while (true) {
+                if(value < temp.getValue()) {
+                    if (temp.getLeft() == null) {
+                        temp.setLeft(newNode);
+                        break;
+                    } else {
+                        temp = temp.getLeft();
+                    }
+                } else {
+                    if (temp.getRight() == null) {
+                        temp.setRight(newNode);
+                        break;
+                    } else {
+                        temp = temp.getRight();
+                    }
+                }
+            }
         }
     }
+
+    /**
+     * 遍历二叉树
+     * @param pNode
+     */
+    public void showNode(Node pNode) {
+        System.out.print(pNode.getValue() + ",");
+        if (pNode.getLeft() != null) {
+            showNode(pNode.getLeft());
+        }
+        if (pNode.getRight() != null) {
+            showNode(pNode.getRight());
+        }
+    }
+
+    public static void main(String[] args) {
+        DoubleTree doubleTree = new DoubleTree();
+        doubleTree.add(2);
+        doubleTree.add(4);
+        doubleTree.add(6);
+        doubleTree.add(1);
+        doubleTree.add(8);
+        doubleTree.showNode(doubleTree.root);
+    }
+
 }
