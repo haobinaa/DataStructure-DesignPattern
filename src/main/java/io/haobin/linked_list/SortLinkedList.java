@@ -3,7 +3,7 @@ package io.haobin.linked_list;
 
 /**
  * 给出一个值,将链表中左边数据都小于此值,右边的值都大于等于此值
- *
+ * 思路：分成个链表，然后连起来就好了
  * @Author: HaoBin
  * @Date 2018/1/26 17:57
  */
@@ -19,6 +19,8 @@ public class SortLinkedList {
         Node<Integer> afterStart = null;
         Node<Integer> afterEnd = null;
 
+
+        // 让给定值左边小于，右边大于
         while (head != null) {
             Node<Integer> next = head.next;
             head.next = null;
@@ -41,7 +43,7 @@ public class SortLinkedList {
             }
             head = next;
         }
-
+        // 连起来
         if (beforeStart != null) {
             beforeEnd.next = afterStart;
             head = beforeStart;
@@ -62,7 +64,7 @@ public class SortLinkedList {
 
         Node<Integer> beforeStart = null;
         Node<Integer> afterStart = null;
-
+        // 不需要指向左边的尾节点和右边的尾节点的方法
         while (head != null) {
             Node<Integer> next = head.next;
 
@@ -78,12 +80,16 @@ public class SortLinkedList {
 
         Node<Integer> newHead = null;
         if (beforeStart == null) {
+            // 没有小于给定值，右边第一个节点当头结点
             newHead = afterStart;
         } else {
+            // 头结点指向左边第一个节点
             newHead = beforeStart;
+            // beforeStart遍历到左边链表的尾部
             while (beforeStart.next != null) {
                 beforeStart = beforeStart.next;
             }
+            // 连上右边的节点
             beforeStart.next = afterStart;
         }
 
