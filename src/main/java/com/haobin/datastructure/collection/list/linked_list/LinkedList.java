@@ -1,4 +1,4 @@
-package com.haobin.datastructure.linked_list;
+package com.haobin.datastructure.collection.list.linked_list;
 
 /**
  * 单向链表

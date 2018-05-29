@@ -1,6 +1,6 @@
 package com.haobin.datastructure.sort;
 
-import com.haobin.datastructure.util.PrintUtil;
+import com.haobin.datastructure.utils.PrintUtil;
 
 /**
  * 冒泡排序
