@@ -107,6 +107,7 @@ modCount 用来记录 ArrayList 结构发生变化的次数。结构发生变化
 
 在进行序列化或者迭代等操作时，需要比较操作前后 modCount 是否改变，如果改变了需要抛出 ConcurrentModificationException。
 
+在ArrayList迭代的时候如果对其结构进行修改就会抛出ConcurrenModificationException
 
 ### 6.参考资料
 - [Java ConcurrentModificationException异常原因和解决方法](http://www.cnblogs.com/dolphin0520/p/3933551.html)
