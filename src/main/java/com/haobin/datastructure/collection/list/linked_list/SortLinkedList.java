@@ -1,6 +1,8 @@
 package com.haobin.datastructure.collection.list.linked_list;
 
 
+import java.util.LinkedList;
+
 /**
  * 给出一个值,将链表中左边数据都小于此值,右边的值都大于等于此值
  * 思路：分成个链表，然后连起来就好了

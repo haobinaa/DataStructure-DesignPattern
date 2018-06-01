@@ -11,7 +11,7 @@ public class ArrayList<E> extends AbstractList<E>
     transient Object[] elementData;
 ```
 基于数组实现，保存元素的数组使用 transient 修饰，该关键字声明数组默认不会被序列化。ArrayList 具有动态扩容特性，因此保存元素的数组不一定都会被使用，那么就没必要全部进行序列化。ArrayList 重写了 writeObject() 和 readObject() 来控制只序列化数组中有元素填充那部分内容
-
+  
 writeObject() :
 ``` 
     private void writeObject(java.io.ObjectOutputStream s)
@@ -108,6 +108,10 @@ modCount 用来记录 ArrayList 结构发生变化的次数。结构发生变化
 在进行序列化或者迭代等操作时，需要比较操作前后 modCount 是否改变，如果改变了需要抛出 ConcurrentModificationException。
 
 在ArrayList迭代的时候如果对其结构进行修改就会抛出ConcurrenModificationException
+
+Fail_Fast机制原理：在ArrayList在调用add(),remove(),clear(),ensureCapacity()
+这些会修改数据结构的方法中都会使modCount++。在获取迭代器的时候会把modCount赋值给迭代器的expectedModCount变量。此时modCount与expectedModCount
+肯定相等，在迭代元素的过程中如果ArrayList调用自身方法使集合发生变化，那么modCount肯定会变，此时modCount与expectedModCount肯定会不相等。就会抛出异常
 
 ### 6.参考资料
 - [Java ConcurrentModificationException异常原因和解决方法](http://www.cnblogs.com/dolphin0520/p/3933551.html)
