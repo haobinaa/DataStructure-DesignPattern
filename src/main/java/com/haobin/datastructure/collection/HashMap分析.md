@@ -89,6 +89,9 @@ static class Entry<K,V> implements Map.Entry<K,V> {
 }
 ```
 ### 3）put操作
+1. 通过key的hash值确定table下标 
+2. 查找table下标，如果key存在则更新对应的value 
+3. 如果key不存在则调用addEntry()方法 
 ``` 
 public V put(K key, V value) {
     if (table == EMPTY_TABLE) {
@@ -115,5 +118,40 @@ public V put(K key, V value) {
     // 插入新键值对
     addEntry(hash, key, value, i);
     return null;
+}
+```
+HashMap 允许插入键位 null 的键值对，因为无法调用 null 的 hashCode()，也就无法确定该键值对的桶下标，只能通过强制指定一个桶下标来存放。HashMap 使用第 0 个桶存放键为 null 的键值对。
+``` 
+private V putForNullKey(V value) {
+    for (Entry<K,V> e = table[0]; e != null; e = e.next) {
+        if (e.key == null) {
+            V oldValue = e.value;
+            e.value = value;
+            e.recordAccess(this);
+            return oldValue;
+        }
+    }
+    modCount++;
+    addEntry(0, null, value, 0);
+    return null;
+}
+```
+使用链表的头插法，也就是新的键值对插在链表的头部，而不是链表的尾部。（设计者认为新加入的节点被使用的几率更大）
+``` 
+void addEntry(int hash, K key, V value, int bucketIndex) {
+    if ((size >= threshold) && (null != table[bucketIndex])) {
+        resize(2 * table.length);
+        hash = (null != key) ? hash(key) : 0;
+        bucketIndex = indexFor(hash, table.length);
+    }
+
+    createEntry(hash, key, value, bucketIndex);
+}
+
+void createEntry(int hash, K key, V value, int bucketIndex) {
+    Entry<K,V> e = table[bucketIndex];
+    // 头插法，链表头部指向新的键值对
+    table[bucketIndex] = new Entry<>(hash, key, value, e);
+    size++;
 }
 ```
