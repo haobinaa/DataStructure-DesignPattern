@@ -89,3 +89,31 @@ static class Entry<K,V> implements Map.Entry<K,V> {
 }
 ```
 ### 3）put操作
+``` 
+public V put(K key, V value) {
+    if (table == EMPTY_TABLE) {
+        inflateTable(threshold);
+    }
+    // 键为 null 单独处理, 允许一个为null的key
+    if (key == null)
+        return putForNullKey(value);
+    int hash = hash(key);
+    // 确定桶下标
+    int i = indexFor(hash, table.length);
+    // 先找出是否已经存在键为 key 的键值对，如果存在的话就更新这个键值对的值为 value
+    for (Entry<K,V> e = table[i]; e != null; e = e.next) {
+        Object k;
+        if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+            V oldValue = e.value;
+            e.value = value;
+            e.recordAccess(this);
+            return oldValue;
+        }
+    }
+
+    modCount++;
+    // 插入新键值对
+    addEntry(hash, key, value, i);
+    return null;
+}
+```
