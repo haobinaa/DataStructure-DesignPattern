@@ -227,10 +227,29 @@ void transfer(Entry[] newTable) {
     }
 }
 ```
+### 3.HashMap的线程不安全体现
+在resize的时候，会进行一步将原有元素重新映射到新的hash表的rehash操作，在多线程环境下，分析rehash步骤,只看关键代码
+``` 
+while(null != e) {
+    Entry<K,V> next = e.next;
+    e.next = newTable[i];
+    newTable[i] = e;
+    e = next;
+}
+```
+1. Entry<K,V> next = e.next;——因为是单链表，如果要转移头指针，一定要保存下一个结点，不然转移后链表就丢了
 
-### 3.HashMap和HashTable
+2. e.next = newTable[i];——e 要插入到链表的头部，所以要先用 e.next 指向新的 Hash 表第一个元素
+
+3. newTable[i] = e;——现在新 Hash 表的头指针仍然指向 e 没转移前的第一个元素，所以需要将新 Hash 表的头指针指向 e
+
+4. e = next——转移 e 的下一个结点
+
+
+### 4.HashMap和HashTable
 - HashTable 是同步的，它使用了 synchronized 来进行同步。它也是线程安全的，多个线程可以共享同一个 HashTable。HashMap 不是同步的，但是可以使用 ConcurrentHashMap，它是 HashTable 的替代，而且比 HashTable 可扩展性更好。
 - HashMap 可以插入键为 null 的 Entry。
 - HashMap 的迭代器是 fail-fast 迭代器，而 Hashtable 的 enumerator 迭代器不是 fail-fast 的。
 - 由于 Hashtable 是线程安全的也是 synchronized，所以在单线程环境下它比 HashMap 要慢。
 - HashMap 不能保证随着时间的推移 Map 中的元素次序是不变的。
+
