@@ -15,6 +15,9 @@ static final int MAXIMUM_CAPACITY = 1 << 30;
 // 加载因子，当长度大于阈值(存储容量*加载因子)，则进行扩容
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
+// 阈值，达到阈值后进行resize扩容操作
+int threshold;
+
 // 存储Entry的数组
 transient Entry<K,V>[] table;
 ```
@@ -170,10 +173,8 @@ final int hash(Object k) {
     }
 
     h ^= k.hashCo de();
-
-    // This function ensures that hashCodes that differ only by
-    // constant multiples at each bit position have a bounded
-    // number of collisions (approximately 8 at default load factor).
+    
+    // >>> 无符号右移
     h ^= (h >>> 20) ^ (h >>> 12);
     return h ^ (h >>> 7) ^ (h >>> 4);
 }
@@ -183,3 +184,53 @@ public final int hashCode() {
 ```
 
 #### 5) 扩容操作
+扩容根据以下几个属性来判断
+
+| 参数  | 含义 |
+| ------------- | ------------- |
+| capacity  | table 的容量大小，默认为 16，需要注意的是 capacity 必须保证为 2 的次方  |
+| size  | table 的实际使用量  |
+| threshold  |size 的临界值，size 必须小于 threshold，如果大于等于，就必须进行扩容操作|
+| load_factor  |table 能够使用的比例，threshold = capacity * load_factor|
+
+
+``` 
+void resize(int newCapacity) {
+    Entry[] oldTable = table;
+    int oldCapacity = oldTable.length;
+    if (oldCapacity == MAXIMUM_CAPACITY) {
+        threshold = Integer.MAX_VALUE;
+        return;
+    }
+
+    Entry[] newTable = new Entry[newCapacity];
+    transfer(newTable);
+    table = newTable;
+    threshold = (int)(newCapacity * loadFactor);
+}
+// 将原来的Entry映射到新的数组
+void transfer(Entry[] newTable) {
+    Entry[] src = table;
+    int newCapacity = newTable.length;
+    for (int j = 0; j < src.length; j++) {
+        Entry<K,V> e = src[j];
+        if (e != null) {
+            src[j] = null;
+            do {
+                Entry<K,V> next = e.next;
+                int i = indexFor(e.hash, newCapacity);
+                e.next = newTable[i];
+                newTable[i] = e;
+                e = next;
+            } while (e != null);
+        }
+    }
+}
+```
+
+### 3.HashMap和HashTable
+- HashTable 是同步的，它使用了 synchronized 来进行同步。它也是线程安全的，多个线程可以共享同一个 HashTable。HashMap 不是同步的，但是可以使用 ConcurrentHashMap，它是 HashTable 的替代，而且比 HashTable 可扩展性更好。
+- HashMap 可以插入键为 null 的 Entry。
+- HashMap 的迭代器是 fail-fast 迭代器，而 Hashtable 的 enumerator 迭代器不是 fail-fast 的。
+- 由于 Hashtable 是线程安全的也是 synchronized，所以在单线程环境下它比 HashMap 要慢。
+- HashMap 不能保证随着时间的推移 Map 中的元素次序是不变的。
