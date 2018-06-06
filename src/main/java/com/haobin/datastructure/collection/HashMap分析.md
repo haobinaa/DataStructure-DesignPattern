@@ -88,7 +88,7 @@ static class Entry<K,V> implements Map.Entry<K,V> {
     }
 }
 ```
-### 3）put操作
+#### 3）put操作
 1. 通过key的hash值确定table下标 
 2. 查找table下标，如果key存在则更新对应的value 
 3. 如果key不存在则调用addEntry()方法 
@@ -155,3 +155,31 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
     size++;
 }
 ```
+#### 4)确定桶下标
+在操作hash表的时候，需要先确定桶的下标
+``` 
+int hash = hash(key);
+int i = indexFor(hash, table.length);
+```
+(1)计算hash值
+``` 
+final int hash(Object k) {
+    int h = hashSeed;
+    if (0 != h && k instanceof String) {
+        return sun.misc.Hashing.stringHash32((String) k);
+    }
+
+    h ^= k.hashCo de();
+
+    // This function ensures that hashCodes that differ only by
+    // constant multiples at each bit position have a bounded
+    // number of collisions (approximately 8 at default load factor).
+    h ^= (h >>> 20) ^ (h >>> 12);
+    return h ^ (h >>> 7) ^ (h >>> 4);
+}
+public final int hashCode() {
+    return Objects.hashCode(key) ^ Objects.hashCode(value);
+}
+```
+
+#### 5) 扩容操作
