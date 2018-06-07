@@ -276,6 +276,24 @@ while(null != e) {
 3. 执行newTable[i] = e，那么线程1的新 Hash 表第一个元素变成了 key(7)
 
 4. 执行e = next，将 e 指向 next，所以新的 e 是 key(3)
+
+现在状态变为：
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/after-rehahs.jpg)
+
+然后又该执行 key(7)的 next 节点 key(3)了:
+
+1. 现在的 e 节点是 key(3)，首先执行Entry<K,V> next = e.next,那么 next 就是 null
+
+2. 执行e.next = newTable[i]，于是key(3) 的 next 就成了 key(7)
+
+3. 执行newTable[i] = e，那么线程1的新 Hash 表第一个元素变成了 key(3)
+
+4. 执行e = next，将 e 指向 next，所以新的 e 是 key(7)
+
+状态变成了:
+![]()
+
+很明显，环形链表出现了！
 ### 4.HashMap和HashTable
 - HashTable 是同步的，它使用了 synchronized 来进行同步。它也是线程安全的，多个线程可以共享同一个 HashTable。HashMap 不是同步的，但是可以使用 ConcurrentHashMap，它是 HashTable 的替代，而且比 HashTable 可扩展性更好。
 - HashMap 可以插入键为 null 的 Entry。
