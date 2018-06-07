@@ -291,7 +291,7 @@ while(null != e) {
 4. 执行e = next，将 e 指向 next，所以新的 e 是 key(7)
 
 状态变成了:
-![]()
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/rehash-circle-list.jpg)
 
 很明显，环形链表出现了！
 ### 4.HashMap和HashTable
