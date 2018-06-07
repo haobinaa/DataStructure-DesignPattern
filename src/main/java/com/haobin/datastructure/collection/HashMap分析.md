@@ -245,7 +245,37 @@ while(null != e) {
 
 4. e = next——转移 e 的下一个结点
 
+假设这里有两个线程同时执行了put()操作，并进入了transfer()环节
+``` 
+while(null != e) {
+    Entry<K,V> next = e.next; //线程1执行到这里被调度挂起了
+    e.next = newTable[i];
+    newTable[i] = e;
+    e = next;
+}
+```
+现在状态如下:
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/rehash.jpg)
 
+从上面的图我们可以看到，因为线程1的 e 指向了 key(3)，而 next 指向了 key(7)，在线程2 rehash 后，就指向了线程2 rehash 后的链表。
+
+然后线程1被唤醒了：
+
+1. 执行e.next = newTable[i]，于是 key(3)的 next 指向了线程1的新 Hash 表，因为新 Hash 表为空，所以e.next = null
+
+2. 执行newTable[i] = e，所以线程1的新 Hash 表第一个元素指向了线程2新 Hash 表的 key(3)。好了，e 处理完毕。
+
+3. 执行e = next，将 e 指向 next，所以新的 e 是 key(7)
+
+然后该执行 key(3)的 next 节点 key(7):
+
+1.现在的 e 节点是 key(7)，首先执行Entry<K,V> next = e.next,那么 next 就是 key(3)了
+
+2. 执行e.next = newTable[i]，于是key(7) 的 next 就成了 key(3)
+
+3. 执行newTable[i] = e，那么线程1的新 Hash 表第一个元素变成了 key(7)
+
+4. 执行e = next，将 e 指向 next，所以新的 e 是 key(3)
 ### 4.HashMap和HashTable
 - HashTable 是同步的，它使用了 synchronized 来进行同步。它也是线程安全的，多个线程可以共享同一个 HashTable。HashMap 不是同步的，但是可以使用 ConcurrentHashMap，它是 HashTable 的替代，而且比 HashTable 可扩展性更好。
 - HashMap 可以插入键为 null 的 Entry。
