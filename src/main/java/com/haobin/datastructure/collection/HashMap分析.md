@@ -219,8 +219,11 @@ void transfer(Entry[] newTable) {
             do {
                 Entry<K,V> next = e.next;
                 int i = indexFor(e.hash, newCapacity);
+                // 头插法， 插入节点指向整个链表
                 e.next = newTable[i];
+                // 头结点指向插入节点
                 newTable[i] = e;
+                // 遍历下一个节点
                 e = next;
             } while (e != null);
         }
@@ -232,7 +235,7 @@ void transfer(Entry[] newTable) {
 ``` 
 while(null != e) {
     Entry<K,V> next = e.next;
-    e.next = newTable[i];
+    e.next = newTable[i]; //
     newTable[i] = e;
     e = next;
 }
@@ -293,7 +296,7 @@ while(null != e) {
 状态变成了:
 ![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/rehash-circle-list.jpg)
 
-很明显，环形链表出现了！
+很明显，环形链表出现了,现在hashmap就是线程1的hashmap了
 ### 4.HashMap和HashTable
 - HashTable 是同步的，它使用了 synchronized 来进行同步。它也是线程安全的，多个线程可以共享同一个 HashTable。HashMap 不是同步的，但是可以使用 ConcurrentHashMap，它是 HashTable 的替代，而且比 HashTable 可扩展性更好。
 - HashMap 可以插入键为 null 的 Entry。
