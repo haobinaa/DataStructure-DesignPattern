@@ -18,6 +18,10 @@
 
 - [HashMap](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/HashMap%E5%88%86%E6%9E%90.md)
 
+- [HashSet](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/HashSet%E5%88%86%E6%9E%90.md)
+
+- [LinkedHashMap](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/LinkedHashMap%E5%88%86%E6%9E%90.md)
+
 
 #### 排序算法
 
@@ -39,5 +43,6 @@
 
 
 #### 算法
-- [斐波那契数列]()
+- [斐波那契数列](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/Fibonacci.java)
+- [八皇后](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/EightQueen.java)
 #### 设计模式
