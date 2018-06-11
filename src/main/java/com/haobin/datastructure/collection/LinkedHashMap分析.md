@@ -92,3 +92,105 @@
          }
      }
  ```
+ 
+` void afterNodeInsertion(boolean evict)`以及`boolean removeEldestEntry(Map.Entry<K,V> eldest)
+`是构建LRUCache需要的回调，在LinkedHashMap里可以忽略它们。
+``` 
+    //回调函数，新节点插入之后回调 ， 根据evict 和   判断是否需要删除最老插入的节点。如果实现LruCache会用到这个方法。
+    void afterNodeInsertion(boolean evict) { // possibly remove eldest
+        LinkedHashMap.Entry<K,V> first;
+        //LinkedHashMap 默认返回false 则不删除节点
+        if (evict && (first = head) != null && removeEldestEntry(first)) {
+            K key = first.key;
+            removeNode(hash(key), key, null, false, true);
+        }
+    }
+    //LinkedHashMap 默认返回false 则不删除节点。 返回true 代表要删除最早的节点。通常构建一个LruCache会在达到Cache的上限是返回true
+    protected boolean removeEldestEntry(Map.Entry<K,V> eldest) {
+        return false;
+    }
+```
+
+#### 4) remove
+LinkedHashMap也没有重写remove()方法，因为它的删除逻辑和HashMap并无区别。 
+但它重写了`afterNodeRemoval()`这个回调方法。该方法会在
+`Node<K,V> removeNode(int hash, Object key, Object value,boolean matchValue, boolean movable)`方法中回调，removeNode()会在所有涉及到删除节点的方法中被调用，上文分析过，是删除节点操作的真正执行者。
+
+``` 
+    //在删除节点e时，同步将e从双向链表上删除
+    void afterNodeRemoval(Node<K,V> e) { // unlink
+        LinkedHashMap.Entry<K,V> p =
+            (LinkedHashMap.Entry<K,V>)e, b = p.before, a = p.after;
+        //待删除节点 p 的前置后置节点都置空
+        p.before = p.after = null;
+        //如果前置节点是null，则现在的头结点应该是后置节点a
+        if (b == null)
+            head = a;
+        else//否则将前置节点b的后置节点指向a
+            b.after = a;
+        //同理如果后置节点时null ，则尾节点应是b
+        if (a == null)
+            tail = b;
+        else//否则更新后置节点a的前置节点为b
+            a.before = b;
+    }
+```
+
+#### 5) get
+LinkedHashMap重写了get()和getOrDefault()方法：
+``` 
+    public V get(Object key) {
+        Node<K,V> e;
+        if ((e = getNode(hash(key), key)) == null)
+            return null;
+        if (accessOrder)
+            afterNodeAccess(e);
+        return e.value;
+    }
+    public V getOrDefault(Object key, V defaultValue) {
+       Node<K,V> e;
+       if ((e = getNode(hash(key), key)) == null)
+           return defaultValue;
+       if (accessOrder)
+           afterNodeAccess(e);
+       return e.value;
+   }
+```
+
+`在afterNodeAccess()`函数中，会将当前被访问到的节点e，移动至内部的双向链表的尾部:
+``` 
+ void afterNodeAccess(Node<K,V> e) { // move node to last
+        LinkedHashMap.Entry<K,V> last;//原尾节点
+        //如果accessOrder 是true ，且原尾节点不等于e
+        if (accessOrder && (last = tail) != e) {
+            //节点e强转成双向链表节点p
+            LinkedHashMap.Entry<K,V> p =
+                (LinkedHashMap.Entry<K,V>)e, b = p.before, a = p.after;
+            //p现在是尾节点， 后置节点一定是null
+            p.after = null;
+            //如果p的前置节点是null，则p以前是头结点，所以更新现在的头结点是p的后置节点a
+            if (b == null)
+                head = a;
+            else//否则更新p的前直接点b的后置节点为 a
+                b.after = a;
+            //如果p的后置节点不是null，则更新后置节点a的前置节点为b
+            if (a != null)
+                a.before = b;
+            else//如果原本p的后置节点是null，则p就是尾节点。 此时 更新last的引用为 p的前置节点b
+                last = b;
+            if (last == null) //原本尾节点是null  则，链表中就一个节点
+                head = p;
+            else {//否则 更新 当前节点p的前置节点为 原尾节点last， last的后置节点是p
+                p.before = last;
+                last.after = p;
+            }
+            //尾节点的引用赋值成p
+            tail = p;
+            //修改modCount。
+            ++modCount;
+        }
+    }
+```
+
+### 3.参考资料
+- [LinkedHashMap源码分析](https://blog.csdn.net/zxt0601/article/details/77429150)
