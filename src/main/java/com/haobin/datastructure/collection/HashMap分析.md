@@ -304,3 +304,7 @@ while(null != e) {
 - 由于 Hashtable 是线程安全的也是 synchronized，所以在单线程环境下它比 HashMap 要慢。
 - HashMap 不能保证随着时间的推移 Map 中的元素次序是不变的。
 
+
+### 5.JDK8的HashMap
+
+
