@@ -297,6 +297,7 @@ while(null != e) {
 ![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/rehash-circle-list.jpg)
 
 很明显，环形链表出现了,现在hashmap就是线程1的hashmap了
+
 ### 4.HashMap和HashTable
 - HashTable 是同步的，它使用了 synchronized 来进行同步。它也是线程安全的，多个线程可以共享同一个 HashTable。HashMap 不是同步的，但是可以使用 ConcurrentHashMap，它是 HashTable 的替代，而且比 HashTable 可扩展性更好。
 - HashMap 可以插入键为 null 的 Entry。
@@ -307,4 +308,35 @@ while(null != e) {
 
 ### 5.JDK8的HashMap
 
+#### 1) 存储结构
+HashMap是数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的:
 
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/hashMap_1_8.png)
+
+JDK8中HashMap类中有一个非常重要的字段，就是` Node[] table`，即哈希桶数组
+``` 
+static class Node<K,V> implements Map.Entry<K,V> {
+        final int hash;    //用来定位数组索引位置
+        final K key;
+        V value;
+        Node<K,V> next;   //链表的下一个node
+
+        Node(int hash, K key, V value, Node<K,V> next) { ... }
+        public final K getKey(){ ... }
+        public final V getValue() { ... }
+        public final String toString() { ... }
+        public final int hashCode() { ... }
+        public final V setValue(V newValue) { ... }
+        public final boolean equals(Object o) { ... }
+}
+```
+
+#### 2) 扩容操作
+JDK8的put方法：
+![]()
+> ①.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；   
+  ②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③；    
+  ③.判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向④，这里的相同指的是hashCode以及equals；    
+  ④.判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向⑤；   
+  ⑤.遍历table[i]，判断链表长度是否大于8，大于8的话把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可；    
+  ⑥.插入成功后，判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。
