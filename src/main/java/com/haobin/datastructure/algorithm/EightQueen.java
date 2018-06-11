@@ -1,4 +1,4 @@
-package com.haobin.datastructure.recursion;
+package com.haobin.datastructure.algorithm;
 
 /**
  * 八皇后
