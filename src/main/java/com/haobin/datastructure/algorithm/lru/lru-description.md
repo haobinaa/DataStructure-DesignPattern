@@ -17,5 +17,10 @@ LRU 是 `Least Recently Used `的简写，字面意思则是最近最少使用�
 - 再开启了一个守护线程用于判断最先放进去的数据是否超期（因为就算超期也是最先放进去的数据最有可能满足超期条件。）
 - 设置为守护线程可以更好的表明其目的（最坏的情况下，如果是一个用户线程最终有可能导致程序不能正常退出，因为该线程一直在运行，守护线程则不会有这个情况。）
 
+#### 3） 实现代码
+
+[LRU实现一](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure
+/algorithm/lru/LRUAbstractMap.java)
+
 ### 参考资料
 - [实现LRU-Cache](https://crossoverjie.top/2018/04/07/algorithm/LRU-cache/)
