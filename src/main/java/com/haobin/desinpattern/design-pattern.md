@@ -76,7 +76,7 @@
 
 继承关系使用直线加空心三角形表示。类图结构如下：
 
-！[](https://img-blog.csdn.net/20170302215508836?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSzM0NkszNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![](https://img-blog.csdn.net/20170302215508836?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSzM0NkszNDY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 类接口的实现关系使用虚线加空心三角形表示。类图结构如下：
 
