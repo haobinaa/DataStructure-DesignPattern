@@ -19,8 +19,7 @@ LRU 是 `Least Recently Used `的简写，字面意思则是最近最少使用�
 
 #### 3） 实现代码
 
-[LRU实现一](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure
-/algorithm/lru/LRUAbstractMap.java)
+[LRU实现一](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/lru/LRUAbstractMap.java)
 
 ### 参考资料
 - [实现LRU-Cache](https://crossoverjie.top/2018/04/07/algorithm/LRU-cache/)

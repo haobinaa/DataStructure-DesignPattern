@@ -131,6 +131,8 @@ public class RoleImpl extends Role {
 我们可以根据策略的实现，组合出不同的角色
 
 ### 3. UML类图
+
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/desing-pattern/strategy_uml.png)
 ### 4. 参考资料
 - [HeadFirst 设计模式]
 - [设计模式 策略模式 以角色游戏为背景](https://blog.csdn.net/lmj623565791/article/details/24116745)
