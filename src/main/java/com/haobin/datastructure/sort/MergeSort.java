@@ -1,6 +1,5 @@
 package com.haobin.datastructure.sort;
 
-import com.haobin.datastructure.utils.PrintUtil;
 
 /**
  * 归并排序
@@ -69,11 +68,4 @@ public class MergeSort {
         }
     }
 
-    public static void main(String[] args) {
-        int[] intArr = {100,908,1000001,100,0,999,12319};
-        PrintUtil.printArray(intArr);
-        mergeSort(intArr, 0, intArr.length-1);
-        System.out.println();
-        PrintUtil.printArray(intArr);
-    }
 }

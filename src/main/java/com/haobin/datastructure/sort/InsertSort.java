@@ -1,6 +1,5 @@
 package com.haobin.datastructure.sort;
 
-import com.haobin.datastructure.utils.PrintUtil;
 
 /**插入排序
  *
@@ -30,11 +29,4 @@ public class InsertSort {
         }
     }
 
-    public static void main(String[] args) {
-        int[] intArr = {100,908,1000001,100,0,9999};
-        PrintUtil.printArray(intArr);
-        insertSort(intArr);
-        System.out.println();
-        PrintUtil.printArray(intArr);
-    }
 }

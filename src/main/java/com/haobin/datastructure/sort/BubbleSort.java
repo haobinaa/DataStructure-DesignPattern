@@ -1,6 +1,5 @@
 package com.haobin.datastructure.sort;
 
-import com.haobin.datastructure.utils.PrintUtil;
 
 /**
  * 冒泡排序
@@ -21,10 +20,5 @@ public class BubbleSort {
             }
             // 一趟比较完之后，i位置就像最大的一个泡泡一样冒到了尾部
         }
-    }
-    public static void main(String[] args) {
-        int[] arr =  {8,9,8,9,8,9,8,9};
-        PrintUtil.printArray(arr);
-        bubbleSort(arr);
     }
 }

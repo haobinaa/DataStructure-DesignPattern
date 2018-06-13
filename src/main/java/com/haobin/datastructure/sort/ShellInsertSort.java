@@ -1,7 +1,5 @@
 package com.haobin.datastructure.sort;
 
-import com.haobin.datastructure.utils.PrintUtil;
-
 /**
  * 希尔排序
  *
@@ -60,11 +58,4 @@ public class ShellInsertSort {
         arr[a] = arr[a] - arr[b];
     }
 
-    public static void main(String[] args) {
-        int[] intArr = {100, 908, 1000001, 100, 0, 9999};
-        PrintUtil.printArray(intArr);
-        insertShellSort(intArr);
-        System.out.println();
-        PrintUtil.printArray(intArr);
-    }
 }

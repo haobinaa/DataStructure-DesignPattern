@@ -38,8 +38,8 @@
 - [八皇后](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/EightQueen.java)
 
 #### 设计模式
-- [设计七原则](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern
-/design-pattern.md)
+
+- [设计七原则](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/design-pattern.md)
 
 
 设计模式分三种类型，共23种
