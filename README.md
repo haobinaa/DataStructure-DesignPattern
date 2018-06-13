@@ -64,7 +64,7 @@
   - 模板方法模式
   - 命令模式
   - 迭代器模式
-  - 观察者模式
+  - [观察者模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/observer/observer_pattern.md)
   - 中介者模式
   - 备忘录模式
   - 解释器模式

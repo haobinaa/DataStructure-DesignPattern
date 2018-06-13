@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 public class LRUAbstractMap extends java.util.AbstractMap {
 
     private static final Logger logger = LoggerFactory.getLogger(LRUAbstractMap.class);
+
     /**
      * 检查是否超期线程
      */
@@ -252,6 +253,7 @@ public class LRUAbstractMap extends java.util.AbstractMap {
         int h;
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
+
     private void lruCallback(){
         logger.debug("lruCallback");
     }
