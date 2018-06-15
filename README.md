@@ -61,7 +61,7 @@
    - 代理模式
    
 - 行为型模式： 主要是用于描述类或者对象是怎样交互和怎样分配职责的
-  - 模板方法模式
+  - [模板方法模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/template_method/template_method_pattern.md)
   - 命令模式
   - 迭代器模式
   - [观察者模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/observer/observer_pattern.md)
