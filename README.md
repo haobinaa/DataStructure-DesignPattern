@@ -70,5 +70,5 @@
   - 解释器模式
   - 状态模式
   - [策略模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/strategy/strategy.md)
-  - 责任链模式
+  - [责任链模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/chain_of_responsibility/chain_of_responsibility_pattern.md)
   - 访问者模式

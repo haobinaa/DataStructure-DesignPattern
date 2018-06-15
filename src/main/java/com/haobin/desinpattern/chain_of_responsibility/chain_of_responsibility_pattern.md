@@ -125,5 +125,7 @@ public class Dean extends Leader {
 ```
 
 ### 3 责任链UML类图
+
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/desing-pattern/responsibility_chain.png)
 ### 参考资料
 - [职责链模式](http://www.cnblogs.com/chenssy/p/3332193.html)
