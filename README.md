@@ -52,7 +52,7 @@
    - 原型模式
 
  - 结构型模式：主要是用于处理类或者对象的组合，它描述了如何来类或者对象更好的组合起来，是从程序的结构上来解决模块之间的耦合问题。
-   - 适配器模式
+   - [适配器模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/adapter/adapter.md)
    - 桥接模式
    - [装饰模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/decorator/decorator_pattern.md)
    - 组合模式
