@@ -10,10 +10,66 @@
  > 装饰者模式，动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更加有弹性的替代方案。当我们设计好了一个类，我们需要给这个类添加一些辅助的功能，并且不希望改变这个类的代码，这时候就是用上装饰者模式的时候了。
  
  ### 二、 以游戏装备为例，描述装饰者模式
- 
+ 首先定义一个装备的接口,有攻击力和描述两个属性
+ ``` 
+ public interface IEquip {
 
+     public int caculateAttack();
+
+     public String description();
+ }
+
+ ```
+ 
+具体一个装备，攻击力为5的戒指
+``` 
+public class RingEquip implements IEquip {
+
+    @Override
+    public int caculateAttack() {
+        return 5;
+    }
+
+    @Override
+    public String description() {
+        return "圣战戒指";
+    }
+}
+```
+
+然后定义装饰器的接口
+``` 
+public interface IEquipDecorator extends IEquip {
+}
+```
+
+实现一个具体的装饰器,有一个引用指向被装饰的装备，并增强装备的描述和攻击力方法
+``` 
+public class BlueGemDecorator implements IEquipDecorator {
+
+    /**
+     * 每个装饰品维护一个装备
+     */
+    private IEquip equip;
+
+    public BlueGemDecorator(IEquip equip) {
+        this.equip = equip;
+    }
+
+    @Override
+    public int caculateAttack() {
+        return 5 + equip.caculateAttack();
+    }
+
+    @Override
+    public String description() {
+        return equip.description() + "+ 蓝宝石";
+    }
+}
+```
 ### 三、 装饰器模式UML类图
 
+![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/desing-pattern/decorator.png)
 
 
 javaIO也是用的装饰器模式:

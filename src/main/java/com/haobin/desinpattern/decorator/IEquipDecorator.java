@@ -10,5 +10,4 @@ package com.haobin.desinpattern.decorator;
  * @version $Id: IEquipDecorator.java, v0.1 2018/6/15 17:28 HaoBin 
  */
 public interface IEquipDecorator extends IEquip {
-
 }
