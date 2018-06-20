@@ -4,11 +4,19 @@
 package com.haobin.desinpattern.factory;
 
 /**
- *
- *
  * @author HaoBin
- * @version $Id: ClothesFactory.java, v0.1 2018/6/19 23:29 HaoBin 
+ * @version $Id: ClothesFactory.java, v0.1 2018/6/19 23:29 HaoBin
  */
-public class ClothesFactory {
+public abstract class ClothesFactory {
+
+    public Clothes sellClothes(String type) {
+        Clothes clothes = null;
+        clothes = makeClothes(type);
+        clothes.colorClothes();
+        clothes.cutClothes();
+        return clothes;
+    }
+
+    abstract Clothes makeClothes(String type);
 
 }
