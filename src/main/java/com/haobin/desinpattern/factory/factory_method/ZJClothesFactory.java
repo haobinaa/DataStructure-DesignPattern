@@ -1,7 +1,11 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.desinpattern.factory;
+package com.haobin.desinpattern.factory.factory_method;
+
+import com.haobin.desinpattern.factory.factory_method.ClothesFactory;
+import com.haobin.desinpattern.factory.factory_method.ZJMMClothes;
+import com.haobin.desinpattern.factory.simple_factory.Clothes;
 
 /**
  *

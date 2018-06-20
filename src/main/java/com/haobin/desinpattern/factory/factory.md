@@ -6,7 +6,7 @@
 
 ### 二、通过服装工厂来描述工厂模式
 
-#### 1) 简单工厂模式
+#### 1) 简单工厂(又叫静态工厂)模式
 首先定义服装抽象类:
 ``` 
 public abstract class Clothes {
@@ -39,11 +39,11 @@ public class MMCLothes extends Clothes {
     }
 }
 ```
-定义简单的工厂，来生产这两种服装
+定义简单的工厂，通过一个静态方法来生产这两种服装
 ``` 
 public class SimpleClothesFactory {
 
-    public Clothes makeClothes(String type) {
+    public static Clothes makeClothes(String type) {
         Clothes clothes = null;
         if (type.equals("牛仔裤")) {
             clothes = new NZClothes();

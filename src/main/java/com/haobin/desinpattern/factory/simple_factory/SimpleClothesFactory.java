@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.desinpattern.factory;
+package com.haobin.desinpattern.factory.simple_factory;
 
 /**
  * @author HaoBin
@@ -9,7 +9,7 @@ package com.haobin.desinpattern.factory;
  */
 public class SimpleClothesFactory {
 
-    public Clothes makeClothes(String type) {
+    public static Clothes makeClothes(String type) {
         Clothes clothes = null;
         if (type.equals("牛仔裤")) {
             clothes = new NZClothes();

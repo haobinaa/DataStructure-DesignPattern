@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.desinpattern.factory;
+package com.haobin.desinpattern.factory.simple_factory;
 
 /**
  *
