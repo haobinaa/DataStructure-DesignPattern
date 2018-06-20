@@ -102,3 +102,68 @@ public class ZJClothesFactory extends ClothesFactory {
 可以看到，工厂方法模式将实例化对象交给了每个工厂，这样就可以更多种类的对象
 
 #### 3) 抽象工厂模式
+有两间塑料加工厂（A厂仅生产容器类产品；B厂仅生产模具类产品）；随着客户需求的变化，A厂所在地的客户需要也模具类产品，B厂所在地的客户也需要容器类产品
+
+定义抽象工厂，可以生产容器类和模具类两种产品
+``` 
+public abstract class Factory {
+    public abstract AbstractProduct ManufactureContainer();
+    public abstract AbstractProduct ManufactureMould();
+}
+```
+
+定义产品和容器、模具产品的抽象类
+``` 
+public abstract class AbstractProduct {
+    public abstract void Show();
+}
+
+public abstract class ContainerProduct extends AbstractProduct {
+
+    @Override
+    public abstract void Show();
+}
+
+public abstract class MouldProduct extends AbstractProduct {
+
+    @Override
+    public abstract void Show();
+}
+```
+
+具体产品的创建
+``` 
+class ContainerProductA extends ContainerProduct {
+
+    @Override
+    public void Show() {
+        System.out.println("生产容器产品A");
+    }
+}
+
+class ContainerProductB extends ContainerProduct {
+
+    @Override
+    public void Show() {
+        System.out.println("生产容器产品B");
+    }
+}
+
+class MouldProductA extends MouldProduct {
+
+    @Override
+    public void Show() {
+        System.out.println("生产模具产品A");
+    }
+}
+
+class MouldProductB extends MouldProduct {
+
+    @Override
+    public void Show() {
+        System.out.println("生产模具产品B");
+    }
+}
+```
+
+工厂A可以产生容器A和模具A，工厂B可以生产模具B和容器B了
