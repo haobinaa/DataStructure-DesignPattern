@@ -45,7 +45,7 @@
 设计模式分三种类型，共23种
 
 - 创建型模式: 主要由两个主导思想构成。一是将系统使用的具体类封装起来，二是隐藏这些具体类的实例创建和结合的方式。
-   - 单例模式
+   - [单例模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/singleton/singleton.md)
    - 建造者模式
    - [工厂模式、简单工厂模式、抽象工厂模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/factory/factory.md)
    - 原型模式
