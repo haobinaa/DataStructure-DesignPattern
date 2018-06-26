@@ -18,7 +18,7 @@
 
 - [冒泡排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/BubbleSort.java)
 
-- [桶排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/BubbleSort.java)
+- [桶排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/BucketSort.java)
 
 - [堆排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/HeapSort.java)
 
