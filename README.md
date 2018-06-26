@@ -36,7 +36,9 @@
 #### 算法
 - [斐波那契数列](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/Fibonacci.java)
 - [八皇后](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/EightQueen.java)
-
+- [一致性hash算法](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/%E4%B8%80%E8%87%B4%E6%80%A7hash.md)
+- [B+树]
+- [B树]
 #### 设计模式
 
 - [设计原则与类关系](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/design-pattern.md)
