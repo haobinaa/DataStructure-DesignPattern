@@ -39,6 +39,7 @@
 - [一致性hash算法](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/%E4%B8%80%E8%87%B4%E6%80%A7hash.md)
 - [B+树]
 - [B树]
+- [线程间通信]
 #### 设计模式
 
 - [设计原则与类关系](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/design-pattern.md)
@@ -73,3 +74,4 @@
   - [策略模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/strategy/strategy.md)
   - [责任链模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/chain_of_responsibility/chain_of_responsibility_pattern.md)
   - 访问者模式
+  
