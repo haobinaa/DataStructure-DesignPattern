@@ -71,10 +71,11 @@ public class DogAdapter implements Robot {
 ```
 
 同理，还可以定义其他适配器，让机器人去适配更多的动物
+
 ### 三、UML类图
 
-
 ![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/desing-pattern/adapter.png)
+
 ### 参考资料
 
 - [设计模式读书笔记](http://www.cnblogs.com/chenssy/p/3204504.html)
