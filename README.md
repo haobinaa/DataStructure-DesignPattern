@@ -75,3 +75,8 @@
   - [责任链模式](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/chain_of_responsibility/chain_of_responsibility_pattern.md)
   - 访问者模式
   
+  
+  #### 代码片段
+  
+  ##### 多线程经典范式
+  - [死锁案例]()
