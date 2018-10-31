@@ -77,6 +77,6 @@
   
   
   #### 代码片段
-  
+  收集常用的经典编程范式
   ##### 多线程经典范式
-  - [死锁案例]()
+  - [死锁案例](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/codeBlock/DeadLock.java)
