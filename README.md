@@ -32,6 +32,12 @@
 
 - [希尔排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/ShellInsertSort.java)
 
+- [一致性Hash]
+
+- [LRU]
+
+- [KMP]
+
 
 #### 算法
 - [斐波那契数列](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/Fibonacci.java)
