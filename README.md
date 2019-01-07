@@ -13,6 +13,8 @@
 
 - [LinkedHashMap](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/LinkedHashMap%E5%88%86%E6%9E%90.md)
 
+- [ConcurrentHashMap(基于JDK8)]
+
 
 #### 排序算法
 
@@ -32,20 +34,21 @@
 
 - [希尔排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/ShellInsertSort.java)
 
-- [一致性Hash]
+#### 查找算法
 
-- [LRU]
-
-- [KMP]
-
+- [二分查找](./src/main/java/com/haobin/datastructure/search/BinarySearch.java)
 
 #### 算法
 - [斐波那契数列](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/Fibonacci.java)
+
 - [八皇后](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/EightQueen.java)
+
 - [一致性hash算法](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/%E4%B8%80%E8%87%B4%E6%80%A7hash.md)
-- [B+树]
-- [B树]
-- [线程间通信]
+
+- [LRU]
+
+- [KMP](./src/main/java/com/haobin/datastructure/algorithm/KMP.java)
+
 #### 设计模式
 
 - [设计原则与类关系](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/desinpattern/design-pattern.md)
@@ -86,3 +89,5 @@
   收集常用的经典编程范式
   ##### 多线程经典范式
   - [死锁案例](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/codeBlock/DeadLock.java)
+  
+  - [线程间通信]
