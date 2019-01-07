@@ -45,7 +45,7 @@
 
 - [一致性hash算法](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/%E4%B8%80%E8%87%B4%E6%80%A7hash.md)
 
-- [LRU]
+- [LRU](./src/main/java/com/haobin/datastructure/algorithm/lru/lru-description.md)
 
 - [KMP](./src/main/java/com/haobin/datastructure/algorithm/KMP.java)
 
