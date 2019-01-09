@@ -45,6 +45,8 @@
 
 - [八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 
+- [背包问题](src/main/java/com/haobin/algorithm/Backpack.java)
+
 - [一致性hash算法](src/main/java/com/haobin/algorithm/consistent_hash/consistent_hash.md)
 
 - [LRU](src/main/java/com/haobin/algorithm/lru/lru-description.md)
@@ -52,9 +54,11 @@
 - 字符串问题
   - [KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
   - [最长公共前缀](src/main/java/com/haobin/algorithm/str/CommonPrefix.java)
-  - [回文](src/main/java/com/haobin/algorithm/str/Palindrome.java)
+  - [回文(最长回文串、验证回文串、最长回文子串、最长回文子序列)](src/main/java/com/haobin/algorithm/str/Palindrome.java)
+  
+- [布隆过滤(判断一个元素是否存在一个庞大的集合中)]
 
-- [背包问题]
+
 
 #### 设计模式
 

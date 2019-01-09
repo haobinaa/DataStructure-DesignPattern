@@ -4,6 +4,8 @@
 package com.haobin.concurrent.synchronize;
 
 /**
+ * 对象锁， 同步代码块
+ *
  * @author HaoBin
  * @version $Id: ObjectService.java, v0.1 2018/6/21 10:40 HaoBin
  */

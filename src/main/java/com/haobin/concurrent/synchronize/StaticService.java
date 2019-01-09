@@ -4,7 +4,7 @@
 package com.haobin.concurrent.synchronize;
 
 /**
- *
+ * 类锁
  *
  * @author HaoBin
  * @version $Id: StaticService.java, v0.1 2018/6/21 17:33 HaoBin 
@@ -14,19 +14,19 @@ public class StaticService {
     synchronized public static void printA() {
         try {
             System.out.println("线程名称为：" + Thread.currentThread().getName()
-                    + "在" + System.currentTimeMillis() + "进入printA");
+                    + "在 " + System.currentTimeMillis() + "进入printA");
             Thread.sleep(3000);
             System.out.println("线程名称为：" + Thread.currentThread().getName()
-                    + "在" + System.currentTimeMillis() + "离开printA");
+                    + "在 " + System.currentTimeMillis() + "离开printA");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     synchronized public static void printB() {
-        System.out.println("线程名称为：" + Thread.currentThread().getName() + "在"
+        System.out.println("线程名称为：" + Thread.currentThread().getName() + "在 "
                 + System.currentTimeMillis() + "进入printB");
-        System.out.println("线程名称为：" + Thread.currentThread().getName() + "在"
+        System.out.println("线程名称为：" + Thread.currentThread().getName() + "在 "
                 + System.currentTimeMillis() + "离开printB");
     }
 }
