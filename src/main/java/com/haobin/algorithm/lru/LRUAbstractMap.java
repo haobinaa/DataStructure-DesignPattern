@@ -1,4 +1,4 @@
-package com.haobin.datastructure.algorithm.lru;
+package com.haobin.algorithm.lru;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import java.util.Set;

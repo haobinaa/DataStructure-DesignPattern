@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.datastructure.algorithm.lru;
+package com.haobin.algorithm.lru;
 
 import java.util.HashMap;
 import java.util.Map;

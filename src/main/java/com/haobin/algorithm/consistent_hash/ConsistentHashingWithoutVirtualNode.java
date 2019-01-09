@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.datastructure.algorithm.一致性hash;
+package com.haobin.algorithm.consistent_hash;
 
 import java.util.SortedMap;
 import java.util.TreeMap;

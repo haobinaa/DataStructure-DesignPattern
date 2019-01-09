@@ -1,4 +1,4 @@
-package com.haobin.datastructure.algorithm;
+package com.haobin.algorithm;
 
 /**
  * 八皇后

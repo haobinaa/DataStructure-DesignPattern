@@ -38,16 +38,23 @@
 
 - [二分查找](./src/main/java/com/haobin/datastructure/search/BinarySearch.java)
 
+
 #### 算法
-- [斐波那契数列](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/Fibonacci.java)
 
-- [八皇后](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/EightQueen.java)
+- [斐波那契数列](src/main/java/com/haobin/algorithm/Fibonacci.java)
 
-- [一致性hash算法](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/algorithm/%E4%B8%80%E8%87%B4%E6%80%A7hash.md)
+- [八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 
-- [LRU](./src/main/java/com/haobin/datastructure/algorithm/lru/lru-description.md)
+- [一致性hash算法](src/main/java/com/haobin/algorithm/consistent_hash/consistent_hash.md)
 
-- [KMP](./src/main/java/com/haobin/datastructure/algorithm/KMP.java)
+- [LRU](src/main/java/com/haobin/algorithm/lru/lru-description.md)
+
+- 字符串问题
+  - [KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
+  - [最长公共前缀](src/main/java/com/haobin/algorithm/str/CommonPrefix.java)
+  - [回文](src/main/java/com/haobin/algorithm/str/Palindrome.java)
+
+- [背包问题]
 
 #### 设计模式
 

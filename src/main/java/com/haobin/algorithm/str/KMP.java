@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.datastructure.algorithm;
+package com.haobin.algorithm.str;
 
 /**
  * 字符串匹配算法KMP

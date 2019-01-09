@@ -1,6 +1,4 @@
-package com.haobin.datastructure.algorithm.lru;
-
-import static org.junit.Assert.*;
+package com.haobin.algorithm.lru;
 
 import org.junit.Test;
 
