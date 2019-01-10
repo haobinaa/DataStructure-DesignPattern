@@ -3,15 +3,15 @@
 
 #### Collection源码分析
 
-- [ArrayList](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/ArrayList%E5%88%86%E6%9E%90.md)
+- [ArrayList](./docs/collection/ArrayList分析.md)
 
-- [LinkedList](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/LinkedList%E5%88%86%E6%9E%90.md)
+- [LinkedList](./docs/collection/LinkedList分析.md)
 
-- [HashMap](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/HashMap%E5%88%86%E6%9E%90.md)
+- [HashMap](./docs/collection/HashMap分析.md)
 
-- [HashSet](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/HashSet%E5%88%86%E6%9E%90.md)
+- [HashSet](./docs/collection/HashSet分析.md)
 
-- [LinkedHashMap](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/collection/LinkedHashMap%E5%88%86%E6%9E%90.md)
+- [LinkedHashMap](./docs/collection/LinkedHashMap分析.md)
 
 - [ConcurrentHashMap(基于JDK8)]
 

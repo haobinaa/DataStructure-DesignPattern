@@ -19,9 +19,9 @@ LRU 是 `Least Recently Used `的简写，字面意思则是最近最少使用�
 
 ### 借助LinkedHashMap来实现
 
-JDK容器中，LinkedHashMap的结构也是双向链表，借助内置的容器可以很简单的实现, [LinkedHashMap源码分析](../src/main/java/com/haobin/algorithm/lru/Simp)
+JDK容器中，LinkedHashMap的结构也是双向链表，借助内置的容器可以很简单的实现, [LinkedHashMap源码分析](./collection/LinkedHashMap分析.md)
 
-具体实现代码: [LinkedHashMap实现LRU](./collection/LinkedHashMap分析.md)
+具体实现代码: [LinkedHashMap实现LRU](../src/main/java/com/haobin/algorithm/lru/LRULinkedMap.java)
 
 
 

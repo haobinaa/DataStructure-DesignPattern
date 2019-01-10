@@ -9,8 +9,9 @@
  其中根据访问顺序排序时，每次 get 都会将访问的值移动到链表末尾，这样重复操作就能的到一个按照访问顺序排序的链表。
  
  ### 2.结构
- 
+  
  #### 1) 节点
+ 
  `LinkedHashMap`的节点`Entry<K,V>`继承自`HashMap.Node<K,V>`，在其基础上扩展了一下。改成了一个双向链表。
  ``` 
      static class Entry<K,V> extends HashMap.Node<K,V> {
