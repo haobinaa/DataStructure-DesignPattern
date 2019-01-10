@@ -1,6 +1,7 @@
 ### 1.概览
+
 LinkedList基于双向链表的实现，内部使用Node存储节点信息：
-![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/LinkedList.jpg)
+![](../../images/LinkedList.jpg)
 ``` 
 private static class Node<E> {
     E item;

@@ -258,7 +258,7 @@ while(null != e) {
 }
 ```
 现在状态如下:
-![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/rehash.jpg)
+![](../../images/rehash.jpg)
 
 从上面的图我们可以看到，因为线程1的 e 指向了 key(3)，而 next 指向了 key(7)，在线程2 rehash 后，就指向了线程2 rehash 后的链表。
 
@@ -281,7 +281,7 @@ while(null != e) {
 4. 执行e = next，将 e 指向 next，所以新的 e 是 key(3)
 
 现在状态变为：
-![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/after-rehahs.jpg)
+![](../../images/after-rehahs.jpg)
 
 然后又该执行 key(7)的 next 节点 key(3)了:
 
@@ -294,7 +294,7 @@ while(null != e) {
 4. 执行e = next，将 e 指向 next，所以新的 e 是 key(7)
 
 状态变成了:
-![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/rehash-circle-list.jpg)
+![](../../images/rehash-circle-list.jpg)
 
 很明显，环形链表出现了,现在hashmap就是线程1的hashmap了
 

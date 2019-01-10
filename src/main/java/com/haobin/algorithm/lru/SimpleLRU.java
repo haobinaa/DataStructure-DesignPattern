@@ -15,7 +15,7 @@ import java.util.Iterator;
  * @author HaoBin
  * @version $Id: LRU.java, v0.1 2019/1/10 19:42 HaoBin
  */
-public class LRU<K, V> implements Iterable<K> {
+public class SimpleLRU<K, V> implements Iterable<K> {
 
     private Node head;
 
@@ -41,7 +41,7 @@ public class LRU<K, V> implements Iterable<K> {
         }
     }
 
-    public LRU(int maxSize) {
+    public SimpleLRU(int maxSize) {
         this.maxSize = maxSize;
         this.map = new HashMap<>(maxSize * 4/3);
 

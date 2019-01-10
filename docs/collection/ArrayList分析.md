@@ -226,6 +226,8 @@ public class Test {
 ##### 隐藏的迭代器
 容器含有一些隐藏的迭代器，hashCode，equal，containsAll，removeAll和retainAIl等方法，都会对容器进行迭代。
 这种隐式的迭代器， 在多线程的环境下会出现问题，抛出异常， 所以尽量用并发容器，不要手动去同步方法
+
+
 ### 6.参考资料
 - [Java ConcurrentModificationException异常原因和解决方法](http://www.cnblogs.com/dolphin0520/p/3933551.html)
 - [ArrayList源码分析](https://blog.csdn.net/u010887744/article/details/49496093)
