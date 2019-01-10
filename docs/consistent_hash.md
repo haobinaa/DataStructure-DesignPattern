@@ -17,7 +17,7 @@
 
 如果在hash环上新增一个接口，影响的只有hash环上的一小段，并且整个集群下的节点越多，影响的范围越小
 
-![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/uniformity_hash.png)
+![](../images/uniformity_hash.png)
 
 
 ### 实现

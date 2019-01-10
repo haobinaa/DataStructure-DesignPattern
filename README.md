@@ -47,9 +47,9 @@
 
 - [背包问题](src/main/java/com/haobin/algorithm/Backpack.java)
 
-- [一致性hash算法](src/main/java/com/haobin/algorithm/consistent_hash/consistent_hash.md)
+- [一致性hash算法](docs/consistent_hash.md)
 
-- [LRU](src/main/java/com/haobin/algorithm/lru/lru-description.md)
+- [LRU](docs/lru-description.md)
 
 - 字符串问题
   - [KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
