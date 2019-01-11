@@ -121,8 +121,6 @@ public class SimpleLRU<K, V> implements Iterable<K> {
         pre.next = tail;
         node.pre = null;
         node.next = null;
-        // 从map中移除映射关系
-        map.remove(node.k);
         return node;
     }
 

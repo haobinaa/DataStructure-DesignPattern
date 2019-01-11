@@ -13,7 +13,7 @@
 
 - [LinkedHashMap](./docs/collection/LinkedHashMap分析.md)
 
-- [ConcurrentHashMap(基于JDK8)]
+- [ConcurrentHashMap](./docs/collection/ConcurrentHashMap分析.md)
 
 
 #### 排序算法

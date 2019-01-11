@@ -3,11 +3,8 @@
  */
 package com.haobin.algorithm.lru;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  *
@@ -15,40 +12,33 @@ import java.util.Map.Entry;
  * @author HaoBin
  * @version $Id: LRULinkedMap.java, v0.1 2019/1/10 11:30 HaoBin 
  */
-public class LRULinkedMap<K, V> {
+public class LRULinkedMap<K, V> extends LinkedHashMap<K, V>{
+    private static final int MAX_ENTRIES = 3; // 最大容量
+
     /**
-     * 最大缓存大小
+     * 覆盖 LinkedHashMap 的 removeEldesEntry ， 在节点多于 MAX_ENTRIES 就会删除最近最久未使用
+     * @param eldest
+     * @return
      */
-    private int cacheSize;
-
-    private LinkedHashMap<K,V> cacheMap ;
-
-
-    public LRULinkedMap(int cacheSize) {
-        this.cacheSize = cacheSize;
-
-        cacheMap = new LinkedHashMap(16,0.75F,true){
-            @Override
-            protected boolean removeEldestEntry(Map.Entry eldest) {
-                if (cacheSize + 1 == cacheMap.size()){
-                    return true ;
-                }else {
-                    return false ;
-                }
-            }
-        };
+    protected boolean removeEldestEntry(Map.Entry eldest) {
+        return size() > MAX_ENTRIES;
     }
 
-    public void put(K key,V value){
-        cacheMap.put(key,value) ;
-    }
-
-    public V get(K key){
-        return cacheMap.get(key) ;
+    /**
+     * 使用LinkedHashMap的构造函数, 设置 accessOrder=true ， 开启LRU顺序
+     */
+    LRULinkedMap() {
+        super(MAX_ENTRIES, 0.75f, true);
     }
 
 
-    public Collection<Entry<K, V>> getAll() {
-        return new ArrayList<Entry<K, V>>(cacheMap.entrySet());
+    public static void main(String[] args) {
+        LRULinkedMap<Integer, String> cache = new LRULinkedMap<>();
+        cache.put(1, "a");
+        cache.put(2, "b");
+        cache.put(3, "c");
+        cache.get(1);
+        cache.put(4, "d");
+        System.out.println(cache.keySet());
     }
 }
