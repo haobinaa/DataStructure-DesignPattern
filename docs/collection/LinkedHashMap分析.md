@@ -37,12 +37,12 @@ final boolean accessOrder;
  void afterNodeAccess(Node<K,V> e) {
         //原尾节点
         LinkedHashMap.Entry<K,V> last;
-        //如果accessOrder 是true ，且原尾节点不等于e
+        //如果accessOrder 是true ，且原尾节点不等于e, 这里就将尾节点赋值给了last
         if (accessOrder && (last = tail) != e) {
             //节点e强转成双向链表节点p
-            LinkedHashMap.Entry<K,V> p =
-                (LinkedHashMap.Entry<K,V>)e, b = p.before, a = p.after;
-            //p现在是尾节点， 后置节点一定是null
+            LinkedHashMap.Entry<K,V> p =(LinkedHashMap.Entry<K,V>)e, 
+            b = p.before, a = p.after;
+            // p的尾节点赋null
             p.after = null;
             //如果p的前置节点是null，则p以前是头结点，所以更新现在的头结点是p的后置节点a
             if (b == null)
