@@ -97,7 +97,13 @@
   
   
   #### 代码片段
-  收集常用的经典编程范式
+  收集常用的编程范式和代表性工具
+  
+  ##### 工作中经典实现收集
+  - [基于数据库的消息队列(db-queue)](./db-queue/README.md)
+  
+  
+  
   ##### 多线程经典范式
   - [死锁案例](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/codeBlock/DeadLock.java)
   

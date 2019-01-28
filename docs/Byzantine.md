@@ -57,17 +57,17 @@ Raft算法同步数据的方式和XA两阶段提交类似。
 
 ![](../images/raft/commit_leader.png)
 
-(2). 由Leader节点把数据复制到集群内所有的Follower节点。如果一次复制失败，会不断进行重试
+(2). 由Leader节点把数据复制到集群内所有的Follower节点。如果一次复制失败，会不断进行重试(其实这个过程是写入lead的log)
 
 ![](../images/raft/syn_follower.png)
 
-(3). Follower节点们接收到复制的数据，会反馈给Leader节点
+(3). Follower节点们接收到复制的数据，会反馈给Leader节点(follwoer将leader的log读入)
 
 ![](../images/raft/follower_response.png)
 
-(4). 如果Leader节点接收到超过半数的Follower反馈，表明复制成功。于是提交自己的数据，并通知客户端数据提交成功
+(4). 如果Leader节点接收到超过半数的Follower反馈，表明复制成功。于是提交自己的数据，并通知客户端数据提交成功(leader提交log，并通知follower)
 
-(5). 由Leader节点通知集群内所有的Follower节点提交数据，从而完成数据同步流程
+(5). Leader节点通知集群内所有的Follower节点提交数据，Follower写入数据，从而完成数据同步流程(follower提交log)
 
 
 
