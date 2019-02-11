@@ -234,10 +234,10 @@ void transfer(Entry[] newTable) {
 在resize的时候，会进行一步将原有元素重新映射到新的hash表的rehash操作，在多线程环境下，分析rehash步骤,只看关键代码
 ``` 
 while(null != e) {
-    Entry<K,V> next = e.next;
-    e.next = newTable[i]; //
-    newTable[i] = e;
-    e = next;
+    Entry<K,V> next = e.next; // 先保存下一个节点
+    e.next = newTable[i]; // 头插法，next指向新table中链表的第一个节点
+    newTable[i] = e; // 插入新table的头结点
+    e = next; // 开始处理下一个节点
 }
 ```
 1. Entry<K,V> next = e.next;——因为是单链表，如果要转移头指针，一定要保存下一个结点，不然转移后链表就丢了
