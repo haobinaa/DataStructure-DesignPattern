@@ -1,4 +1,5 @@
 该仓库是我在工作中遇到的一些基础知识的积累， 包含算法与数据结构、设计模式、 经典编程范式、 工作中比较优秀的库的实现
+
 ### 目录结构
 
 
@@ -52,15 +53,16 @@
 
 - [LRU](docs/lru-description.md)
 
-- 字符串问题
-  - [KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
-  - [最长公共前缀](src/main/java/com/haobin/algorithm/str/CommonPrefix.java)
-  - [回文(最长回文串、验证回文串、最长回文子串、最长回文子序列)](src/main/java/com/haobin/algorithm/str/Palindrome.java)
-  
-- [布隆过滤(判断一个元素是否存在一个庞大的集合中)]
-
 - [B-Tree](./docs/datastructure/B-Tree.md)
+
 - [B+Tree](./docs/datastructure/B+Tree.md)
+
+- [布隆过滤(判断一个元素是否存在一个庞大的集合中)]
+##### 字符串问题
+
+- [KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
+- [最长公共前缀](src/main/java/com/haobin/algorithm/str/CommonPrefix.java)
+- [回文(最长回文串、验证回文串、最长回文子串、最长回文子序列)](src/main/java/com/haobin/algorithm/str/Palindrome.java)
 
 
 
@@ -104,11 +106,13 @@
   收集常用的编程范式和代表性工具
   
   ##### 工作中经典实现收集
+  
   - [基于数据库的消息队列(db-queue)](./db-queue/README.md)
   
   
   
   ##### 多线程经典范式
+  
   - [死锁案例](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/codeBlock/DeadLock.java)
   
   - [线程间通信-交互打印奇偶数](./src/main/java/com/haobin/concurrent/PrintOddEvenNumber.java)
