@@ -7,33 +7,9 @@ package com.haobin.datastructure.sort;
  * @Date 2017/12/26 9:02
  */
 public class HeapSort {
-    /**
-     * 交换数组元素位置
-     */
-    public static void swap(int[] data, int i, int j) {
-        if (i == j) {
-            return;
-        }
-        data[i] = data[i] + data[j];
-        data[j] = data[i] - data[j];
-        data[i] = data[i] - data[j];
-    }
-
-    // 打印数组
-    public static void print(int[] data) {
-        for (int i = 0; i < data.length; i++) {
-            System.out.print(data[i] + "\t");
-        }
-        System.out.println();
-    }
 
 
 
-    public static void main(String[] args) {
-        int[] intArr = {100, 908, 1000001, 100, 0, 9999};
-        heapSort1(intArr, intArr.length);
-        print(intArr);
-    }
 
 
     /**
@@ -52,7 +28,7 @@ public class HeapSort {
         }
         // 将最大节点放到根
         if (iMax != index) {
-            swap(array, iMax, index);
+            Util.swap(array, iMax, index);
             // 递归调整
             maxHeapfiy(array, iMax, heapSize);
         }
@@ -76,8 +52,15 @@ public class HeapSort {
     public static void heapSort1(int[] array, int heapSize) {
         buildMaxHeadp(array, heapSize);
         for (int i = heapSize - 1; i > 0; i--) {
-            swap(array, 0, i);
+            Util.swap(array, 0, i);
             maxHeapfiy(array, 0, i);
         }
+    }
+
+
+    public static void main(String[] args) {
+        int[] intArr = {100, 908, 1000001, 100, 0, 9999};
+        heapSort1(intArr, intArr.length);
+        Util.print(intArr);
     }
 }

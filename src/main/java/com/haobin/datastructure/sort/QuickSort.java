@@ -7,44 +7,43 @@ package com.haobin.datastructure.sort;
  * @Date 2017/12/21 17:51
  */
 public class QuickSort {
-    public static void quickSort(int[] array, int left, int right) {
-        int index = partition(array, left, right);
-        // 递归排序左边
-        if(left < index -1) {
-            quickSort(array, left, index -1);
+
+
+    public static void quickSort(int[] arr, int left, int right) {
+        int i, j, temp;
+        if (left > right) {
+            return;
         }
-        // 递归排序右边
-        if (index + 1 < right) {
-            quickSort(array, index, right);
+        // 基准数
+        temp = arr[left];
+        i = left;
+        j = right;
+        while (i != j) {
+            // 从右往左找小于基准数的
+            while (arr[j] >= temp && i < j)
+                j--;
+            // 从左往右找大于基准数的
+            while (arr[i] <= temp && i < j)
+                i++;
+            if (i < j) {
+                // 交换两数在数组的位置
+                Util.swap(arr, i, j);
+            }
+            // 将基数归位
+            arr[left] = arr[i];
+            arr[i] = temp;
+
+            // 继续处理基数左边
+            quickSort(arr, left, i);
+            // 继续处理基数右边
+            quickSort(arr, i+1, right);
         }
     }
 
-    /**
-     * 找到基准点，使得左边都小于它，右边都大于它
-     */
-    public static int partition(int[] array, int left, int right) {
-        int pivot = array[( left + right) / 2];
-        int temp;
-        while (left < right) {
-            // 找到左边第一个比基准小的
-            while (array[left] < pivot)
-                left++;
-            // 找到右边第一个比基准大的
-            while (array[right] > pivot)
-                right--;
-
-            // 如果符合条件，则交换两边位置
-            if(left < right) {
-                temp= array[left];
-                array[left] = array[right];
-                array[right] = temp;
-                // 遍历下一个
-                left++;
-                right--;
-            }
-        }
-        // 返回基准点左边的
-        return left;
+    public static void main(String[] args) {
+        int[] intArr = {100, 908, 1000001, 100, 0, 9999};
+        quickSort(intArr, 0, intArr.length-1);
+        Util.print(intArr);
     }
 
 }
