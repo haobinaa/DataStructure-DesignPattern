@@ -41,7 +41,7 @@
 - [二分查找](./src/main/java/com/haobin/datastructure/search/BinarySearch.java)
 
 
-#### 算法与数据结构
+#### 算法
 
 - [斐波那契数列](src/main/java/com/haobin/algorithm/Fibonacci.java)
 
@@ -110,7 +110,6 @@
   ##### 工作中经典实现收集
   
   - [基于数据库的消息队列(db-queue)](./db-queue/README.md)
-  
   
   
   ##### 多线程经典范式
