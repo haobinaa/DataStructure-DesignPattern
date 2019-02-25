@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.datastructure;
+package com.haobin.datastructure.linkedlist;
 
 /**
  * 反转链表
