@@ -29,4 +29,11 @@ public class InsertSort {
         }
     }
 
+
+    public static void main(String[] args) {
+        int[] intArr = {100, 908, 1000001, 100, 0, 9999};
+        insertSort(intArr);
+        Util.print(intArr);
+    }
+
 }
