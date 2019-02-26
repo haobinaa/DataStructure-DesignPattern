@@ -25,7 +25,7 @@
 
 - [排序算法总结：冒泡|选择|插入|希尔|快速|归并|堆|桶](./docs/datastructure/Sort.md)
 
-- [查找算法:二分查找](./src/main/java/com/haobin/datastructure/search/BinarySearch.java)
+- [查找算法:二分查找|跳表](./docs/datastructure/Search.md)
 
 - [字符串匹配:KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
 

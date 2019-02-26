@@ -161,13 +161,23 @@ p >= r
 完整代码实现： [快速排序代码实现](../../src/main/java/com/haobin/datastructure/sort/QuickSort.java)
 
 
+#### 桶排序
+
+桶排序的思想就是讲要排序的数据分到几个桶里，每个桶进行单独排序，桶排序完成后，在将每个桶里的数据按顺序依次取出，组成的序列就是有序的了。
+
+![](../../images/sort/bucket-sort.jpg)
+
+桶排序适用于外部排序，即数据存储在磁盘中，数据量很大，无法一次性加载到内存中。我们将数据划分到一个个桶中，在将桶里面的数据取出来汇总即可。如果划分后发现有部分数据特别集中，导致某些桶大小还是不满足内存需求，可将这些桶再次划分，直到所有的外部数据都能读到内存中为止。
+
+
+代码实现： [桶排序代码实现](../../src/main/java/com/haobin/datastructure/sort/BucketSort.java)
+
+#### 计数排序(桶排序的特殊情况)
+
+计数排序是桶排序的一种特殊情况。当排序n个数据，所处的范围并不大，假设最大值为k，那么我们可以将数据划分成k个桶，每个桶的数据都是相同的，就省略了桶内排序的过程。
 
 #### 其他排序的代码实现
 
-- [桶排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/BucketSort.java)
-
 - [堆排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/HeapSort.java)
-
-- [快速排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/QuickSort.java)
 
 - [希尔排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/ShellInsertSort.java)

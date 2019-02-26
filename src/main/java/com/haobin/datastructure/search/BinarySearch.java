@@ -13,8 +13,8 @@ public class BinarySearch {
         int low = 0;
         int hight = array.length - 1;
         int middle = 0;
-
-        while (low < hight) {
+        // 此处是小于等于，如果是小于则会有一个元素判断不到
+        while (low <= hight) {
             middle = (low + hight) / 2;
             if(value < array[middle]) {
                 hight = middle - 1;
@@ -36,8 +36,9 @@ public class BinarySearch {
     }
 
     private static Integer searchRecursive(int[] array, int value, int low, int high){
+        // 递归退出条件
         if(high < low){
-            return null;
+            return -1;
         }
 
         int middle = (low + high) / 2;
