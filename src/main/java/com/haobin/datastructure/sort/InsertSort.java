@@ -12,9 +12,9 @@ public class InsertSort {
     public static void insertSort(int[] array) {
         // 将第一个记录看成已经排序好的序列
         for(int i = 1; i < array.length; i++) {
-            // 要插入的记录
+            // 未排序区间的第一个记录
             int temp = array[i];
-            // 找到排序好的第一个记录进行比较
+            // 找到排序好的最后个记录进行比较
             int j = i - 1;
             // 如果到底了，或者找到了插入的位置
             while(j >= 0 && array[j] > temp) {
