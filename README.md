@@ -27,6 +27,10 @@
 
 - [查找算法:二分查找|跳表](./docs/datastructure/Search.md)
 
+- [散列](./docs/datastructure/HashTable.md)
+
+- [树|二叉查找树](./docs/datastructure/Tree.md)
+
 - [字符串匹配:KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
 
 #### 算法
