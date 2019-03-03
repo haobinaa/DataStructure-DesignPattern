@@ -33,6 +33,6 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        loop();
+        System.out.println(run(3));
     }
 }
