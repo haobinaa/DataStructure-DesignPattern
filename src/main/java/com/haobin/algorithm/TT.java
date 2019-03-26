@@ -3,37 +3,65 @@
  */
 package com.haobin.algorithm;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- *
- *
  * @author HaoBin
- * @version $Id: TT.java, v0.1 2019/2/28 12:42 HaoBin 
+ * @version $Id: TT.java, v0.1 2019/2/28 12:42 HaoBin
  */
 public class TT {
-    public static String longestCommonPrefix(String[] strs) {
-        if(strs.length == 1)
-            return strs[0];
-        String firstStr = strs[0];
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < firstStr.length(); i++) {
-            char current = firstStr.charAt(i);
-            for (int j = 1; j < strs.length; j++) {
-                if (strs[j].length() - 1 < i || strs[j].charAt(i) != current)
-                    return sb.toString();
-                if (strs[j].charAt(i) == current && j == strs.length - 1) {
-                    sb.append(current);
-                    System.out.println(j);
+
+    public static ListNode reverseList(ListNode head) {
+        if (head == null){
+            return head;
+        }
+        ListNode pre = head;
+        ListNode cur = head.next;
+        ListNode tmp = null;
+        while (cur != null) {
+            tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        head.next = null;
+        return pre;
+    }
+
+    public static int removeElement(int[] nums, int val) {
+        int oldLength = nums.length;
+        int i = 0;
+        while (i < oldLength) {
+            if (nums[i] == val) {
+                for (int j=i+1; j<oldLength;j++) {
+                    nums[j-1] = nums[j];
                 }
+                oldLength--;
+            }else {
+                i++;
             }
         }
-        return sb.toString();
+        return oldLength;
     }
 
     public static void main(String[] args) {
-        String[] strs = {"c","acc","ccc"};
-        System.out.println(longestCommonPrefix(strs));
+
+
+    }
+
+    public static int lengthOfLastWord(String s) {
+        if (s.equals("") || s.equals(" "))
+            return 0;
+        String[] arr = s.split(" ");
+        if (arr.length == 0)
+            return 0;
+        return arr[arr.length-1].length();
+    }
+    static class ListNode {
+
+        int val;
+        ListNode next;
+
+        public ListNode(int val) {
+            this.val = val;
+        }
     }
 }

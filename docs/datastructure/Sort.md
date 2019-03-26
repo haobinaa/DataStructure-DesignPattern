@@ -176,6 +176,55 @@ p >= r
 
 计数排序是桶排序的一种特殊情况。当排序n个数据，所处的范围并不大，假设最大值为k，那么我们可以将数据划分成k个桶，每个桶的数据都是相同的，就省略了桶内排序的过程。
 
+
+#### 堆排序  
+
+堆的特性:
+- 堆是一个完全二叉树
+- 堆中的每一个节点的值必须大于等于(或者小于等于)其子树每个节点的值
+
+堆是完全二叉树，所以比较适合用数组存储。如果节点下标为i(第一个节点空出来)，左节点就是`2i+1`，右节点就是`2i+1`,如下：
+![](../../images/sort/full-binary-tree.jpg)
+
+往堆中插入一个元素，需要重新调整堆，让他满足堆的特性, 这个过程叫堆化(heapify)。堆化的过程就是顺着节点所在路径，向上或向下对比，然后交换，如:
+
+(1). 插入元素
+![](../../images/sort/heaify-01.jpg)
+(2). heapify(让新插入节点与父节点比较，如果不满足关系就交换两个节点，直到父子节点满足堆的关系)
+![](../../images/sort/heapify-02.jpg)
+
+把这个过程翻译成代码如下:
+``` 
+public class Heap {
+  private int[] a; // 数组，从下标 1 开始存储数据
+  private int n;  // 堆可以存储的最大数据个数
+  private int count; // 堆中已经存储的数据个数
+
+  public Heap(int capacity) {
+    a = new int[capacity + 1];
+    n = capacity;
+    count = 0;
+  }
+
+  public void insert(int data) {
+    if (count >= n) return; // 堆满了
+    ++count;
+    a[count] = data;
+    int i = count;
+    while (i/2 > 0 && a[i] > a[i/2]) { // 自下往上堆化
+      swap(a, i, i/2); // swap() 函数作用：交换下标为 i 和 i/2 的两个元素
+      i = i/2;
+    }
+  }
+ }
+
+```
+
+
+
+
+
+
 #### 其他排序的代码实现
 
 - [堆排序](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/datastructure/sort/HeapSort.java)
