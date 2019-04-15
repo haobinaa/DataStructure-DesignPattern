@@ -79,7 +79,7 @@
 - [mysql存储引擎](./docs/mysql/engin.md)
 - [字符集](./docs/mysql/charactor-compare.md)
 - [innodb记录的结构和innodb数据页存储](./docs/mysql/innodb-record-struct.md)
-- 索引与 B+ Tree
+- [索引与 B+ Tree](./docs/mysql/index.md)
 - 单表查询过程
 - 连表查询过程
 - 常用优化策略
