@@ -80,9 +80,8 @@
 - [字符集](./docs/mysql/charactor-compare.md)
 - [innodb记录的结构和innodb数据页存储](./docs/mysql/innodb-record-struct.md)
 - [索引与 B+ Tree](./docs/mysql/index.md)
-- 单表查询过程
-- 连表查询过程
+- [单表和连表查询过程](./docs/mysql/join-table-query.md)
 - 常用优化策略
-- explain 执行计划
+- [explain 执行计划](./docs/mysql/explain.md)
 - 事务
 - redo/undo 日志
