@@ -14,9 +14,9 @@ public void registerStartUpInfo(final boolean enabled) {
     listenerManager.startAllListeners();
     // 选主
     leaderService.electLeader();
-    // 注册并持久化服务器信息
+    // 注册并持久化服务器信息(server信息)
     serverService.persistOnline(enabled);
-    // 注册并持久化作业运行实例
+    // 注册并持久化作业运行实例(instance信息)
     instanceService.persistOnline();
     // 设置是否需要重新分片
     shardingService.setReshardingFlag();
@@ -57,6 +57,7 @@ public void addDataListener(final TreeCacheListener listener) {
 ```
 首先获取TreeCache，然后使用`cahce.getListenable().addListener(TreeCacheListener)` 加入zk监听器中
 
+
 #### ElectionListenerManager选主
 
 `ElectionListenerManager`监听器是用来选举主节点的，执行的方法是`LeaderService.electLeader`:
@@ -89,7 +90,7 @@ public void executeInLeader(final String latchNode, final LeaderExecutionCallbac
 1. CuratorFramework client：curator框架客户端
 2. latchPath：锁节点路径, 这里的路径为`namespace/ {Jobname}/leader/election/latch`
 
-上述步骤1，2启动 `LeaderLatch`，主要过程是去锁节点下去创建一个临时排序节点，如果创建的节点序号最小，await方法就返回，否则在前一个节点监听该节点事件，并阻塞。
+上述步骤1，2启动 `LeaderLatch`，这是zk客户端`curator`的方法，如果LeaderLatch是主节点，就返回，否则阻塞在这里等待下一次选举。
 
 如果获得了分布式锁后，执行callback回调方法：`LeaderService$LeaderElectionExecutionCallback`:
 ```
@@ -109,3 +110,8 @@ class LeaderElectionExecutionCallback implements LeaderExecutionCallback {
 
 整个选主的流程是：
 ![](../../images/sync/elastic-leader.png)
+
+
+### 参考资料
+- [elastic-job服务初始化](https://blog.csdn.net/qq924862077/article/details/82858694)
+- [zookeeper客户端curator的使用](https://www.jianshu.com/p/fc502570bf24)
