@@ -70,9 +70,16 @@
   - [线程间通信-交互打印奇偶数](./src/main/java/com/haobin/concurrent/PrintOddEvenNumber.java)
   
   
-### 分布式原理
+### 分布式原理与中间件
   
   - [拜占庭将军问题-Raft实现](./docs/Byzantine.md)
+  
+#### elastic-job
+
+- [选主过程](./docs/syn/elastic-startup.md)
+- [作业分片流程](./docs/syn/elastic-shard.md)
+- [失效转移](./dcos/syn/ealstic-failover.md)
+- [错过补偿机制](./docs/syn/elastic-misfire.md)
   
 ### Mysql专题
 
