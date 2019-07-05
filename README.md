@@ -92,4 +92,4 @@
 - [表空间和buffer pool](./docs/mysql/buffer_pool.md)
 - [redo/undo 日志](./docs/mysql/redo-undo.md)
 - [事务隔离与MVCC](./docs/mysql/transcation-mvcc.md)
-- [锁](./docs/mysql/lock.md)
+- [锁](./docs/mysql)
