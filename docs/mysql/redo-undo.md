@@ -14,6 +14,30 @@
 - page number: 页号
 - data： 日志内容
 
+#### Min-Transacation(mtr)
+
+`MySQL`把对底层页面中的一次原子访问的过程称之为一个`Mini-Transaction`，简称mtr。
+
+一个mtr可以包含一组redo日志，在进行奔溃恢复时这一组redo日志作为一个不可分割的整体。
+
+一个事务可以包含若干条语句，每一条语句其实是由若干个mtr组成，每一个mtr又可以包含若干条redo日志。
+
+
+#### redo log block
+
+InnoDB为了更好的进行系统奔溃恢复，把通过mtr生成的redo日志都放在了大小为512字节的页中,存储redo log的页称为block
+
+#### redo log buffer
+
+InnoDB为了解决磁盘速度过慢的问题而引入了Buffer Pool。同理，写入redo日志时也不能直接直接写到磁盘上，实际上在服务器启动时就向操作系统申请了一大片称之为redo log buffer的连续内存空间称为log buffer。 log buffer存储的就是一块块 log block
+
 
 ### redo log的写入过程
+
+#### redo log 写入 log buffer
+
+向log buffer中写入redo日志的过程是顺序的，也就是先往前边的block中写，当该block的空闲空间用完之后再往下一个block中写。InnoDB的提供了一个称之为`buf_free`的全局变量，该变量指明后续写入的redo日志应该写入到log buffer中的哪个位置。
+
+一个mtr执行过程中可能产生若干条redo日志，这些redo日志是一个不可分割的组，所以其实并不是每生成一条redo日志，就将其插入到log buffer中，而是每个mtr运行过程中产生的日志先暂时存到一个地方，当该mtr结束的时候，将过程中产生的一组redo日志再全部复制到log buffer中。不同的mtr产生的一组redo日志占用的存储空间可能不一样，有的mtr产生的redo日志量很少，就会存入同一个block，有的mtr产生的redo日志量非常大，甚至可能占用多个block来存储。
+
 
