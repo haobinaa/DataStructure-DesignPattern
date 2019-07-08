@@ -90,6 +90,7 @@
 - [单表和连表查询过程](./docs/mysql/join-table-query.md)
 - [explain 执行计划](./docs/mysql/explain.md)
 - [表空间和buffer pool](./docs/mysql/buffer_pool.md)
-- [redo/undo 日志](./docs/mysql/redo-undo.md)
+- [redo 日志](docs/mysql/redo.md)
+- [redo 日志](docs/mysql/undo.md)
 - [事务隔离与MVCC](./docs/mysql/transcation-mvcc.md)
 - [锁](./docs/mysql)
