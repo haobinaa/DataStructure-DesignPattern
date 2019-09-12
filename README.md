@@ -57,12 +57,6 @@
 - [设计模式汇总](./docs/design-pattern/design-pattern.md)
   
   
- 
-#### 工作中经典实现收集
-
-- [基于数据库的消息队列实现(db-queue)](./db-queue/README.md)
-  
-  
 #### 多线程经典范式
   
   - [死锁案例](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/codeBlock/DeadLock.java)
