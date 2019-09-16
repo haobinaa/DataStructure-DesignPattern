@@ -51,6 +51,9 @@
 
 - [反转链表](src/main/java/com/haobin/datastructure/ReverseList.java)
 
+#### 剑指offer
+
+- [3-数组中重复的数字](src/main/java/com/haobin/offer/DuplicateNumInArray.java)
 
 #### 设计模式
 
