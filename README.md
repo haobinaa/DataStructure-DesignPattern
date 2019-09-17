@@ -54,6 +54,7 @@
 #### 剑指offer
 
 - [3-数组中重复的数字](src/main/java/com/haobin/offer/DuplicateNumInArray.java)
+- [4-判断数是否在二维数组中](src/main/java/com/haobin/offer/NumInDimensionalArray.java)
 
 #### 设计模式
 
