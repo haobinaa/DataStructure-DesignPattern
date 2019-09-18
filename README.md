@@ -55,6 +55,7 @@
 
 - [3-数组中重复的数字](src/main/java/com/haobin/offer/DuplicateNumInArray.java)
 - [4-判断数是否在二维数组中](src/main/java/com/haobin/offer/NumInDimensionalArray.java)
+- [5-替换空格](src/main/java/com/haobin/offer/ReplaceSpace.java)
 
 #### 设计模式
 
@@ -70,7 +71,7 @@
   
 ### 分布式原理与中间件
   
-  - [拜占庭将军问题-Raft实现](./docs/Byzantine.md)
+ - [拜占庭将军问题-Raft实现](./docs/Byzantine.md)
   
 #### elastic-job
 
