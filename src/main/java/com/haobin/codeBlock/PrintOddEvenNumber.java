@@ -1,7 +1,7 @@
 /**
  * BrandBigData.com Inc. Copyright (c) 2018 All Rights Reserved.
  */
-package com.haobin.concurrent;
+package com.haobin.codeBlock;
 
 /**
  * wait/notify机制

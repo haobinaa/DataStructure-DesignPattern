@@ -31,7 +31,6 @@
 
 - [树|二叉查找树](./docs/datastructure/Tree.md)
 
-- [字符串匹配:KMP](src/main/java/com/haobin/algorithm/str/KMP.java)
 
 #### 算法
 
@@ -64,9 +63,9 @@
   
 #### 多线程经典范式
   
-  - [死锁案例](https://github.com/haobinaa/DataStructure-DesignPattern/blob/master/src/main/java/com/haobin/codeBlock/DeadLock.java)
+  - [死锁案例](/src/main/java/com/haobin/codeBlock/DeadLock.java)
   
-  - [线程间通信-交互打印奇偶数](./src/main/java/com/haobin/concurrent/PrintOddEvenNumber.java)
+  - [线程间通信-交互打印奇偶数](/src/main/java/com/haobin/codeBlock/PrintOddEvenNumber.java)
   
   
 ### 分布式原理与中间件
