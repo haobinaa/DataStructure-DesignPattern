@@ -48,13 +48,12 @@
 
 - [B+Tree](./docs/datastructure/B+Tree.md)
 
-- [反转链表](src/main/java/com/haobin/datastructure/ReverseList.java)
-
 #### 剑指offer
 
 - [3-数组中重复的数字](src/main/java/com/haobin/offer/DuplicateNumInArray.java)
 - [4-判断数是否在二维数组中](src/main/java/com/haobin/offer/NumInDimensionalArray.java)
 - [5-替换空格](src/main/java/com/haobin/offer/ReplaceSpace.java)
+- [6-从尾到头打印链表(反转链表)](src/main/java/com/haobin/offer/PrintListFromTailToHead.java)
 
 #### 设计模式
 
