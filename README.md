@@ -57,6 +57,7 @@
 - [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
 - [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
 - [10-斐波那契数列](src/main/java/com/haobin/offer/Fibonacci.java)
+- [11-旋转数组中最小的数字](src/main/java/com/haobin/offer/MinNumInRotateArray.java)
 
 
 #### 设计模式
