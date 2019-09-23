@@ -54,6 +54,8 @@
 - [4-判断数是否在二维数组中](src/main/java/com/haobin/offer/NumInDimensionalArray.java)
 - [5-替换空格](src/main/java/com/haobin/offer/ReplaceSpace.java)
 - [6-从尾到头打印链表(反转链表)](src/main/java/com/haobin/offer/PrintListFromTailToHead.java)
+- [7-根据中序和前序结果构建二叉树](src/main/java/com/haobin/offer/RebuildBinaryTree.java)
+
 
 #### 设计模式
 
