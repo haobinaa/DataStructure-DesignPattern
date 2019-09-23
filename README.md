@@ -34,8 +34,6 @@
 
 #### 算法
 
-- [斐波那契数列](src/main/java/com/haobin/algorithm/Fibonacci.java)
-
 - [八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 
 - [背包问题](src/main/java/com/haobin/algorithm/Backpack.java)
@@ -57,6 +55,8 @@
 - [7-根据中序和前序结果构建二叉树](src/main/java/com/haobin/offer/RebuildBinaryTree.java)
 - [8-找到中序遍历的下一个节点](src/main/java/com/haobin/offer/BinaryTreeNextNode.java)
 - [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
+- [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
+- [10-斐波那契数列](src/main/java/com/haobin/offer/Fibonacci.java)
 
 
 #### 设计模式
