@@ -31,8 +31,9 @@
 
 - [树|二叉查找树](./docs/datastructure/Tree.md)
 
+- [B-Tree](./docs/datastructure/B-Tree.md)
 
-#### 算法
+- [B+Tree](./docs/datastructure/B+Tree.md)
 
 - [八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 
@@ -42,9 +43,6 @@
 
 - [LRU](docs/lru-description.md)
 
-- [B-Tree](./docs/datastructure/B-Tree.md)
-
-- [B+Tree](./docs/datastructure/B+Tree.md)
 
 #### 剑指offer
 
@@ -71,10 +69,6 @@
   
   - [线程间通信-交互打印奇偶数](/src/main/java/com/haobin/codeBlock/PrintOddEvenNumber.java)
   
-  
-### 分布式原理与中间件
-  
- - [拜占庭将军问题-Raft实现](./docs/Byzantine.md)
   
 #### elastic-job
 
