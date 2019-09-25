@@ -56,7 +56,7 @@
 - [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
 - [(递推)10-1-斐波那契数列](src/main/java/com/haobin/offer/Fibonacci.java)
 - [(递推)10-2-矩形覆盖](src/main/java/com/haobin/offer/RectCover.java)
-- [(递推)10-3-跳台阶](src/main/java/com/haobin/offer/JumpFloor.java)
+- [(递推)10-3-跳台阶(附递推类问题理解)](src/main/java/com/haobin/offer/JumpFloor.java)
 - [(动态规划)10-4-跳台阶进阶](src/main/java/com/haobin/offer/JumpFloorII.java)
 - [11-旋转数组中最小的数字](src/main/java/com/haobin/offer/MinNumInRotateArray.java)
 
