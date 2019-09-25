@@ -28,11 +28,15 @@ public class MinNumInRotateArray {
             return 0;
         }
         int l = 0, h = nums.length - 1;
+        // 二分法
         while (l < h) {
+            // 中间数
             int m = l + (h -1) / 2;
             if (nums[m] <= nums[h])
+                // [m, h]这段是非递减数组 [l, h]是旋转数组， 此时令 h=m
                 h = m;
             else
+            // [m+1, m] 这段是旋转数组，令 l=m+1
                 l = m + 1;
         }
         return nums[l];
