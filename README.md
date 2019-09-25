@@ -53,12 +53,12 @@
 - [7-根据中序和前序结果构建二叉树](src/main/java/com/haobin/offer/RebuildBinaryTree.java)
 - [8-找到中序遍历的下一个节点](src/main/java/com/haobin/offer/BinaryTreeNextNode.java)
 - [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
-- [9-用两个栈来实现队列](src/main/java/com/haobin/offer/TwoStackPlaceQueue.java)
 - [(递推)10-1-斐波那契数列](src/main/java/com/haobin/offer/Fibonacci.java)
 - [(递推)10-2-矩形覆盖](src/main/java/com/haobin/offer/RectCover.java)
 - [(递推)10-3-跳台阶(附递推类问题理解)](src/main/java/com/haobin/offer/JumpFloor.java)
 - [(动态规划)10-4-跳台阶进阶](src/main/java/com/haobin/offer/JumpFloorII.java)
 - [11-旋转数组中最小的数字](src/main/java/com/haobin/offer/MinNumInRotateArray.java)
+- [(回溯)12-矩阵中的路径](src/main/java/com/haobin/offer/HasPathInRect.java)
 
 
 #### 设计模式
