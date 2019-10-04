@@ -16,7 +16,7 @@ package com.haobin.offer;
  * 回溯法在一次搜索结束时需要进行回溯（回退），将这一次搜索过程中设置的状态进行清除，从而开始一次新的搜索过程。
  **/
 public class HasPathInRect {
-
+    // 左，右，上，下
     private final static int[][] next = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
 
     // 行
@@ -51,12 +51,17 @@ public class HasPathInRect {
         if (pathLen == str.length) {
             return true;
         }
-        // 是否触碰矩阵边界， 是等于指定字符串的待搜索字符, 是否已经访问过了(标志位)
+        // 是否触碰矩阵边界：
+        // 1. 行是否触碰边界
+        // 2. 列是否触碰边界
+        // 3. 是否是匹配字符
+        // 4. 是否已经访问过
         if (r < 0 || r >= rows || c < 0 || c >= col || matrix[r][c] != str[pathLen] || marked[r][c]) {
             return false;
         }
-        // 标记已经被访问
+        // 如果匹配到，则标记已经被访问
         marked[r][c] = true;
+        // 回溯访问上下左右
         for (int[] n : next) {
             if (backtracking(matrix, str, marked, pathLen + 1, r + n[0], c + n[1])) {
                 return true;
