@@ -60,6 +60,7 @@
 - [11-旋转数组中最小的数字](src/main/java/com/haobin/offer/MinNumInRotateArray.java)
 - [(回溯)12-矩阵中的路径](src/main/java/com/haobin/offer/HasPathInRect.java)
 - [(深度优先DFS)13-机器人的运动范围](src/main/java/com/haobin/offer/RobotMove.java)
+- [(动态规划)13-整数拆分(剪绳子)](src/main/java/com/haobin/offer/RobotMove.java)
 
 
 #### 设计模式

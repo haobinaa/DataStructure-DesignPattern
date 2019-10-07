@@ -16,11 +16,17 @@ package com.haobin.offer;
  **/
 public class RobotMove {
 
+    // 上下左右
     private static final int[][] next = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+    // 记录能达到的格子数
     private int cnt = 0;
+    // 行
     private int rows;
+    // 列
     private int cols;
+    // 阈值K
     private int threshold;
+    // 格子迷宫所代表的值
     private int[][] digitSum;
 
 
@@ -34,6 +40,7 @@ public class RobotMove {
         return cnt;
     }
 
+    // 深度优先遍历
     private void dfs(boolean[][] marked, int r, int c) {
         if (r < 0 || r >= rows || c < 0 || c >= cols || marked[r][c])
             return;
@@ -41,11 +48,14 @@ public class RobotMove {
         if (this.digitSum[r][c] > this.threshold)
             return;
         cnt++;
+        // 上下左右探索，直至不能移动为止
         for (int[] n : next)
             dfs(marked, r + n[0], c + n[1]);
     }
 
+    // 将每个方格代表的值初始化好
     private void initDigitSum() {
+        // 使用一个正方形来记录坐标的值
         int[] digitSumOne = new int[Math.max(rows, cols)];
         for (int i = 0; i < digitSumOne.length; i++) {
             int n = i;
@@ -54,6 +64,7 @@ public class RobotMove {
                 n /= 10;
             }
         }
+        // 初始化一个含有值的迷宫
         this.digitSum = new int[rows][cols];
         for (int i = 0; i < this.rows; i++)
             for (int j = 0; j < this.cols; j++)
