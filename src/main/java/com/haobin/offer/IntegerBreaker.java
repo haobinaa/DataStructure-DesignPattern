@@ -9,7 +9,7 @@ package com.haobin.offer;
  *
  * eg:
  * n = 2
- * return 1 (2 = 1 + 1)
+ * return 1 (2 = 1 + 1)`
  *
  * n = 10
  * return 36 (10 = 3 + 3 + 4)
