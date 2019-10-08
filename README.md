@@ -71,19 +71,14 @@
 - [设计模式汇总](./docs/design-pattern/design-pattern.md)
   
   
-#### 多线程经典范式
+#### 经典范式
   
   - [死锁案例](/src/main/java/com/haobin/codeBlock/DeadLock.java)
-  
   - [线程间通信-交互打印奇偶数](/src/main/java/com/haobin/codeBlock/PrintOddEvenNumber.java)
+  - [缓存击穿解决方法](/src/main/java/com/haobin/codeBlock/CacheBreakdown.java)
   
   
-#### elastic-job
 
-- [选主过程](./docs/syn/elastic-startup.md)
-- [作业分片流程](./docs/syn/elastic-shard.md)
-- [失效转移](./dcos/syn/ealstic-failover.md)
-- [错过补偿机制](./docs/syn/elastic-misfire.md)
   
 ### Mysql专题
 
