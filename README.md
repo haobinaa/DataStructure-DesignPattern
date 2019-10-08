@@ -63,6 +63,7 @@
 - [(动态规划)14-整数拆分(剪绳子)](src/main/java/com/haobin/offer/RobotMove.java)
 - [15-二进制中1的个数](src/main/java/com/haobin/offer/NumberOfOne.java)
 - [16-数值的整数次方](src/main/java/com/haobin/offer/Power.java)
+- [17-打印n位的最大十进制数](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
 
 
 #### 设计模式
