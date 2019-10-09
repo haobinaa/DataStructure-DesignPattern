@@ -29,99 +29,82 @@ import java.util.List;
  * ........
  * <p>
  * 整理出通用公式为:
- * f[i][j] = 0,                                                 j < wi=0
- * = w0,                                                j >=wi=0
+ * f[i][j] = 0,                                         j < wi && i=0
+ * = w0,                                                j >=wi=0 && i=0
  * = f(i-1, j),                                         j < wi
  * = MAX{f[i-1][j], (f[i-1][j-weight[a]] + value(a))},  j >=wi
+ *
+ *
+ * 参考连接：
+ * - [javascript实现](https://segmentfault.com/a/1190000012829866/#articleHeader5)
+ * - [java实现](https://blog.csdn.net/lanyu_01/article/details/79815801)
  */
 public class Backpack {
 
     public static void main(String[] args) {
-        int[] weights = {2,3,4,1};
-        int[] price = {2,5,3,2};
+        int[] weights = {2, 3, 4, 1};
+        int[] price = {2, 5, 3, 2};
         int capacity = 5;
-        System.out.println(dpBackpack(weights, price, capacity));
-        dpBackpackAndChoosed(weights, price, capacity);
+        dpBackpack(weights, price, capacity);
+        System.out.println(optimizeBackpack(weights, price, capacity));
     }
 
     /**
-     * 01 背包问题动态规划
+     * 01背包问题
      *
-     * @param weight   物品重量
-     * @param price    物品价值
-     * @param capacity 背包容量
-     */
-    public static int dpBackpack(int[] weight, int[] price, int capacity) {
-        // 行
-        int row = weight.length - 1;
-        int[][] solutionMatrix = new int[weight.length][capacity+1];
-        for (int i = 0; i < weight.length; i++) {
-            for (int j = 0; j <= capacity; j++) {
-                if (i == 0) {
-                    // 如果是第一行, 容量小于第一个物品价值是0，否则是第一个物品的重量
-                    solutionMatrix[i][j] = (j < weight[i] ? 0 : price[i]);
-                } else {
-                    if (j < weight[i]) {
-                        // 如果装不下物品i，则等于之前的最优解
-                        solutionMatrix[i][j] = solutionMatrix[i - 1][j];
-                    } else {
-                        // 如果装的下物品i，则在之前的最优解，和放入物品i后取最大值
-                        solutionMatrix[i][j] = Math.max(solutionMatrix[i - 1][j],
-                                solutionMatrix[i - 1][j - weight[i]] + price[i]);
-                    }
-                }
-            }
-        }
-        // 最后一格的最优解
-        return solutionMatrix[row][capacity];
-    }
-
-    /**
-     * 最优解选择了那些物品
+     *
+     * 最优解选择了那些物品思路：
      * 从f[n-1][C] 逆着走向 f[0][0]
      * 设 i=n-1, j=W， 如果f[i][j] = f[i-1][j-w[i]] + v[i], 则说明已经放入了第i件物品
      * 因此我们只要当前行不等于上一行的总价值，就能挑出第i件物品，然后j减去该物品的重量，一直找到j = 0就行了
      * 注意：第一行(i=0)是否选择了物品的判断是容量(j)是否大于物品重量
      */
-    public static int dpBackpackAndChoosed(int[] weight, int[] price, int capacity) {
-        // 行
-        int row = weight.length - 1;
-        int[][] solutionMatrix = new int[weight.length][capacity+1];
-        List<Integer> selected = new ArrayList<>();
-        for (int i = 0; i < weight.length; i++) {
-            for (int j = 0; j <= capacity; j++) {
-                if (i == 0) {
-                    // 如果是第一行, 容量小于第一个物品价值是0，否则是第一个物品的重量
-                    solutionMatrix[i][j] = (j < weight[i] ? 0 : price[i]);
+    public static int dpBackpack(int[] weight, int[] price, int capacity) {
+        int row = weight.length;
+        int col = capacity;
+        // 这里补充第0行，防止下标越界
+        int[][] solutionMatrix = new int[row + 1][col + 1];
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= capacity; j++) {
+                // 对应的物品下标为i-1
+                if (j < weight[i - 1]) {
+                    // 如果装不下物品i，则等于之前的最优解
+                    solutionMatrix[i][j] = solutionMatrix[i - 1][j];
                 } else {
-                    if (j < weight[i]) {
-                        // 如果装不下物品i，则等于之前的最优解
-                        solutionMatrix[i][j] = solutionMatrix[i - 1][j];
-                    } else {
-                        // 如果装的下物品i，则在之前的最优解，和放入物品i后取最大值
-                        solutionMatrix[i][j] = Math.max(solutionMatrix[i - 1][j],
-                                solutionMatrix[i - 1][j - weight[i]] + price[i]);
-                    }
+                    // 如果装的下物品i，则在之前的最优解，和放入物品i后取最大值
+                    solutionMatrix[i][j] = Math.max(solutionMatrix[i - 1][j],
+                            solutionMatrix[i - 1][j - weight[i - 1]] + price[i - 1]);
                 }
+
             }
         }
+        // 逆推物品编号
         int j = capacity, w = 0;
-        for (int i = row; i >= 0; i--) {
-            if (i == 0) {
-                if (j >= weight[i]) {
-                    selected.add(i);
-                    System.out.println("物品:" + i + ", 重量为:" + weight[i] + ", 价值为:" + price[i]);
-                    j = j - weight[i];
-                    w += weight[i];
-                }
-            } else if (solutionMatrix[i][j] > solutionMatrix[i - 1][j]) {
-                selected.add(i);
-                System.out.println("物品:" + i + " 重量为:" + weight[i] + ", 价值为:" + price[i]);
-                j = j - weight[i];
-                w += weight[i];
+        for (int i = row; i > 0; i--) {
+            if (solutionMatrix[i][j] > solutionMatrix[i - 1][j]) {
+                int num = i - 1;
+                System.out.println("物品编号:" + num  + " 重量为:" + weight[i-1] + ", 价值为:" + price[i-1]);
+                j = j - weight[i-1];
+                w += weight[i-1];
             }
         }
         System.out.println("背包最大重量为:" + capacity + ", 现重量为:" + w + ", 总价值为:" + solutionMatrix[row][capacity]);
         return solutionMatrix[row][capacity - 1];
+    }
+
+    /**
+     * 优化解法
+     * 只用一个二维数组来记录状态
+     * dp[j] 表示容量为j的背包能装入物品的最大值
+     */
+    public static int optimizeBackpack(int[] weight, int[] price, int capacity) {
+        int[] dp = new int[capacity+1];
+        for (int i = 1; i < weight.length+1; i++) {
+            // 逆序
+            for (int j = capacity; j >= weight[i-1]; j--) {
+                dp[j] = Math.max(dp[j - weight[i-1]] + price[i-1], dp[j]);
+            }
+        }
+        return dp[capacity];
     }
 }

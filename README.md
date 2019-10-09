@@ -76,3 +76,4 @@
 - [redo 日志](docs/mysql/undo.md)
 - [事务隔离与MVCC](./docs/mysql/transcation-mvcc.md)
 - [锁](./docs/mysql)
+- [mysql优化实践](./docs/mysql/mysql-practice-optimize.md)

@@ -33,9 +33,9 @@ public class IntegerBreaker {
         dp[2] = 1;
         dp[3] = 2;
         for (int i = 4; i <= n; i++) {
-            for (int j = 1; j <= i/2; j++) {
+            for (int j = 1; j < i; j++) {
                 // 如果剪j， 那么比较直接相乘和两段的最优解乘积
-                dp[i] = Math.max(dp[j] * dp[i-j], j * (i-j));
+                dp[i] = Math.max(dp[i], Math.max(j * (i - j), dp[j] * (i - j)));
             }
         }
         return dp[n];

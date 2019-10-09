@@ -1,5 +1,34 @@
-## mysql 优化
+### mysql 性能
 
+#### 最大数据量
+
+MySQL没有限制单表最大记录数，它取决于操作系统对文件大小的限制。以 Linux Ext4文件系统为例, 理论最大容量为16TB。
+
+《阿里巴巴Java开发手册》提出单表行数超过500万行或者单表容量超过2GB，才推荐分库分表
+
+#### 最大并发数
+
+并发数是指同一时刻数据库能处理多少个请求，由`max_connections`和`max_user_connections`决定
+
+`max_connections`是指MySQL实例的最大连接数，上限值是`16384`，`max_user_connections`是指每个数据库用户的最大连接数。
+
+推荐 `max_used_connections / max_connections` 比例超过 10%, 配置示例:
+```mysql
+[mysqld]
+max_connections = 100
+max_used_connections = 20
+```
+
+#### 查询耗时
+
+建议将单次查询耗时控制在0.5秒以内，0.5秒是个经验值，源于用户体验的3秒原则。如果用户的操作3秒内没有响应，将会厌烦甚至退出。
+
+响应时间=客户端UI渲染耗时+网络请求耗时+应用程序处理耗时+查询数据库耗时
+
+0.5秒就是留给数据库1/6的处理时间。
+
+
+### 
 ### limit 优化
 
 分页查询中如下：
