@@ -25,7 +25,6 @@
 - [LRU](docs/lru-description.md)
 - [(回溯)八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 - [(动态规划)01背包问题 | 已选择物品](src/main/java/com/haobin/algorithm/Backpack.java)
-- [(动态规划)完全背包问题](src/main/java/com/haobin/algorithm/CompleteBackpack.java)
 
 
 #### 剑指offer
@@ -44,7 +43,7 @@
 - [11-旋转数组中最小的数字](src/main/java/com/haobin/offer/MinNumInRotateArray.java)
 - [(回溯)12-矩阵中的路径](src/main/java/com/haobin/offer/HasPathInRect.java)
 - [(深度优先DFS)13-机器人的运动范围](src/main/java/com/haobin/offer/RobotMove.java)
-- [(动态规划)14-整数拆分(剪绳子)](src/main/java/com/haobin/offer/RobotMove.java)
+- [(动态规划)14-整数拆分(剪绳子)](src/main/java/com/haobin/offer/IntegerBreaker.java)
 - [15-二进制中1的个数](src/main/java/com/haobin/offer/NumberOfOne.java)
 - [16-数值的整数次方](src/main/java/com/haobin/offer/Power.java)
 - [17-打印n位的最大十进制数](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
