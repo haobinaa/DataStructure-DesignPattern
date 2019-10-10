@@ -12,11 +12,11 @@ MySQL没有限制单表最大记录数，它取决于操作系统对文件大小
 
 `max_connections`是指MySQL实例的最大连接数，上限值是`16384`，`max_user_connections`是指每个数据库用户的最大连接数。
 
-推荐 `max_used_connections / max_connections` 比例超过 10%, 配置示例:
-```mysql
+推荐 `max_user_connections / max_connections` 比例超过 10%, 配置示例:
+```
 [mysqld]
 max_connections = 100
-max_used_connections = 20
+max_user_connections = 20
 ```
 
 #### 查询耗时

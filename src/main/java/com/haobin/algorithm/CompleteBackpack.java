@@ -6,41 +6,40 @@ package com.haobin.algorithm;
  * @description: 完全背包问题
  *
  * ###################################
- * 完全背包问题与01背包的区别是，完全背包每个物品可以放多次
- * 01背包只考虑放与不放进去两种情况
- * 完全背包要考虑 放0、放1、放2...的情况，
  *
- * 选择放与不放:
- * f[i][j] = max{ f[i-1][j], f[i-1][j-weight[i]] + value[i]}
+ * 完全背包问题与01背包问题的区别就是物品数量是无限的
  *
- * 选择放k次i种物品:
- * f[i][j] = max{ f[i-1][j], f[i-1][j-k*weight[i]] + k*value[i]}
+ * 在放入 i 个物品时， 应该还要考虑还可能继续放入i， 那么递推公式应该变成:
+ * max{f[i-1][j], f[i][y-weight[i]]+value[i]}（这里不在是i-1行了）
+
  *
- * 这里k不是无限的， 它受背包容量与单件物品重量限制，即 j/weight[i]
- * 假设只有1种商品，它的重量为20，背包的容量为60，那么它就应该放3个，在遍历时，就0、1、2、3地依次尝试。
+ *
  **/
 public class CompleteBackpack {
 
     public static void main(String[] args) {
-        int[] weight = {3, 2, 2};
-        int[] price = {5, 10, 20};
-        int capacity = 5;
+        int[] weight = {2,3,4,7};
+        int[] price = {1,3,5,9};
+        int capacity = 10;
         System.out.println(dbCompleteBackpack(weight, price, capacity));
     }
 
     public static int dbCompleteBackpack(int[] weight, int[] price, int capacity) {
-        int[][] dp = new int[weight.length][capacity+1];
-        for (int i = 0; i <= capacity; i++) {
-            dp[-1][i] = 0;
-        }
-        for (int i = 0; i < weight.length; i++) {
-            for (int j = 0; j <= capacity; j++) {
-                int bound = j/weight[i];
-                for (int k = 0; k <= bound; k++) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i-1][j - k*weight[i]] + k * price[i]);
+        int row = weight.length;
+        int col = capacity;
+        // 第0行初始化为0
+        int[][] dp = new int[row+1][col+1];
+        for (int i = 1; i <= row; i++) {
+            for (int j = 1; j <= col; j++) {
+                // 初始化第一行为0， price和weight的下标都对应减一
+                if (weight[i-1] > j) {
+                    // 物品重量大于容量，则不装入背包
+                    dp[i][j] = dp[i-1][j];
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-weight[i-1]] + price[i-1]);
                 }
             }
         }
-        return dp[weight.length-1][capacity];
+        return dp[row][col];
     }
 }

@@ -22,10 +22,10 @@ import java.util.List;
  * f[5][10] = MAX{f[4][10], (f[4][10-weight[a]] + value(a))}
  * <p>
  * 表格第一行公式为:
- * f[0][j] = 0,  j < wi (背包容量小于物品重量时价值为0)
+ * f[1][j] = 0,  j < wi (背包容量小于物品重量时价值为0)
  * = vi, j > wi (背包容量大于物品重量时，价值为物品价值)
  * 表格第二行公式为:
- * f[1][j] = MAX{f[0][j], (f[0][j-weight[a]] + value(a))}  （放入物品a或不放入物品a的两种情况）
+ * f[2][j] = MAX{f[0][j], (f[0][j-weight[a]] + value(a))}  （放入物品a或不放入物品a的两种情况）
  * ........
  * <p>
  * 整理出通用公式为:
@@ -93,9 +93,13 @@ public class Backpack {
     }
 
     /**
-     * 优化解法
-     * 只用一个二维数组来记录状态
-     * dp[j] 表示容量为j的背包能装入物品的最大值
+     * 优化解法，压缩成一维数组
+     *  max{f[i-1][v], f[i-1][v-w[i]] + v[i]} ->  max{f[v], f[v-w[i]] + w[i]}
+     *
+     * 将第i件物品放入容量为v的背包这个子问题转换成:
+     * 前 i-1 件物品放入容量为 n 的背包， 价值为 f[i-1][n]
+     * 如果放入第i件物品， 最大价值就是 f[i-1][n-w[i]] + w[i]
+     *
      */
     public static int optimizeBackpack(int[] weight, int[] price, int capacity) {
         int[] dp = new int[capacity+1];
