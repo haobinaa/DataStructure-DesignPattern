@@ -23,6 +23,8 @@ public class PrintOneToMaxOfN {
         // 位数太多，用字符数组存储结果
         char[] number = new char[n];
         print1ToMaxOfNDigits(number, 0);
+
+
     }
 
 

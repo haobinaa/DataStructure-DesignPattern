@@ -3,10 +3,11 @@ package com.haobin.offer;
 /**
  * @author: HaoBin
  * @create: 2019/10/10 17:16
- * @description: 删除链表中重复节点，重复节点不保留
+ * @description: 删除排序链表中重复节点，重复节点不保留
  *
- * 例如:
- * 链表1->2->3->3->4->4->5 处理后为 1->2->5
+ * 题目描述:
+ * 在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针。
+ * 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
  *
  *
  **/
@@ -18,15 +19,20 @@ public class DeleteDuplicationNode {
     }
 
     public ListNode deleteDuplication(ListNode head) {
-        ListNode next = head.next;
-        if (head.val == next.val) {
-            // 如果头节点是重复节点，则需要删除头节点
-            while (next != null && head.val == next.val) {
-                next = next.next;
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode node = head.next;
+        // 标记当前重复节点
+        if (head.val == node.val) {
+            // 找到所有重复的节点
+            while (node != null && head.val == node.val) {
+                node = node.next;
             }
-            return deleteDuplication(next);
+            // 返回不重复的节点，并往后搜索
+            return deleteDuplication(node);
         } else {
-            // 遍历每个节点
+            // 如果当前节点不重复，从下一个节点开始搜索
             head.next = deleteDuplication(head.next);
             // 返回头节点
             return head;

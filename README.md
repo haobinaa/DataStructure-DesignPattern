@@ -50,7 +50,7 @@
 - [(数值运算)16-数值的整数次方](src/main/java/com/haobin/offer/Power.java)
 - [17-打印n位的最大十进制数](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
 - [18-O(1)复杂度删除链表节点](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
-- [19-删除链表重复节点](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
+- [19-删除排序链表重复节点](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
 
 
 #### 设计模式
