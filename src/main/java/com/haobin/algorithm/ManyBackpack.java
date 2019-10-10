@@ -18,6 +18,14 @@ package com.haobin.algorithm;
  **/
 public class ManyBackpack {
 
+
+    public static void main(String[] args) {
+        int[] weight = {1,2,2};
+        int[] price = {6,10,20};
+        int[] nums = {10,5,2};
+        int capacity = 8;
+        System.out.println(dpManyBackpack(weight, price, capacity, nums));
+    }
     /**
      *
      * @param weight 物品重量
@@ -29,7 +37,7 @@ public class ManyBackpack {
     public static int dpManyBackpack(int[] weight, int[] price, int capacity, int[] num) {
         int row = weight.length;
         int col = capacity;
-        int[][] dp = new int[row][col];
+        int[][] dp = new int[row+1][col+1];
         for (int i = 1; i <= row; i++) {
             for (int j = 1; j <= col; j++) {
                 if (weight[i-1] > j) {
@@ -38,7 +46,7 @@ public class ManyBackpack {
                     // 考虑物品的数量限制
                     int maxN = Math.min(num[i-1], j/weight[i-1]);
                     for (int k = 0; k <= maxN; k++) {
-                        dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j - k*weight[i-1]] + k*weight[i-1]);
+                        dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j - k*weight[i-1]] + k*price[i-1]);
                     }
                 }
             }
