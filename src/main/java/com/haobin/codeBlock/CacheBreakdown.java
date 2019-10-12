@@ -108,6 +108,7 @@ public class CacheBreakdown {
         List<String> result = new ArrayList<String>();
         result = getDataFromCache();
         if (result.isEmpty()) {
+            // 这里如果是多个实例的应用，可以用分布式锁
             if (reenLock.tryLock()) {
                 try {
                     System.out.println("我拿到锁了,从DB获取数据库后写入缓存");

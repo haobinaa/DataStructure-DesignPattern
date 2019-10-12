@@ -51,6 +51,7 @@
 - [17-打印n位的最大十进制数](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
 - [18-O(1)复杂度删除链表节点](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
 - [19-删除排序链表重复节点](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
+- [20-正则表达式匹配](src/main/java/com/haobin/offer/RegexMatch.java)
 
 
 #### 设计模式
