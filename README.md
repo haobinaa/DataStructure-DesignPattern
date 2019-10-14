@@ -30,7 +30,7 @@
 
 
 #### 剑指offer
-
+- [删除链表倒数第N个节点](src/main/java/com/haobin/offer/DeleteLastNNode.java)
 - [3-数组中重复的数字](src/main/java/com/haobin/offer/DuplicateNumInArray.java)
 - [4-判断数是否在二维数组中](src/main/java/com/haobin/offer/NumInDimensionalArray.java)
 - [5-替换空格](src/main/java/com/haobin/offer/ReplaceSpace.java)
@@ -77,8 +77,7 @@
 - [单表和连表查询过程](./docs/mysql/join-table-query.md)
 - [explain 执行计划](./docs/mysql/explain.md)
 - [表空间和buffer pool](./docs/mysql/buffer_pool.md)
-- [redo 日志](docs/mysql/redo.md)
-- [redo 日志](docs/mysql/undo.md)
+- [redo/undo 日志](docs/mysql/redo.md)
 - [事务隔离与MVCC](./docs/mysql/transcation-mvcc.md)
 - [锁](./docs/mysql)
 - [mysql优化实践](./docs/mysql/mysql-practice-optimize.md)
