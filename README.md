@@ -23,6 +23,7 @@
 - [B+Tree](./docs/datastructure/B+Tree.md)
 - [一致性hash算法](docs/consistent_hash.md)
 - [LRU](docs/lru-description.md)
+- [LRU](./docs/datastructure/SlowFastPoint.md)
 - [(回溯)八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 - [(动态规划)01背包问题 | 已选择物品](src/main/java/com/haobin/algorithm/Backpack.java)
 - [(动态规划)多重背包问题](src/main/java/com/haobin/algorithm/ManyBackpack.java)

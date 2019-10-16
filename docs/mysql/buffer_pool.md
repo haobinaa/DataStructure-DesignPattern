@@ -96,4 +96,3 @@ innoDB提供了一个系统变量`innodb_read_ahead_threshold`，如果顺序访
 - 从flush链表中刷新一部分页面到磁盘：
 
 后台线程也会定时从flush链表中刷新一部分页面到磁盘，刷新的速率取决于当时系统是不是很繁忙。这种刷新页面的方式被称之为`BUF_FLUSH_LIST`。
-

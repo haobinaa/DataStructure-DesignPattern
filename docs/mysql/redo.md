@@ -105,5 +105,7 @@ redo log的作用就是在服务器崩溃了能恢复。恢复流程如下
 知道了起点和终点之后，就可以按照redo日志的顺序依次扫描`checkpoint_lsn`之后的各条redo日志，按照日志中记载的内容将对应的页面恢复出来。
 
 
+### redo log刷新到磁盘配置(innodb_flush_log_at_trx_commit)
+
 
 
