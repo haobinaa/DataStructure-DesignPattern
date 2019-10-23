@@ -1,11 +1,7 @@
 package com.haobin.codeBlock.IOModel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -82,11 +78,24 @@ public class SingleReactor implements Runnable{
                 if (socket != null) {
                     socket.write(ByteBuffer.wrap("single reactor".getBytes()));
                     System.out.println("Accept and handler - " + socket.socket().getLocalSocketAddress());
-                    // handler
+                    // handler 处理
+                    new BasicHandler(selector, socket);
                 }
             } catch (IOException ioex) {
                 ioex.printStackTrace();
             }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        try {
+            Thread th = new Thread(new SingleReactor(10393));
+            th.setName("SingleReactor");
+            th.start();
+            th.join();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

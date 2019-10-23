@@ -67,6 +67,7 @@
  、- [缓存击穿解决方法](/src/main/java/com/haobin/codeBlock/CacheBreakdown.java)
  - [传统IO模型](/src/main/java/com/haobin/codeBlock/IOModel/ClassicServerLoop.java) 
  - [IO-reactor模式(单线程)](/src/main/java/com/haobin/codeBlock/IOModel/SingleReactor.java)
+  - [IO-reactor模式(多线程)](/src/main/java/com/haobin/codeBlock/IOModel/MultiReactor.java)
   
   
 
