@@ -23,7 +23,7 @@
 - [B+Tree](./docs/datastructure/B+Tree.md)
 - [一致性hash算法](docs/consistent_hash.md)
 - [LRU](docs/lru-description.md)
-- [LRU](./docs/datastructure/SlowFastPoint.md)
+- [快慢指针](./docs/datastructure/SlowFastPoint.md)
 - [(回溯)八皇后](src/main/java/com/haobin/algorithm/EightQueen.java)
 - [(动态规划)01背包问题 | 已选择物品](src/main/java/com/haobin/algorithm/Backpack.java)
 - [(动态规划)多重背包问题](src/main/java/com/haobin/algorithm/ManyBackpack.java)
@@ -64,7 +64,8 @@
   
  - [死锁案例](/src/main/java/com/haobin/codeBlock/DeadLock.java)
  - [线程间通信-交互打印奇偶数](/src/main/java/com/haobin/codeBlock/PrintOddEvenNumber.java)
- 、- [缓存击穿解决方法](/src/main/java/com/haobin/codeBlock/CacheBreakdown.java)
+ 、
+ - [缓存击穿解决方法](/src/main/java/com/haobin/codeBlock/CacheBreakdown.java)
  - [传统IO模型](/src/main/java/com/haobin/codeBlock/IOModel/ClassicServerLoop.java) 
  - [IO-reactor模式(单线程)](/src/main/java/com/haobin/codeBlock/IOModel/SingleReactor.java)
   - [IO-reactor模式(多线程)](/src/main/java/com/haobin/codeBlock/IOModel/MultiReactor.java)
