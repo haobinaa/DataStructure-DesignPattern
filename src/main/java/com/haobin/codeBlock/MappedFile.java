@@ -18,5 +18,7 @@ public class MappedFile {
     private File file;
 
     private MappedByteBuffer mappedByteBuffer;
+
+
     private FileChannel fileChannel;
 }

@@ -407,6 +407,11 @@ JDK8的put方法：
 
 JDK8使用了红黑树，扩容的源码比较复杂，这里就不做探讨了
  
+ #### JDK8 中线程不安全的体现
+ 
+ 1. 并发put可能导致元素丢失
+ 2. put和get并发时可能导致get为null
  
  ### 参考资料
  - [美团点评技术博客](https://tech.meituan.com/java-hashmap.html)
+ - [深入解读HashMap线程安全性](https://juejin.im/post/5c8910286fb9a049ad77e9a3)
