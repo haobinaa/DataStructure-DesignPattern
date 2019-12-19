@@ -191,23 +191,9 @@ HashMap是数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的:
 
 ![](https://raw.githubusercontent.com/haobinaa/DataStructure-DesignPattern/master/images/hashMap_1_8.png)
 
-JDK8中HashMap类中有一个非常重要的字段，就是` Node[] table`，即哈希桶数组
-``` 
-static class Node<K,V> implements Map.Entry<K,V> {
-        final int hash;    //用来定位数组索引位置
-        final K key;
-        V value;
-        Node<K,V> next;   //链表的下一个node
+Java7 中使用 Entry 来代表每个 HashMap 中的数据节点，Java8 中使用 **Node**，基本没有区别，都是 key，value，hash 和 next 这四个属性，不过，Node 只能用于链表的情况，红黑树的情况需要使用 **TreeNode**。
 
-        Node(int hash, K key, V value, Node<K,V> next) { ... }
-        public final K getKey(){ ... }
-        public final V getValue() { ... }
-        public final String toString() { ... }
-        public final int hashCode() { ... }
-        public final V setValue(V newValue) { ... }
-        public final boolean equals(Object o) { ... }
-}
-```
+
 
 #### 2) 扩容操作
 JDK8的put方法：
@@ -224,72 +210,167 @@ JDK8的put方法：
 
  put源码如下:
  ``` 
-  1 public V put(K key, V value) {
-  2     // 对key的hashCode()做hash
-  3     return putVal(hash(key), key, value, false, true);
-  4 }
-  5 
-  6 final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
-  7                boolean evict) {
-  8     Node<K,V>[] tab; Node<K,V> p; int n, i;
-  9     // 步骤①：tab为空则创建
- 10     if ((tab = table) == null || (n = tab.length) == 0)
- 11         n = (tab = resize()).length;
- 12     // 步骤②：计算index，并对null做处理 
- 13     if ((p = tab[i = (n - 1) & hash]) == null) 
- 14         tab[i] = newNode(hash, key, value, null);
- 15     else {
- 16         Node<K,V> e; K k;
- 17         // 步骤③：节点key存在，直接覆盖value
- 18         if (p.hash == hash &&
- 19             ((k = p.key) == key || (key != null && key.equals(k))))
- 20             e = p;
- 21         // 步骤④：判断该链为红黑树
- 22         else if (p instanceof TreeNode)
- 23             e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
- 24         // 步骤⑤：该链为链表
- 25         else {
- 26             for (int binCount = 0; ; ++binCount) {
- 27                 if ((e = p.next) == null) {
- 28                     p.next = newNode(hash, key,value,null);
-                         //链表长度大于8转换为红黑树进行处理
- 29                     if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st  
- 30                         treeifyBin(tab, hash);
- 31                     break;
- 32                 }
-                     // key已经存在直接覆盖value
- 33                 if (e.hash == hash &&
- 34                     ((k = e.key) == key || (key != null && key.equals(k)))) 
- 35                            break;
- 36                 p = e;
- 37             }
- 38         }
- 39         
- 40         if (e != null) { // existing mapping for key
- 41             V oldValue = e.value;
- 42             if (!onlyIfAbsent || oldValue == null)
- 43                 e.value = value;
- 44             afterNodeAccess(e);
- 45             return oldValue;
- 46         }
- 47     }
- 
- 48     ++modCount;
- 49     // 步骤⑥：超过最大容量 就扩容
- 50     if (++size > threshold)
- 51         resize();
- 52     afterNodeInsertion(evict);
- 53     return null;
- 54 }
+public V put(K key, V value) {
+    return putVal(hash(key), key, value, false, true);
+}
+
+// 第四个参数 onlyIfAbsent 如果是 true，那么只有在不存在该 key 时才会进行 put 操作
+// 第五个参数 evict 不用关心
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+               boolean evict) {
+    Node<K,V>[] tab; Node<K,V> p; int n, i;
+    // 第一次 put 值的时候，会触发下面的 resize()，类似 java7 的第一次 put 也要初始化数组长度
+    // 第一次 resize 和后续的扩容有些不一样，因为这次是数组从 null 初始化到默认的 16 或自定义的初始容量
+    if ((tab = table) == null || (n = tab.length) == 0)
+        n = (tab = resize()).length;
+        
+    // 找到具体的数组下标，如果此位置没有值，那么直接初始化一下 Node 并放置在这个位置就可以了
+    if ((p = tab[i = (n - 1) & hash]) == null)
+        tab[i] = newNode(hash, key, value, null);
+    else {
+    	// 数组该位置有数据
+        Node<K,V> e; K k;
+        // 首先，判断该位置的第一个数据和我们要插入的数据的 key 是不是相等，如果是，取出这个节点
+        if (p.hash == hash &&
+            ((k = p.key) == key || (key != null && key.equals(k))))
+            e = p;
+        // 如果该节点是代表红黑树的节点，调用红黑树的插值方法 putTreeVal
+        else if (p instanceof TreeNode)
+            e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+        else {
+            // 到这里，说明数组该位置上是一个链表
+            for (int binCount = 0; ; ++binCount) {
+                // 尾插法(Java7 是头插法)
+                if ((e = p.next) == null) {
+                    p.next = newNode(hash, key, value, null);
+                    // TREEIFY_THRESHOLD 为 8，所以，如果新插入的值是链表中的第 8 个
+                    // 会触发下面的 treeifyBin，也就是将链表转换为红黑树
+                    if (binCount >= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                        treeifyBin(tab, hash);
+                    break;
+                }
+                // 如果在该链表中找到了"相等"的 key(== 或 equals)
+                if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k))))
+                    // 此时 break，那么 e 为链表中[与要插入的新值的 key "相等"]的 node
+                    break;
+                p = e;
+            }
+        }
+        // e!=null 说明存在旧值的key与要插入的key"相等"
+        // 对于我们分析的put操作，下面这个 if 其实就是进行 "值覆盖"，然后返回旧值
+        if (e != null) {
+            V oldValue = e.value;
+            if (!onlyIfAbsent || oldValue == null)
+                e.value = value;
+            afterNodeAccess(e);
+            return oldValue;
+        }
+    }
+    // fail-fast，modCount 值增加
+    ++modCount;
+    // 如果 HashMap 由于新插入这个值导致 size 已经超过了阈值，需要进行扩容
+    if (++size > threshold)
+        resize();
+    afterNodeInsertion(evict);
+    return null;
+}
  ```
 
-JDK8使用了红黑树，扩容的源码比较复杂，这里就不做探讨了
+ `resize()` 用于**初始化数组**或**数组扩容**，每次扩容后，容量为原来的 2 倍，并进行数据迁移:
 
- #### JDK8 中线程不安全的体现
+```
+final Node<K,V>[] resize() {
+    Node<K,V>[] oldTab = table;
+    int oldCap = (oldTab == null) ? 0 : oldTab.length;
+    int oldThr = threshold;
+    int newCap, newThr = 0;
+    if (oldCap > 0) { // 对应数组扩容
+        if (oldCap >= MAXIMUM_CAPACITY) {
+            threshold = Integer.MAX_VALUE;
+            return oldTab;
+        }
+        // 将数组大小扩大一倍
+        else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+                 oldCap >= DEFAULT_INITIAL_CAPACITY)
+            // 将阈值扩大一倍
+            newThr = oldThr << 1; // double threshold
+    }
+    else if (oldThr > 0) // 对应使用 new HashMap(int initialCapacity) 初始化后，第一次 put 的时候
+        newCap = oldThr;
+    else {// 对应使用 new HashMap() 初始化后，第一次 put 的时候
+        newCap = DEFAULT_INITIAL_CAPACITY;
+        newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
+    }
 
- 1. 并发put可能导致元素丢失
- 2. put和get并发时可能导致get为null
+    if (newThr == 0) {
+        float ft = (float)newCap * loadFactor;
+        newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
+                  (int)ft : Integer.MAX_VALUE);
+    }
+    threshold = newThr;
+
+    // 用新的数组大小初始化新的数组
+    Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+    table = newTab; // 如果是初始化数组，到这里就结束了，返回 newTab 即可
+
+    if (oldTab != null) {
+        // 开始遍历原数组，进行数据迁移。
+        for (int j = 0; j < oldCap; ++j) {
+            Node<K,V> e;
+            if ((e = oldTab[j]) != null) {
+                oldTab[j] = null;
+                // 如果该数组位置上只有单个元素，那就简单了，简单迁移这个元素就可以了
+                if (e.next == null)
+                    newTab[e.hash & (newCap - 1)] = e;
+                // 如果是红黑树，具体我们就不展开了
+                else if (e instanceof TreeNode)
+                    ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
+                else { 
+                    // 这块是处理链表的情况，
+                    // 需要将此链表拆成两个链表，放到新的数组中，并且保留原来的先后顺序
+                    // loHead、loTail 对应一条链表，hiHead、hiTail 对应另一条链表，代码还是比较简单的
+                    Node<K,V> loHead = null, loTail = null;
+                    Node<K,V> hiHead = null, hiTail = null;
+                    Node<K,V> next;
+                    do {
+                        next = e.next;
+                        if ((e.hash & oldCap) == 0) {
+                            if (loTail == null)
+                                loHead = e;
+                            else
+                                loTail.next = e;
+                            loTail = e;
+                        }
+                        else {
+                            if (hiTail == null)
+                                hiHead = e;
+                            else
+                                hiTail.next = e;
+                            hiTail = e;
+                        }
+                    } while ((e = next) != null);
+                    if (loTail != null) {
+                        loTail.next = null;
+                        // 第一条链表
+                        newTab[j] = loHead;
+                    }
+                    if (hiTail != null) {
+                        hiTail.next = null;
+                        // 第二条链表的新的位置是 j + oldCap，这个很好理解
+                        newTab[j + oldCap] = hiHead;
+                    }
+                }
+            }
+        }
+    }
+    return newTab;
+}
+```
+
+##### JDK8 中线程不安全的体现
+
+ 在 jdk8 中使用了尾插法，避免了形成循环链表的情况，但是并不意味着它就是线程安全的了。在多线程环境下，首先无法保证上一秒 put 的值就是下一秒 get 的值。其次针对于`size()`方法，并没有立即刷新到主存(volatile)，所以 HashMap 的大小也是不准确的。多线程的情况下还是使用 `ConcurrentHashMap`
 
  ### 参考资料
- - [美团点评技术博客](https://tech.meituan.com/java-hashmap.html)
  - [深入解读HashMap线程安全性](https://juejin.im/post/5c8910286fb9a049ad77e9a3)

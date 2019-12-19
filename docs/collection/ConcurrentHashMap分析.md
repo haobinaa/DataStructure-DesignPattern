@@ -1,68 +1,89 @@
 ### java7 中 ConcurrnentHashMap分析
 
-#### 数据结构
-基于JDK7的`ConcurrentHashMap`的底层数据结构仍然是数组和链表。与HashMap不同的是，ConcurrentHashMap最外层不是一个大的数组，而是一个Segment的数组。每个Segment包含一个与HashMap数据结构差不多的链表数组。整体数据结构如下图所示:
+#### 1. 数据结构
+基于JDK7的`ConcurrentHashMap`的底层数据结构仍然是数组和链表。与HashMap不同的是，ConcurrentHashMap最外层不是一个大的数组，而是一个`Segment`数组。每个Segment包含一个与HashMap数据结构差不多的链表数组。整体数据结构如下图所示:
 
 ![](../../images/concurrenthashmap_java7.png)
 
-#### 寻址方式, 获取在segment数组上的索引
+Segment  默认是 16，也就是说 ConcurrentHashMap 有 16 个 Segments，所以理论上，这个时候，最多可以同时支持 16 个线程并发写，只要它们的操作分别分布在不同的 Segment 上。这个值可以在初始化的时候设置为其他值，但是一旦初始化以后，它是不可以扩容的。
 
-在读写某个Key时，先取该Key的哈希值。并将哈希值的高N位对Segment个数取模从而得到该Key应该属于哪个Segment，接着如同操作HashMap一样操作这个Segment，为保证值均匀分布到不同的Segment
-，使用的hash方法如下:
-``` 
-private int hash(Object k) {
-  int h = hashSeed;
-  if ((0 != h) && (k instanceof String)) {
-    return sun.misc.Hashing.stringHash32((String) k);
-  }
-  h ^= k.hashCode();
-  h += (h <<  15) ^ 0xffffcd7d;
-  h ^= (h >>> 10);
-  h += (h <<   3);
-  h ^= (h >>>  6);
-  h += (h <<   2) + (h << 14);
-  return h ^ (h >>> 16);
+#### 2. 初始化
+
+```
+public ConcurrentHashMap(int initialCapacity,
+                         float loadFactor, int concurrencyLevel) {
+    // loadFactor 负载因子， concurrencyLevel 并发数，也是 segment 个数
+    if (!(loadFactor > 0) || initialCapacity < 0 || concurrencyLevel <= 0)
+        throw new IllegalArgumentException();
+    if (concurrencyLevel > MAX_SEGMENTS)
+        concurrencyLevel = MAX_SEGMENTS;
+    int sshift = 0;
+    int ssize = 1;
+    // 计算并行级别 ssize，因为要保持并行级别是 2 的 n 次方
+    while (ssize < concurrencyLevel) {
+        ++sshift;
+        ssize <<= 1;
+    }
+    // 假如使用默认值，concurrencyLevel 为 16，sshift 为 4
+    // 那么计算出 segmentShift 为 28，segmentMask 为 15，后面会用到这两个值
+    this.segmentShift = 32 - sshift;
+    this.segmentMask = ssize - 1;
+
+    if (initialCapacity > MAXIMUM_CAPACITY)
+        initialCapacity = MAXIMUM_CAPACITY;
+
+    // initialCapacity 是设置整个 map 初始的大小，
+    // 这里根据 initialCapacity 计算 Segment 数组中每个位置可以分到的大小
+    // 如 initialCapacity 为 64，那么每个 Segment 可以分到 4 个
+    int c = initialCapacity / ssize;
+    if (c * ssize < initialCapacity)
+        ++c;
+    // 默认 MIN_SEGMENT_TABLE_CAPACITY 是 2，这个值也是有讲究的，因为这样的话，对于具体的槽上，
+    // 插入一个元素不至于扩容，插入第二个的时候才会扩容
+    int cap = MIN_SEGMENT_TABLE_CAPACITY; 
+    while (cap < c)
+        cap <<= 1;
+
+    // 创建 Segment 数组，
+    // 并创建数组的第一个元素 segment[0]
+    Segment<K,V> s0 =
+        new Segment<K,V>(loadFactor, (int)(cap * loadFactor),
+                         (HashEntry<K,V>[])new HashEntry[cap]);
+    Segment<K,V>[] ss = (Segment<K,V>[])new Segment[ssize];
+    // 往数组写入 segment[0]
+    UNSAFE.putOrderedObject(ss, SBASE, s0); // ordered write of segments[0]
+    this.segments = ss;
 }
 ```
 
-同样为了提高取模运算效率，通过如下计算，ssize即为大于concurrencyLevel的最小的2的N次方，同时segmentMask为2^N-1。这一点跟上文中计算数组长度的方法一致。对于某一个Key
-的哈希值，只需要向右移segmentShift位以取高sshift位，再与segmentMask取与操作即可得到它在Segment数组上的索引:
-``` 
-int sshift = 0;
-int ssize = 1;
-while (ssize < concurrencyLevel) {
-  ++sshift;
-  ssize <<= 1;
-}
-this.segmentShift = 32 - sshift;
-this.segmentMask = ssize - 1;
-Segment<K,V>[] ss = (Segment<K,V>[])new Segment[ssize];
+这里可以看到初始化完成后:
 
-```
+- Segment[i] 的默认大小为 2，负载因子是 0.75，得出初始阈值为 1.5，也就是以后插入第一个元素不会触发扩容，插入第二个会进行第一次扩容
+- 初始化了 segment[0]，其他位置还是 null
+- 当前 segmentShift （移位数）的值为 32 - 4 = 28，segmentMask(掩码) 为 16 - 1 = 15
 
-#### get方法
-
-Segment继承自ReentrantLock，所以我们可以很方便的对每一个Segment上锁。
-
-只需要将 Key 通过 Hash 之后定位到具体的 Segment ，再通过一次 Hash 定位到具体的元素上。由于 HashEntry 中的 value 属性是用 volatile 关键词修饰的，保证了内存可见性，所以每次获取时都是最新值
-
-#### put方法
+#### 3. put操作
 
 内部 HashEntry 类 :
-``` 
-  static final class HashEntry<K,V> {
-        final int hash;
-        final K key;
-        volatile V value;
-        volatile HashEntry<K,V> next;
-
-        HashEntry(int hash, K key, V value, HashEntry<K,V> next) {
-            this.hash = hash;
-            this.key = key;
-            this.value = value;
-            this.next = next;
-        }
-    }
+``` java
+public V put(K key, V value) {
+    Segment<K,V> s;
+    if (value == null)
+        throw new NullPointerException();
+    // 1. 计算 key 的 hash 值
+    int hash = hash(key);
+    // 2. 根据 hash 值找到 Segment 数组中的位置 j
+    // hash 是 32 位，无符号右移 segmentShift(28) 位，剩下高 4 位，
+    //然后和 segmentMask(15) 做一次与操作，也就是说 j 是 hash 值的高 4 位，也就是 Segment 的数		组下标
+    int j = (hash >>> segmentShift) & segmentMask;
+    // 刚刚说了，初始化的时候初始化了 segment[0]，但是其他位置还是 null，
+    // ensureSegment(j) 对 segment[j] 进行初始化
+    if ((s = (Segment<K,V>)UNSAFE.getObject          // nonvolatile; recheck
+         (segments, (j << SSHIFT) + SBASE)) == null) //  in ensureSegment
+        s = ensureSegment(j);
+    // 3. 插入新值到 槽 s 中
+    return s.put(key, hash, value, false);
+}
 ```
 
 对于写操作，并不要求同时获取所有Segment的锁，因为那样相当于锁住了整个Map。它会先获取该Key-Value对所在的Segment的锁，获取成功后就可以像操作一个普通的HashMap一样操作该Segment，并保证该Segment的安全性。
@@ -228,3 +249,5 @@ put方法如下:
 
 - [ConcurrentHashMap的演进](http://www.jasongj.com/java/concurrenthashmap/)
 - [HashMap与ConcurrentHashMap](https://gitbook.cn/books/5a51ef3743ebf841f7e6fe86/index.html)
+- [java7/8中的HashMap/ConcurrentHashMap](https://javadoop.com/post/hashmap)
+- [吊打面试官ConcurrentHashMap](https://juejin.im/post/5df8d7346fb9a015ff64eaf9)
