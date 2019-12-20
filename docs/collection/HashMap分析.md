@@ -8,6 +8,9 @@
 #### 1)常量
 ``` 
 // 初始容量，扩容容量必须是2的倍数
+// 这里 HashMap 的容量必须是 2 的 n 次方
+// 原因是计算 slot 位置的时候是　hash % length， 当 length 是 2 的 n 次方的时候
+// 可以转换成位运算 hash & (length -1)。具有更高的效率
 static final int DEFAULT_INITIAL_CAPACITY = 16;
 
 // 最大容量，2的30次方  

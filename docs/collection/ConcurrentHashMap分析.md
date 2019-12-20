@@ -81,14 +81,188 @@ public V put(K key, V value) {
     if ((s = (Segment<K,V>)UNSAFE.getObject          // nonvolatile; recheck
          (segments, (j << SSHIFT) + SBASE)) == null) //  in ensureSegment
         s = ensureSegment(j);
-    // 3. 插入新值到 槽 s 中
+    // 3. 插入新值到 segment 中
     return s.put(key, hash, value, false);
 }
 ```
 
-对于写操作，并不要求同时获取所有Segment的锁，因为那样相当于锁住了整个Map。它会先获取该Key-Value对所在的Segment的锁，获取成功后就可以像操作一个普通的HashMap一样操作该Segment，并保证该Segment的安全性。
+segement 是数组+链表组成的，内部的 put 操作:
 
-首先也是先通过key的hash定位到具体的segment， 与HashMap不同的是，ConcurrentHashMap会在put之前就进行一次扩容校验。HashMap 是插入元素之后再看是否需要扩容，有可能扩容之后后续就没有插入就浪费了本次扩容(扩容非常消耗性能)
+```java
+final V put(K key, int hash, V value, boolean onlyIfAbsent) {
+    // 在往该 segment 写入前，需要先获取该 segment 的独占锁 (Segment继承于ReentrantLock)
+    HashEntry<K,V> node = tryLock() ? null : scanAndLockForPut(key, hash, value);
+    V oldValue;
+    try {
+        // segment 内部的数组
+        HashEntry<K,V>[] tab = table;
+        // 再利用 hash 值，求应该放置的数组下标
+        int index = (tab.length - 1) & hash;
+        // first 是数组该位置处的链表的表头
+        HashEntry<K,V> first = entryAt(tab, index);
+        for (HashEntry<K,V> e = first;;) {
+            // 已经存在链表，则顺着链表往下走
+            if (e != null) {
+                K k;
+                if ((k = e.key) == key ||
+                    (e.hash == hash && key.equals(k))) {
+                    oldValue = e.value;
+                    if (!onlyIfAbsent) {
+                        // 覆盖旧值
+                        e.value = value;
+                        ++modCount;
+                    }
+                    break;
+                }
+                // 继续顺着链表走
+                e = e.next;
+            }
+            else {
+                // node 到底是不是 null，这个要看获取锁的过程
+                // 如果不为 null，那就直接将它设置为链表表头；如果是null，初始化并设置为链表表头。
+                if (node != null)
+                    node.setNext(first);
+                else
+                    node = new HashEntry<K,V>(hash, key, value, first);
+
+                int c = count + 1;
+                // 如果超过了该 segment 的阈值，这个 segment 需要扩容
+                if (c > threshold && tab.length < MAXIMUM_CAPACITY)
+                    rehash(node); 
+                else
+                    // 没有达到阈值，将 node 放到数组 tab 的 index 位置，
+                    // 其实就是将新的节点设置成原链表的表头
+                    setEntryAt(tab, index, node);
+                ++modCount;
+                count = c;
+                oldValue = null;
+                break;
+            }
+        }
+    } finally {
+        // 解锁
+        unlock();
+    }
+    return oldValue;
+}
+```
+
+往 segment 里写入的时候，需要先获取写入锁 scanAndLockForPut:
+
+```java
+private HashEntry<K,V> scanAndLockForPut(K key, int hash, V value) {
+    HashEntry<K,V> first = entryForHash(this, hash);
+    HashEntry<K,V> e = first;
+    HashEntry<K,V> node = null;
+    int retries = -1; // negative while locating node
+
+    // 循环获取锁
+    while (!tryLock()) {
+        HashEntry<K,V> f;
+        if (retries < 0) {
+            if (e == null) {
+                if (node == null) 
+                    // 进到这里说明数组该位置的链表是空的，没有任何元素
+                    // 当然，进到这里的另一个原因是 tryLock() 失败，所以该 Segment 存在并发，不一定是该位置
+                    node = new HashEntry<K,V>(hash, key, value, null);
+                retries = 0;
+            }
+            else if (key.equals(e.key))
+                retries = 0;
+            else
+                // 顺着链表往下走
+                e = e.next;
+        }
+        // 重试次数如果超过 MAX_SCAN_RETRIES，那么不抢了，进入到阻塞队列等待锁
+        //    lock() 是阻塞方法，直到获取锁后返回
+        else if (++retries > MAX_SCAN_RETRIES) {
+            lock();
+            break;
+        }
+        else if ((retries & 1) == 0 &&
+                 // 这个时候是有大问题了，那就是有新的元素进到了链表，成为了新的表头
+                 // 所以这边的策略是，相当于重新走一遍这个 scanAndLockForPut 方法
+                 (f = entryForHash(this, hash)) != first) {
+            e = first = f;
+            retries = -1;
+        }
+    }
+    return node;
+}
+```
+
+扩容 Segement 下的 HashEntry 数组，rehash 扩容(Segment数组是无法扩容的)：
+
+```
+// 方法参数上的 node 是这次扩容后，需要添加到新的数组中的数据。
+private void rehash(HashEntry<K,V> node) {
+    HashEntry<K,V>[] oldTable = table;
+    int oldCapacity = oldTable.length;
+    // 2 倍
+    int newCapacity = oldCapacity << 1;
+    threshold = (int)(newCapacity * loadFactor);
+    // 创建新数组
+    HashEntry<K,V>[] newTable =
+        (HashEntry<K,V>[]) new HashEntry[newCapacity];
+    // 新的掩码，如从 16 扩容到 32，那么 sizeMask 为 31，对应二进制 ‘000...00011111’
+    int sizeMask = newCapacity - 1;
+
+    // 遍历原数组，老套路，将原数组位置 i 处的链表拆分到 新数组位置 i 和 i+oldCap 两个位置
+    for (int i = 0; i < oldCapacity ; i++) {
+        // e 是链表的第一个元素
+        HashEntry<K,V> e = oldTable[i];
+        if (e != null) {
+            HashEntry<K,V> next = e.next;
+            // 计算应该放置在新数组中的位置，
+            // 假设原数组长度为 16，e 在 oldTable[3] 处，那么 idx 只可能是 3 或者是 3 + 16 = 19
+            int idx = e.hash & sizeMask;
+            if (next == null)   // 该位置处只有一个元素，那比较好办
+                newTable[idx] = e;
+            else { // Reuse consecutive sequence at same slot
+                // e 是链表表头
+                HashEntry<K,V> lastRun = e;
+                // idx 是当前链表的头结点 e 的新位置
+                int lastIdx = idx;
+
+                // 下面这个 for 循环会找到一个 lastRun 节点，这个节点之后的所有元素是将要放到一起的
+                for (HashEntry<K,V> last = next;
+                     last != null;
+                     last = last.next) {
+                    int k = last.hash & sizeMask;
+                    if (k != lastIdx) {
+                        lastIdx = k;
+                        lastRun = last;
+                    }
+                }
+                // 将 lastRun 及其之后的所有节点组成的这个链表放到 lastIdx 这个位置
+                newTable[lastIdx] = lastRun;
+                // 下面的操作是处理 lastRun 之前的节点，
+                //    这些节点可能分配在另一个链表中，也可能分配到上面的那个链表中
+                for (HashEntry<K,V> p = e; p != lastRun; p = p.next) {
+                    V v = p.value;
+                    int h = p.hash;
+                    int k = h & sizeMask;
+                    HashEntry<K,V> n = newTable[k];
+                    newTable[k] = new HashEntry<K,V>(h, p.key, v, n);
+                }
+            }
+        }
+    }
+    // 将新来的 node 放到新数组中刚刚的 两个链表之一 的 头部
+    int nodeIndex = node.hash & sizeMask; // add the new node
+    node.setNext(newTable[nodeIndex]);
+    newTable[nodeIndex] = node;
+    table = newTable;
+}
+```
+
+
+
+对于写操作，并不要求同时获取所有`Segment`的锁，因为那样相当于锁住了整个Map。它会先获取该Key-Value对所在的Segment的锁，获取成功后就可以像操作一个普通的HashMap一样操作该Segment，并保证该Segment的安全性。
+
+首先也是先通过key的hash定位到具体的segment， 与HashMap不同的是，ConcurrentHashMap会在put之前就进行一次扩容校验。HashMap 是插入元素之后再看是否需要扩容，有可能扩容之后后续就没有插入就浪费了本次扩容(扩容非常消耗性能
+
+
 
 #### size方法
 
@@ -128,13 +302,7 @@ static class Node<K,V> implements Map.Entry<K,V> {
         this.val = val;
         this.next = next;
     }
-
-    public final K getKey()       { return key; }
-    public final V getValue()     { return val; }
-    public final int hashCode()   { return key.hashCode() ^ val.hashCode(); }
-    public final String toString(){ return key + "=" + val; }
-    public final V setValue(V value) {
-        throw new UnsupportedOperationException();
+	// .......
 }
 ```
 
