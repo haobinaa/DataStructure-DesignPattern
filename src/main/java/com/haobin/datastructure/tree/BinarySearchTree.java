@@ -22,9 +22,32 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         return 0;
     }
 
+    private int size(BinaryNode<T> subtree) {
+        if (subtree == null) {
+            return 0;
+        } else {
+            // 类似于汉诺塔问题
+            return size(subtree.left) +1 + size(subtree.right);
+        }
+    }
+
     @Override
     public int height() {
         return 0;
+    }
+
+    /**
+     * 递归求深度
+     * @param subtree 子树
+     */
+    private int height(BinaryNode<T> subtree) {
+        if (subtree == null) {
+            return 0;
+        } else {
+            int l = height(subtree.left);
+            int r = height(subtree.right);
+            return l > r ? (l+1) : (r+1); // 返回并加上当前层
+        }
     }
 
     @Override
@@ -76,11 +99,12 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     /**
      * 1. 如果是叶子节点则直接删除
      * 2. 拥有一个子节点，则直接用孩子节点替换
-     * 3. 有两个子节点，找到右子树最小节点替换
+     * 3. 有两个子节点，找到右子树最小节点替换，并递归删除用于替换的节点
      */
     private BinaryNode<T> remove(T data, BinaryNode<T> p) {
+        // 没有找到对应的节点，则结束递归
         if (p == null) {
-            return p;
+            return null;
         }
         int compareResult = data.compareTo(p.data);
         if (compareResult < 0) {
@@ -90,7 +114,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         } else if (p.left != null && p.right != null) { // 两个子节点情况
             // 右子树的最小元素来替换(中继替换)
             p.data = findMin(p.right).data;
-            // 移除节点
+            // 从右子树中移除用于替换的节点
             p.right = remove(p.data, p.right);
         } else {   // 一个子节点情况
             p = (p.left != null) ? p.left : p.right;
