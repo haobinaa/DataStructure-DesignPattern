@@ -22,11 +22,14 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         return 0;
     }
 
+    /**
+     * 递归求 size
+     */
     private int size(BinaryNode<T> subtree) {
         if (subtree == null) {
             return 0;
         } else {
-            // 类似于汉诺塔问题
+            // 递推式和汉诺塔很像
             return size(subtree.left) +1 + size(subtree.right);
         }
     }
@@ -52,7 +55,17 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
 
     @Override
     public String preOrder() {
-        return null;
+        return preOrder(root);
+    }
+
+    private String preOrder(BinaryNode<T> subTree) {
+        StringBuffer sb = new StringBuffer();
+        if (subTree != null) {
+            sb.append(subTree.data).append(",");
+            sb.append(preOrder(subTree.left));
+            sb.append(preOrder(subTree.right));
+        }
+        return sb.toString();
     }
 
     @Override

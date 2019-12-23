@@ -19,6 +19,8 @@
 - [查找算法:二分查找|跳表](./docs/datastructure/Search.md)
 - [散列](./docs/datastructure/HashTable.md)
 - [树|二叉查找树](./docs/datastructure/Tree.md)
+- [二叉树对应的实现](src/main/java/com/haobin/datastructure/tree/BinarySearchTree.java)
+- [平衡二叉树对应的实现](src/main/java/com/haobin/datastructure/tree/AVLTree.java)
 - [B-Tree](./docs/datastructure/B-Tree.md)
 - [B+Tree](./docs/datastructure/B+Tree.md)
 - [红黑树](./docs/datastructure/RedBlackTree.md)
