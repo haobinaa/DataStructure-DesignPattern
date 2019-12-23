@@ -12,4 +12,22 @@ package com.haobin.algorithm;
  **/
 public class Hanoi {
 
+
+    /**
+     * 递推公式为:
+     * H(n) = 0  n=0
+     *      = H(n-1) + 1 + H(n-1) n>= 1  (将上层的取出来，然后将最底下大的放好，在将上层的移回来)
+     * @param args
+     */
+    public static void main(String[] args) {
+        System.out.println(hanno(1));
+    }
+
+    private static int hanno(int n) {
+        if (n == 0) {
+            return 0;
+        } else {
+            return hanno(n-1)*2 + 1;
+        }
+    }
 }
