@@ -57,6 +57,10 @@
 - [19-删除排序链表重复节点](src/main/java/com/haobin/offer/PrintOneToMaxOfN.java)
 - [20-正则表达式匹配](src/main/java/com/haobin/offer/RegexMatch.java)
 
+#### leetcode
+
+- [两数之和](src/main/java/com/haobin/leetcode/TwoSum.java)
+- [三数之和](src/main/java/com/haobin/leetcode/ThreeSum.java)
 
 #### 设计模式
 
