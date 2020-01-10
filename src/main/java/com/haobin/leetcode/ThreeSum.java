@@ -23,22 +23,78 @@ import java.util.List;
 public class ThreeSum {
 
     /**
-     * 1. 排序
-     * 2. 转换成 num[i] + num[j] = -num[k] ， 求两数之和
+     * 暴力解法
      * @param nums
      * @return
      */
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> threeSum1(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < nums.length - 2; i++) {
+            for (int j = i+1; j < nums.length-1; j++) {
+                for (int k = j+1; k < nums.length; k++) {
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                       List<Integer> resolveList = new ArrayList<>();
+                       resolveList.add(nums[i]);
+                       resolveList.add(nums[j]);
+                       resolveList.add(nums[k]);
+                       result.add(resolveList);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 1. 排序
+     * 2. 遍历数组
+     * 2.1 令左右指针分指向数组两端， L 指向 i+1 R 指向 num.length-1, 然后计算三数之和 sum
+     * 2.1.1 若 num[i] > 0 则必不可能在后面出现三数之和为0(已经是有序数组了)
+     * 2.1.2 若 num[i] == num[i-1], 则说明数字重复， 会导致结果重复， 跳过
+     * 2.1.3 若 sum == 0, num[L] == num[L+1] 会导致结果重复，应该跳过, L++
+     * 2.1.4 若 sum == 0, num[R] == num[R-1] 会导致结果重复, 应跳过， R--
+     */
+    public  List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 2; i++) {
-
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                break;
+            }
+            // 重复
+            if (i > 0 && nums[i] == nums[i-1]) {
+                continue;
+            }
+            int l = i + 1;
+            int r = nums.length-1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[l], nums[r]));
+                    while (l<r && nums[l] == nums[l+1]) {
+                        l++;
+                    }
+                    while (l<r && nums[r] == nums[r-1]) {
+                        r--;
+                    }
+                    l++;
+                    r--;
+                } else if (sum < 0) {
+                    l++;
+                } else if (sum > 0) {
+                    r--;
+                }
+            }
         }
         return result;
     }
 
     public static void main(String[] args) {
-
+        int[] nums = new int[]{-2,0,0,2,2};
+        ThreeSum threeSum = new ThreeSum();
+        threeSum.threeSum(nums).stream().forEach((list) -> {
+            System.out.println(Arrays.toString(list.toArray()));
+        });
     }
 
 }
