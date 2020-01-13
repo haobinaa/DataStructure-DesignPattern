@@ -43,7 +43,6 @@ public class TwoSum {
      * 解法2 使用 Hash 表存储
      * @param nums
      * @param target
-     * @return
      */
     public  int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> result = new HashMap<>();
