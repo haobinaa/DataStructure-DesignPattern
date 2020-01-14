@@ -65,6 +65,7 @@
     - [两数相加](src/main/java/com/haobin/leetcode/arrays/TwoAdd.java)
     - [最接近三数之和](src/main/java/com/haobin/leetcode/arrays/ThreeSumClosest.java)
     - [四数之和](src/main/java/com/haobin/leetcode/arrays/FourSum.java)
+    - [排序数组去重](src/main/java/com/haobin/leetcode/arrays/RemoveDuplicates.java)
 
 #### 设计模式
 
