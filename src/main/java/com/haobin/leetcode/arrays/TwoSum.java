@@ -1,4 +1,4 @@
-package com.haobin.leetcode;
+package com.haobin.leetcode.arrays;
 
 import java.util.Arrays;
 import java.util.HashMap;

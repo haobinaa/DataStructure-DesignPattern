@@ -1,9 +1,8 @@
-package com.haobin.leetcode;
+package com.haobin.leetcode.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.print.attribute.standard.JobOriginatingUserName;
 
 /**
  * @Author HaoBin
