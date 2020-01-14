@@ -27,6 +27,8 @@ public class RemoveDuplicates {
      * 2. 如果 num[i] == num[j] 则跳过
      * 3. 如果 num[i] != num[j] 则 num[j] 赋值给 num[i] 的下一位 并 i++
      * 4. 遍历完成后返回 i 指向数组的最后一个元素， 返回 i+1 即数组长度
+     *
+     * 与之类似的题： 27.移除元素(移除数组中指定元素)
      */
     public static int removeDuplicates(int[] nums) {
         int i = 0;

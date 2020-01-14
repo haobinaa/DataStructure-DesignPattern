@@ -66,6 +66,8 @@
     - [最接近三数之和](src/main/java/com/haobin/leetcode/arrays/ThreeSumClosest.java)
     - [四数之和](src/main/java/com/haobin/leetcode/arrays/FourSum.java)
     - [排序数组去重](src/main/java/com/haobin/leetcode/arrays/RemoveDuplicates.java)
+- 字符串
+    - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
 
 #### 设计模式
 
