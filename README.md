@@ -66,8 +66,13 @@
     - [最接近三数之和](src/main/java/com/haobin/leetcode/arrays/ThreeSumClosest.java)
     - [四数之和](src/main/java/com/haobin/leetcode/arrays/FourSum.java)
     - [排序数组去重](src/main/java/com/haobin/leetcode/arrays/RemoveDuplicates.java)
+    - [两个有序数组的中位数](src/main/java/com/haobin/leetcode/arrays/FindMedianSortedArray.java)
 - 字符串
     - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
+- 链表
+    - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
+- 动态规划
+    - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
 
 #### 设计模式
 
