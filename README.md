@@ -68,6 +68,7 @@
     - [排序数组去重](src/main/java/com/haobin/leetcode/arrays/RemoveDuplicates.java)
     - [两个有序数组的中位数](src/main/java/com/haobin/leetcode/arrays/FindMedianSortedArray.java)
     - [数组最大连续子序列](src/main/java/com/haobin/leetcode/arrays/MaxSubArray.java)
+    - [只出现一次的数字(可用位运算方式)](src/main/java/com/haobin/leetcode/arrays/MaxSubArray.java)
 - 字符串
     - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
 - 链表
