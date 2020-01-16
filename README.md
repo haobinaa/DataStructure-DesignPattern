@@ -71,6 +71,7 @@
     - [只出现一次的数字(可用位运算方式)](src/main/java/com/haobin/leetcode/arrays/MaxSubArray.java)
     - [寻找最短无序子数组](src/main/java/com/haobin/leetcode/arrays/FindUnsortedSubArray.java)
     - [移动0](src/main/java/com/haobin/leetcode/arrays/MoveZeroes.java)
+    - [消失的数字](src/main/java/com/haobin/leetcode/arrays/FindDisappearedNumbers.java)
 - 字符串
     - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
 - 链表
@@ -83,6 +84,7 @@
     -[最小栈](/src/main/java/com/haobin/leetcode/stack/MinStack.java)
 - 动态规划
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
+    - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
 
 #### 设计模式
 

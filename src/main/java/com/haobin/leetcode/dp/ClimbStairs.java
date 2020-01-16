@@ -8,7 +8,7 @@ package com.haobin.leetcode.dp;
 public class ClimbStairs {
 
     /**
-     * 递归解法(leetcode 上显示超时)
+     * 动态规划解法(leetcode 上显示超时)
      */
     public int climbStairs1(int n) {
         if (n < 3) {
