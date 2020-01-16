@@ -70,12 +70,14 @@
     - [数组最大连续子序列](src/main/java/com/haobin/leetcode/arrays/MaxSubArray.java)
     - [只出现一次的数字(可用位运算方式)](src/main/java/com/haobin/leetcode/arrays/MaxSubArray.java)
     - [寻找最短无序子数组](src/main/java/com/haobin/leetcode/arrays/FindUnsortedSubArray.java)
+    - [移动0](src/main/java/com/haobin/leetcode/arrays/MoveZeroes.java)
 - 字符串
     - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
 - 链表
     - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
     - [链表是否有环](src/main/java/com/haobin/leetcode/linkedlist/HasCycle.java)
     - [查找链表的交点](src/main/java/com/haobin/leetcode/linkedlist/GetInterSectionNode.java)
+    - [判断是否是回文链表](src/main/java/com/haobin/leetcode/linkedlist/PalindromeLinkedList.java)
 - 栈
     - [有效的括号](/src/main/java/com/haobin/leetcode/stack/ValidBrackets.java)
     -[最小栈](/src/main/java/com/haobin/leetcode/stack/MinStack.java)
