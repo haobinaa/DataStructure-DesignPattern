@@ -1,5 +1,7 @@
 package com.haobin.leetcode.arrays;
 
+import java.util.Arrays;
+
 /**
  * @Author HaoBin
  * @Create 2020/1/16 9:22
@@ -27,23 +29,43 @@ public class FindUnsortedSubArray {
      * 左区间num[0, r] 都小于 min
      * 右区间[l, n-1] 都大于 max
      */
-    public int findUnsortedSubarray(int[] nums) {
+    public int findUnsortedSubarray1(int[] nums) {
         int len = nums.length;
         int max = nums[0];
         int min = nums[len-1];
         int l = 0, r = -1;
-        for(int i=0;i<len;i++){
-            if(max>nums[i]){
+        // 有边界之后的元素都大于max， 找到max位置
+        for (int i = 0; i < nums.length; i++) {
+            if (max > nums[i]) {
                 r = i;
-            }else{
                 max = nums[i];
             }
-            if(min<nums[len-i-1]){
-                l = len-i-1;
-            }else{
-                min = nums[len-i-1];
+        }
+        for (int i = nums.length-1; i >= 0 ; i--) {
+            // 左边界都小于 min， 找到 min 位置
+            if (min < nums[i]) {
+                l = i;
+                min = nums[i];
             }
         }
         return r-l+1;
+    }
+
+    /**
+     * 辅助数组为排序好的
+     * 对比两个数组不相同的地方，最左边则为左边界，最右边则为右边界
+     */
+    public int findUnsortedSubarray(int[] nums) {
+        int[] temNums = nums.clone();
+        Arrays.sort(nums);
+        int start = nums.length;
+        int end = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (temNums[i] != nums[i]) {
+                start = Math.min(start, i);
+                end = Math.max(end, i);
+            }
+        }
+        return end - start > 0 ? end - start + 1 : 0;
     }
 }
