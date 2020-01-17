@@ -21,10 +21,14 @@ public class GetInterSectionNode {
      * 1. 创建两个指针 pApA 和 pBpB，分别初始化为链表 A 和 B 的头结点。然后让它们向后逐结点遍历。
      * 2. 当 pApA 到达链表的尾部时，将它重定位到链表 B 的头结点; 类似的，当 pBpB 到达链表的尾部时，将它重定位到链表 A 的头结点。
      * 3. 若在某一时刻 pApA 和 pBpB 相遇，则 pA/pB 为相交结点
+     * 这个思路的精髓就是，双指针走同样的距离消除长度差
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode pA = headA;
         ListNode pB = headB;
+        // 这里就算没有交点也会最终在两个都走到对方的尾部后退出循环
+        // 此时 D(A) = L(A) + L(B) , D(B) = L(B) + L(A)
+        // 这个循环写的很巧妙
         while (pA != pB) {
             pA = pA == null ? headB : pA.next;
             pB = pB == null ? headA : pB.next;
