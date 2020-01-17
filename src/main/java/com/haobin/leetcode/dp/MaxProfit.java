@@ -1,5 +1,8 @@
 package com.haobin.leetcode.dp;
 
+import java.util.EnumMap;
+import java.util.Enumeration;
+
 /**
  * @Author HaoBin
  * @Create 2020/1/15 11:57
@@ -19,11 +22,20 @@ package com.haobin.leetcode.dp;
 public class MaxProfit {
 
     /**
-     * 动态规划
+     * 暴力解法
      */
-    public int maxProfit(int[] prices) {
+    public int maxProfit1(int[] prices) {
+        int maxProfit = 0;
         for (int i = 0; i < prices.length; i++) {
+            for (int j = i+1; j < prices.length; j++) {
+                int profit = prices[j] - prices[i];
+                if (profit > maxProfit) {
+                    maxProfit = profit;
+                }
+            }
         }
-        return 1;
+        return maxProfit;
     }
+
+
 }

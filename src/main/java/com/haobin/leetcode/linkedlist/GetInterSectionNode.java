@@ -1,6 +1,7 @@
 package com.haobin.leetcode.linkedlist;
 
 import com.haobin.leetcode.linkedlist.ReverseList.ListNode;
+import java.util.List;
 
 /**
  * @Author HaoBin
@@ -12,16 +13,22 @@ import com.haobin.leetcode.linkedlist.ReverseList.ListNode;
 public class GetInterSectionNode {
 
     /**
-     * 如果两个链表相交，那么相交之后的长度是相等的
-     * 那么如果让两个链表距离链表末尾相等距离的位置开始遍历就可以找到，这个距离只能是短链表的长度
-     * 做法就是需要消除 A，B 链表的长度差
-     * 1. 指针 pA 指向 A 链表，指针 pB 指向 B 链表，依次往后遍历
-     * 2. 如果 pA 到了末尾，则 pA = headB 继续遍历
-     * 3. 如果 pB 到了末尾，则 pB = headA 继续遍历
-     * 4. 比较长的链表指针指向较短链表head时，长度差就消除了
+     * 暴力解法，对 A 的每个节点都遍历 B 看是否有相同节点。 时间复杂度 O(mn)
+     * hash解法: 存储 A 的每个节点的引用， 遍历 B 看是否能映射到 hash 表的同一个位置。 时间复杂度 O(m+n)
+     *
+     *
+     * 双指针法消除长度差：
+     * 1. 创建两个指针 pApA 和 pBpB，分别初始化为链表 A 和 B 的头结点。然后让它们向后逐结点遍历。
+     * 2. 当 pApA 到达链表的尾部时，将它重定位到链表 B 的头结点; 类似的，当 pBpB 到达链表的尾部时，将它重定位到链表 A 的头结点。
+     * 3. 若在某一时刻 pApA 和 pBpB 相遇，则 pA/pB 为相交结点
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode intersecVal = null;
-        return intersecVal;
+        ListNode pA = headA;
+        ListNode pB = headB;
+        while (pA != pB) {
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
+        }
+        return pA;
     }
 }
