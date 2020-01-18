@@ -37,5 +37,9 @@ public class MaxProfit {
         return maxProfit;
     }
 
+    // todo 寻找更优解
+    public int maxProfit(int[] prices) {
+        return 1;
+    }
 
 }

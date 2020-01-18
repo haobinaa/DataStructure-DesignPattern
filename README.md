@@ -72,6 +72,7 @@
     - [寻找最短无序子数组](src/main/java/com/haobin/leetcode/arrays/FindUnsortedSubArray.java)
     - [移动0](src/main/java/com/haobin/leetcode/arrays/MoveZeroes.java)
     - [消失的数字](src/main/java/com/haobin/leetcode/arrays/FindDisappearedNumbers.java)
+    - [多数元素](src/main/java/com/haobin/leetcode/arrays/MajorElement.javad)
 - 字符串
     - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
 - 链表
