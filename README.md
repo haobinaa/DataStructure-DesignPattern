@@ -86,6 +86,8 @@
 - 动态规划
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
+- 树
+    -[对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
 
 #### 设计模式
 
