@@ -34,6 +34,7 @@
 
 
 #### 剑指offer
+
 - [删除链表倒数第N个节点](src/main/java/com/haobin/offer/DeleteLastNNode.java)
 - [3-数组中重复的数字](src/main/java/com/haobin/offer/DuplicateNumInArray.java)
 - [4-判断数是否在二维数组中](src/main/java/com/haobin/offer/NumInDimensionalArray.java)
@@ -87,8 +88,9 @@
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
 - 树
-    -[对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
-    -[反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
+    - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
+    - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
+    - [路径和](/src/main/java/com/haobin/leetcode/tree/PathSum.java)
 
 #### 设计模式
 
