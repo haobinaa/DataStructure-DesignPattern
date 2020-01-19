@@ -74,8 +74,10 @@
     - [移动0](src/main/java/com/haobin/leetcode/arrays/MoveZeroes.java)
     - [消失的数字](src/main/java/com/haobin/leetcode/arrays/FindDisappearedNumbers.java)
     - [多数元素](src/main/java/com/haobin/leetcode/arrays/MajorElement.java)
+    - [盛水最多的容器](src/main/java/com/haobin/leetcode/arrays/MaxArea.java)
 - 字符串
-    - [最长无重复子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
+    - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
+    - [最长回文子串(待完成)](src/main/java/com/haobin/leetcode/string/LongestSubPalindrome.java)
 - 链表
     - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
     - [链表是否有环](src/main/java/com/haobin/leetcode/linkedlist/HasCycle.java)
