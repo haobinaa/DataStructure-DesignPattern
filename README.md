@@ -88,6 +88,7 @@
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
 - 树
     -[对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
+    -[反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
 
 #### 设计模式
 
