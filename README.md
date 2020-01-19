@@ -91,6 +91,9 @@
     - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
     - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
     - [路径和](/src/main/java/com/haobin/leetcode/tree/PathSum.java)
+    - [合并二叉树](/src/main/java/com/haobin/leetcode/tree/MergeBinaryTree.java)
+    - [二叉树转累加树](/src/main/java/com/haobin/leetcode/tree/CovertBst.java)
+    - [二叉树的直径](/src/main/java/com/haobin/leetcode/tree/DiameterOfBinaryTree.java)
 
 #### 设计模式
 
