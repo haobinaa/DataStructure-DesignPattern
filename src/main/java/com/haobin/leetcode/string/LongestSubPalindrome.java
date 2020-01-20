@@ -16,20 +16,82 @@ package com.haobin.leetcode.string;
 public class LongestSubPalindrome {
 
     /**
-     * 将字符串反转， 与之比较找出最长公共子穿
-     * 需要考虑的情况是，源字符串存在反向副本的情况：S=abacdfgdcaba 反转后 S1=abacdgfdcaba
-     * 最长子穿是一个对称副本: abacd, 但并不是回文的
-     *
-     * 针对这种情况：
-     * 每当我们找到最长的公共子串的候选项时，都需要检查子串的索引是否与反向子串的原始索引相同。
-     * 如果相同，那么我们尝试更新目前为止找到的最长回文子串；如果不是，我们就跳过这个候选项并继续寻找下一个候选。
-     *
-     * 动态规划求最长公共子串
+     * 解法1： 暴力解法(该解法会超出时间限制)
+     * 穷举所有子串，找出最长回文子串
+     */
+    public String longestPalindrome1(String s) {
+        String ans = "";
+        int max = 0;
+        for (int i = 0; i <s.length() ; i++) {
+            for (int j = i+1; j <= s.length(); j++) {
+                String subStr = s.substring(i, j);
+                if (isPalindrome(subStr) && subStr.length() > max) {
+                    ans = subStr;
+                    max = Math.max(max, ans.length());
+                }
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 判断是否是回文
+     */
+    private boolean isPalindrome(String s) {
+        for (int i = 0; i < s.length()/2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - i -1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 动态规划：
+     * 1. 定义状态：dp[i][j] 表示子串 s[i, j] 是否为回文子串
+     * 2. 状态转移：回文串的子穿必定是回文串，并且头尾字符相等，那么状态转移方程是
+     * => d[i][j] = (s[i] == s[j]) && d[i+1][j-1]  头尾字符相等，并且子串也是回文
+     * 这里需要注意两点:
+     * (1) i <=j , 所以在动态规划的二维表格中， 只需要填写上半部分即可
+     * (2) dp[i+1][j-1] 的边界条件： [i+1, j-1]不构成一个区间，即子串长度小于2 (j-1) - (i+1) + 1 < 2 ===> j-i<3
+     * 综上， 当 s[i] == s[j] 并且 j-i<3 的时候，d[i][j] 是回文
+     * 3. 初始化
+     * 4. 输出， 当 d[i][j] 为回文，就可以得出 s[i,j] 的长度
      *
      */
     public String longestPalindrome(String s) {
-        String reverse = new StringBuffer(s).reverse().toString();
-
-        return null;
+        int len = s.length();
+        if (len < 2) {
+            return s;
+        }
+        boolean[][] dp = new boolean[len][len];
+        // 初始化动态规划表格
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+        int maxLen = 1;
+        int start = 0;
+        for (int j = 1; j < len; j++) {
+            for (int i = 0; i < j; i++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (j - i < 3) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i+1][j-1];
+                    }
+                } else {
+                    dp[i][j] = false;
+                }
+                if (dp[i][j]) {
+                    int curLen = j - i + 1;
+                    if (curLen > maxLen) {
+                        maxLen = curLen;
+                        start = i;
+                    }
+                }
+            }
+        }
+        return s.substring(start, start+maxLen);
     }
+
 }
