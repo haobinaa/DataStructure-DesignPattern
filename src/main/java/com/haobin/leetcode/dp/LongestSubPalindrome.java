@@ -1,4 +1,4 @@
-package com.haobin.leetcode.string;
+package com.haobin.leetcode.dp;
 
 /**
  * @Author HaoBin
@@ -59,7 +59,7 @@ public class LongestSubPalindrome {
      * 4. 输出， 当 d[i][j] 为回文，就可以得出 s[i,j] 的长度
      *
      */
-    public String longestPalindrome(String s) {
+    public String longestPalindrome2(String s) {
         int len = s.length();
         if (len < 2) {
             return s;
@@ -92,6 +92,13 @@ public class LongestSubPalindrome {
             }
         }
         return s.substring(start, start+maxLen);
+    }
+
+    /**
+     * todo 中心扩散解法
+     */
+    public String longestPalindrome3(String s) {
+        return s;
     }
 
 }

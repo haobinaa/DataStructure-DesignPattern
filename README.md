@@ -77,7 +77,7 @@
     - [盛水最多的容器](src/main/java/com/haobin/leetcode/arrays/MaxArea.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
-    - [最长回文子串(待完成)](src/main/java/com/haobin/leetcode/string/LongestSubPalindrome.java)
+    - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
 - 链表
     - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
     - [链表是否有环](src/main/java/com/haobin/leetcode/linkedlist/HasCycle.java)
@@ -89,6 +89,7 @@
 - 动态规划
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
+    - [最长回文子串](src/main/java/com/haobin/leetcode/string/LongestSubPalindrome.java)
 - 树
     - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
     - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
