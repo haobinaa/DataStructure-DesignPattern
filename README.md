@@ -75,9 +75,11 @@
     - [消失的数字](src/main/java/com/haobin/leetcode/arrays/FindDisappearedNumbers.java)
     - [多数元素](src/main/java/com/haobin/leetcode/arrays/MajorElement.java)
     - [盛水最多的容器](src/main/java/com/haobin/leetcode/arrays/MaxArea.java)
+    - [排序数组中搜索元素的第一个和最后一个位置](src/main/java/com/haobin/leetcode/arrays/SearchRange.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
+    - [生成括号(回溯)](src/main/java/com/haobin/leetcode/string/GenerateParenthesis.java)
 - 链表
     - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
     - [链表是否有环](src/main/java/com/haobin/leetcode/linkedlist/HasCycle.java)
