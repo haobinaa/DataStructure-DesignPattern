@@ -38,7 +38,7 @@ public class IsValidBST {
 
 
     public boolean isValidBST(TreeNode root) {
-
+        return true;
     }
 
     /**
@@ -48,6 +48,6 @@ public class IsValidBST {
         if (root == null) {
             return true;
         }
-
+        return true;
     }
 }
