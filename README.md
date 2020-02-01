@@ -101,6 +101,7 @@
     - [合并二叉树](/src/main/java/com/haobin/leetcode/tree/MergeBinaryTree.java)
     - [二叉树转累加树](/src/main/java/com/haobin/leetcode/tree/CovertBst.java)
     - [二叉树的直径](/src/main/java/com/haobin/leetcode/tree/DiameterOfBinaryTree.java)
+    - [二叉树的最大深度](/src/main/java/com/haobin/leetcode/tree/BinaryTreeMaxDepth.java)
 
 #### 设计模式
 

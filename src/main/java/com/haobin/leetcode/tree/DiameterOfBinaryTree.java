@@ -21,19 +21,19 @@ import com.haobin.leetcode.tree.SymmetricBinaryTree.TreeNode;
  *
  * 注意：两结点之间的路径长度是以它们之间边的数目表
  *
-
  **/
 public class DiameterOfBinaryTree {
 
+    int max = 0;
 
     /**
-     * 思路： 左子树的最大遍历长度+右子树的最大遍历长度
+     * 思路： 对于每个节点来说，直径 = 左子树深度 + 右子树深度
+     * 那就遍历每个节点，找出最大深度
      * 使用深度优先搜索
      */
     public int diameterOfBinaryTree(TreeNode root) {
-        int ans = 1;
-        ans = depth(root);
-        return ans - 1;
+       depth(root);
+       return max;
     }
 
     private int depth(TreeNode root) {
@@ -42,6 +42,8 @@ public class DiameterOfBinaryTree {
         }
         int L = depth(root.left);
         int R = depth(root.right);
+        // 保存节点中最大的直径
+        max = Math.max(L + R, max);
         return Math.max(L, R) + 1;
     }
 }
