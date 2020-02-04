@@ -96,6 +96,9 @@
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
     - [最长回文子串](src/main/java/com/haobin/leetcode/dp/LongestSubPalindrome.java)
     - [比特计数](src/main/java/com/haobin/leetcode/dp/CountBits.java)
+- 回溯
+    - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
+    - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
 - 树
     - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
     - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
