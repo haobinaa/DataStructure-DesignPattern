@@ -78,6 +78,7 @@
     - [排序数组中搜索元素的第一个和最后一个位置](src/main/java/com/haobin/leetcode/arrays/SearchRange.java)
     - [下一个更大排序](src/main/java/com/haobin/leetcode/arrays/NextPermutation.java)
     - [子集](src/main/java/com/haobin/leetcode/arrays/SubSet.java)
+    - [旋转图像](src/main/java/com/haobin/leetcode/arrays/RotatePicture.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
@@ -107,6 +108,7 @@
     - [二叉树转累加树](/src/main/java/com/haobin/leetcode/tree/CovertBst.java)
     - [二叉树的直径](/src/main/java/com/haobin/leetcode/tree/DiameterOfBinaryTree.java)
     - [二叉树的最大深度](/src/main/java/com/haobin/leetcode/tree/BinaryTreeMaxDepth.java)
+    - [二叉树展开为链表](/src/main/java/com/haobin/leetcode/tree/Flatten.java)
 
 #### 设计模式
 
