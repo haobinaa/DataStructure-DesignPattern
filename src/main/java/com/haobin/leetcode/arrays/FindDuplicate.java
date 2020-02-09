@@ -1,5 +1,7 @@
 package com.haobin.leetcode.arrays;
 
+import java.util.Arrays;
+
 /**
  * @Author HaoBin
  * @Create 2020/2/6 22:56
@@ -20,4 +22,40 @@ package com.haobin.leetcode.arrays;
  **/
 public class FindDuplicate {
 
+
+    public int findDuplicate1(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i+1]) {
+                return nums[i];
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * 抽屉原理， 二分查找
+     */
+    public int findDuplicate(int[] nums) {
+        int len = nums.length;
+        int left = 1;
+        int right = len - 1;
+        while (left < right) {
+            int middle = (left + right) / 2;
+            int count = 0;
+            for (int i = 0; i < len; i++) {
+                if (nums[i] <= middle) {
+                    count++;
+                }
+            }
+            if (count > middle) {
+                // 多于 middle 个数， 重复区间就是 [left, middle]
+                right = middle;
+            } else {
+                // 重复的数位于 [middle+1, right]
+                left = middle + 1;
+            }
+        }
+        return left;
+    }
 }

@@ -79,6 +79,9 @@
     - [下一个更大排序](src/main/java/com/haobin/leetcode/arrays/NextPermutation.java)
     - [子集](src/main/java/com/haobin/leetcode/arrays/SubSet.java)
     - [旋转图像](src/main/java/com/haobin/leetcode/arrays/RotatePicture.java)
+    - [寻找重复数](src/main/java/com/haobin/leetcode/arrays/FindDuplicate.java)
+    - [第K大的元素](src/main/java/com/haobin/leetcode/arrays/FindKthLargest.java)
+    - [前K个高频元素](src/main/java/com/haobin/leetcode/arrays/TopKFrequent.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
