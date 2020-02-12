@@ -1,6 +1,11 @@
 package com.haobin.datastructure.sort;
 
 /**
+ *
+ * 堆的结构特性:
+ * 1. 满足是一个满二叉树(除了叶子节点不能有空节点)
+ * 2. 满足所有父节点大于等于或小于等于子节点
+ *
  * 堆排序
  * 大顶堆： 每个节点都大于孩子节点，即:arr[i] > arr[2i+1] && arr[i] > arr[2i+2]
  *
@@ -13,8 +18,6 @@ package com.haobin.datastructure.sort;
  * @Date 2017/12/26 9:02
  */
 public class HeapSort {
-
-
 
 
 

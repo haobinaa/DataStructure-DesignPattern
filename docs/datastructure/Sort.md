@@ -179,6 +179,7 @@ p >= r
 
 #### 堆排序  
 
+
 堆的特性:
 - 堆是一个完全二叉树
 - 堆中的每一个节点的值必须大于等于(或者小于等于)其子树每个节点的值(大顶堆和小顶堆)
@@ -210,7 +211,7 @@ public class Heap {
     if (count >= n) return; // 堆满了
     ++count;
     a[count] = data;
-    int i = count;~~~~
+    int i = count;
     while (i/2 > 0 && a[i] > a[i/2]) { // 自下往上堆化
       swap(a, i, i/2); // swap() 函数作用：交换下标为 i 和 i/2 的两个元素
       i = i/2;
@@ -219,6 +220,9 @@ public class Heap {
  }
 
 ```
+
+- [代码实现堆排序](../../src/main/java/com/haobin/datastructure/sort/HeapSort.java)
+- [堆数据结构](../../src/main/java/com/haobin/datastructure/Heap.java)
 
 
 
