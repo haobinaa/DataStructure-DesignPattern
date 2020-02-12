@@ -113,6 +113,8 @@
     - [二叉树的直径](/src/main/java/com/haobin/leetcode/tree/DiameterOfBinaryTree.java)
     - [二叉树的最大深度](/src/main/java/com/haobin/leetcode/tree/BinaryTreeMaxDepth.java)
     - [二叉树展开为链表](/src/main/java/com/haobin/leetcode/tree/Flatten.java)
+    - [从先序和中序构建二叉树](/src/main/java/com/haobin/leetcode/tree/BuildTree.java)
+    - [二叉树层次遍历](/src/main/java/com/haobin/leetcode/tree/LevelOrder.java)
 
 #### 设计模式
 
