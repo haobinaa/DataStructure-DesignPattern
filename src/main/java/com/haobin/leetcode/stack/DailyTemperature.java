@@ -31,7 +31,7 @@ public class DailyTemperature {
         Stack<Integer> stack = new Stack<>();
         //从后往前遍历
         for (int i = T.length-1; i >= 0; i--) {
-            while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
+            while (!stack.isEmpty() && T[i] >= T[stack.peek()]) {
                 stack.pop();
             }
             ans[i] = stack.isEmpty() ? 0 : stack.peek()-i;
