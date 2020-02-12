@@ -96,6 +96,7 @@
 - 栈
     - [有效的括号](/src/main/java/com/haobin/leetcode/stack/ValidBrackets.java)
     -[最小栈](/src/main/java/com/haobin/leetcode/stack/MinStack.java)
+    -[每日温度](/src/main/java/com/haobin/leetcode/stack/DailyTemperature.java)
 - 动态规划
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
@@ -115,6 +116,7 @@
     - [二叉树展开为链表](/src/main/java/com/haobin/leetcode/tree/Flatten.java)
     - [从先序和中序构建二叉树](/src/main/java/com/haobin/leetcode/tree/BuildTree.java)
     - [二叉树层次遍历](/src/main/java/com/haobin/leetcode/tree/LevelOrder.java)
+    - [最近的公共父节点](/src/main/java/com/haobin/leetcode/tree/LevelOrder.java)
 
 #### 设计模式
 
