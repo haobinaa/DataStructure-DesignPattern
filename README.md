@@ -99,6 +99,7 @@
     - [有效的括号](/src/main/java/com/haobin/leetcode/stack/ValidBrackets.java)
     -[最小栈](/src/main/java/com/haobin/leetcode/stack/MinStack.java)
     -[每日温度](/src/main/java/com/haobin/leetcode/stack/DailyTemperature.java)
+    -[字符串解码](/src/main/java/com/haobin/leetcode/stack/DecodeString.java)
 - 动态规划
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
@@ -106,7 +107,7 @@
     - [比特计数](src/main/java/com/haobin/leetcode/dp/CountBits.java)
 - 回溯
     - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
-    - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
+    - [搜索单词](src/main/java/com/haobin/leetcode/dfs/Permute.java)
 - 树
     - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
     - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
