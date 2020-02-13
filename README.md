@@ -82,6 +82,7 @@
     - [寻找重复数](src/main/java/com/haobin/leetcode/arrays/FindDuplicate.java)
     - [第K大的元素](src/main/java/com/haobin/leetcode/arrays/FindKthLargest.java)
     - [前K个高频元素](src/main/java/com/haobin/leetcode/arrays/TopKFrequent.java)
+    - [颜色分类](src/main/java/com/haobin/leetcode/arrays/SortColor.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
@@ -93,6 +94,7 @@
     - [判断是否是回文链表](src/main/java/com/haobin/leetcode/linkedlist/PalindromeLinkedList.java)
     - [删除链表倒数第N个节点](src/main/java/com/haobin/leetcode/linkedlist/RemoveNthFromEnd.java)
     - [排序链表](src/main/java/com/haobin/leetcode/linkedlist/SortList.java)
+    - [链表环的入口](src/main/java/com/haobin/leetcode/linkedlist/DetectCycle.java)
 - 栈
     - [有效的括号](/src/main/java/com/haobin/leetcode/stack/ValidBrackets.java)
     -[最小栈](/src/main/java/com/haobin/leetcode/stack/MinStack.java)
