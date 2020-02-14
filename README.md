@@ -85,6 +85,7 @@
     - [颜色分类](src/main/java/com/haobin/leetcode/arrays/SortColor.java)
     - [合并重叠区间](src/main/java/com/haobin/leetcode/arrays/MergeIntervals.java)
     - [搜索矩阵](src/main/java/com/haobin/leetcode/arrays/SearchMatrix.java)
+    - [搜索排序旋转数组](src/main/java/com/haobin/leetcode/arrays/SearchRotation.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
