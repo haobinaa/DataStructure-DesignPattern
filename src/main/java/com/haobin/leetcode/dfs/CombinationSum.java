@@ -1,6 +1,11 @@
 package com.haobin.leetcode.dfs;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 
 /**
@@ -36,7 +41,34 @@ import org.springframework.core.annotation.AnnotationUtils;
  **/
 public class CombinationSum {
 
+    private List<List<Integer>> ans = new ArrayList<>();
+    private int[] candidates;
+    private int len;
+
+    private void findCombinationSum(int residue, int start, Stack<Integer> pre) {
+        if (residue == 0) {
+            ans.add(new ArrayList<>(pre));
+            return;
+        }
+        // 剩余的数小于0,代表没必要进行下去了
+        for (int i = start; i < len && residue - candidates[i] > 0; i++) {
+            pre.add(candidates[i]);
+            // 回溯
+            findCombinationSum(residue-candidates[i], i, pre);
+            pre.pop();
+        }
+    }
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        int len = candidates.length;
+        if (len == 0) {
+            return ans;
+        }
+        // 排序顺便去重
+        Arrays.sort(candidates);
+        this.len = len;
+        this.candidates = candidates;
+        findCombinationSum(target, 0, new Stack<>());
         return null;
     }
 }
