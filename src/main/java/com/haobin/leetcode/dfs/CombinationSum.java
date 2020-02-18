@@ -47,14 +47,16 @@ public class CombinationSum {
 
     private void findCombinationSum(int residue, int start, Stack<Integer> pre) {
         if (residue == 0) {
+            System.out.println(residue);
             ans.add(new ArrayList<>(pre));
             return;
         }
         // 剩余的数小于0,代表没必要进行下去了
-        for (int i = start; i < len && residue - candidates[i] > 0; i++) {
+        for (int i = start; i < len && residue - candidates[i] >= 0; i++) {
             pre.add(candidates[i]);
-            // 回溯
+            // 回溯, 元素可以重复使用，所以i继续传递下去
             findCombinationSum(residue-candidates[i], i, pre);
+            // 回退，之前的要出栈
             pre.pop();
         }
     }
@@ -69,6 +71,14 @@ public class CombinationSum {
         this.len = len;
         this.candidates = candidates;
         findCombinationSum(target, 0, new Stack<>());
-        return null;
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] candidates = {2, 3, 6, 7};
+        int target = 7;
+        CombinationSum solution = new CombinationSum();
+        List<List<Integer>> combinationSum = solution.combinationSum(candidates, target);
+        System.out.println(combinationSum);
     }
 }

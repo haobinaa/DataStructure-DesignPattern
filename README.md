@@ -90,6 +90,7 @@
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [生成括号(回溯)](src/main/java/com/haobin/leetcode/string/GenerateParenthesis.java)
+    - [异位词分组](src/main/java/com/haobin/leetcode/string/GroupAnagrams.java)
 - 链表
     - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
     - [链表是否有环](src/main/java/com/haobin/leetcode/linkedlist/HasCycle.java)
@@ -109,6 +110,8 @@
     - [最长回文子串](src/main/java/com/haobin/leetcode/dp/LongestSubPalindrome.java)
     - [比特计数](src/main/java/com/haobin/leetcode/dp/CountBits.java)
     - [不同的二叉搜索树](src/main/java/com/haobin/leetcode/dp/NumTrees.java)
+    - [最小路径和](src/main/java/com/haobin/leetcode/dp/MiniPathSum.java)
+    - [统计回文子串](src/main/java/com/haobin/leetcode/dp/CountPalindromeSubString.java)
 - 回溯
     - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
     - [搜索单词](src/main/java/com/haobin/leetcode/dfs/Permute.java)
