@@ -112,9 +112,13 @@
     - [不同的二叉搜索树](src/main/java/com/haobin/leetcode/dp/NumTrees.java)
     - [最小路径和](src/main/java/com/haobin/leetcode/dp/MiniPathSum.java)
     - [统计回文子串](src/main/java/com/haobin/leetcode/dp/CountPalindromeSubString.java)
+    - [不同路径](src/main/java/com/haobin/leetcode/dp/UniquePath.java)
+    - [完全平方数](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
 - 回溯
     - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
-    - [搜索单词](src/main/java/com/haobin/leetcode/dfs/Permute.java)
+    - [搜索单词](src/main/java/com/haobin/leetcode/dfs/SearchWord.java)
+    - [组合总和](src/main/java/com/haobin/leetcode/dfs/CombinationSum.java)
+    - [打家劫舍III](src/main/java/com/haobin/leetcode/dfs/RobII.java)
 - 树
     - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
     - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)

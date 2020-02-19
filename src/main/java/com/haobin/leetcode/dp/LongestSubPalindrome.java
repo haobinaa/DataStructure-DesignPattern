@@ -76,6 +76,7 @@ public class LongestSubPalindrome {
                 if (s.charAt(i) == s.charAt(j)) {
                     if (j - i < 3) {
                         dp[i][j] = true;
+
                     } else {
                         dp[i][j] = dp[i+1][j-1];
                     }
