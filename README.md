@@ -86,6 +86,7 @@
     - [合并重叠区间](src/main/java/com/haobin/leetcode/arrays/MergeIntervals.java)
     - [搜索矩阵](src/main/java/com/haobin/leetcode/arrays/SearchMatrix.java)
     - [搜索排序旋转数组](src/main/java/com/haobin/leetcode/arrays/SearchRotation.java)
+    - [和为K的连续子数组](src/main/java/com/haobin/leetcode/arrays/SubArraySumK.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
@@ -106,6 +107,7 @@
     -[字符串解码](/src/main/java/com/haobin/leetcode/stack/DecodeString.java)
 - 动态规划
     - [买卖股票的最佳时机](src/main/java/com/haobin/leetcode/dp/MaxProfit.java)
+    - [买卖股票的最佳时机(含冷冻期)](src/main/java/com/haobin/leetcode/dp/MaxProfitII.java)
     - [打家劫舍](src/main/java/com/haobin/leetcode/dp/Rob.java)
     - [最长回文子串](src/main/java/com/haobin/leetcode/dp/LongestSubPalindrome.java)
     - [比特计数](src/main/java/com/haobin/leetcode/dp/CountBits.java)
