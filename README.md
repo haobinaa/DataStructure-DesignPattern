@@ -92,6 +92,8 @@
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [生成括号(回溯)](src/main/java/com/haobin/leetcode/string/GenerateParenthesis.java)
     - [异位词分组](src/main/java/com/haobin/leetcode/string/GroupAnagrams.java)
+    - [最小覆盖子串](src/main/java/com/haobin/leetcode/string/MinWindow.java)
+    - [找到所有异位词](src/main/java/com/haobin/leetcode/string/FindAnagrams.java)
 - 链表
     - [反转链表](src/main/java/com/haobin/leetcode/linkedlist/ReverseList.java)
     - [链表是否有环](src/main/java/com/haobin/leetcode/linkedlist/HasCycle.java)
@@ -116,6 +118,9 @@
     - [统计回文子串](src/main/java/com/haobin/leetcode/dp/CountPalindromeSubString.java)
     - [不同路径](src/main/java/com/haobin/leetcode/dp/UniquePath.java)
     - [完全平方数](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
+    - [最长上升子序列](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
+    - [分割等和数组](src/main/java/com/haobin/leetcode/dp/CanPartition.java)
+     - [单词拆分](src/main/java/com/haobin/leetcode/string/WordBreak.java)
 - 回溯
     - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
     - [搜索单词](src/main/java/com/haobin/leetcode/dfs/SearchWord.java)

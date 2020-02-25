@@ -22,6 +22,6 @@ public class MaxProfitII {
 
 
     public int maxProfit(int[] prices) {
-
+        return 1;
     }
 }
