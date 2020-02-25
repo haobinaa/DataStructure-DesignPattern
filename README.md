@@ -120,12 +120,15 @@
     - [完全平方数](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
     - [最长上升子序列](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
     - [分割等和数组](src/main/java/com/haobin/leetcode/dp/CanPartition.java)
-     - [单词拆分](src/main/java/com/haobin/leetcode/string/WordBreak.java)
 - 回溯
     - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
     - [搜索单词](src/main/java/com/haobin/leetcode/dfs/SearchWord.java)
     - [组合总和](src/main/java/com/haobin/leetcode/dfs/CombinationSum.java)
     - [打家劫舍III](src/main/java/com/haobin/leetcode/dfs/RobII.java)
+    - [单词拆分](src/main/java/com/haobin/leetcode/string/WordBreak.java)
+    - [目标和](src/main/java/com/haobin/leetcode/dp/FindTargetSum.java)
+
+
 - 树
     - [对称二叉树](/src/main/java/com/haobin/leetcode/tree/SymmetricBinaryTree.java)
     - [反转二叉树](/src/main/java/com/haobin/leetcode/tree/InvertBinaryTree.java)
