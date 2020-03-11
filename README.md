@@ -87,6 +87,7 @@
     - [搜索矩阵](src/main/java/com/haobin/leetcode/arrays/SearchMatrix.java)
     - [搜索排序旋转数组](src/main/java/com/haobin/leetcode/arrays/SearchRotation.java)
     - [和为K的连续子数组](src/main/java/com/haobin/leetcode/arrays/SubArraySumK.java)
+    - [数组分成相等的三个部分](src/main/java/com/haobin/leetcode/arrays/ThreePartsSumEquals.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
