@@ -412,7 +412,30 @@ put方法如下:
 3. 都不满足那就按照链表的方式遍历获取值
 
 
+#### size方法
 
+不同于 1.7 的实现， 1.8的核心方法是 `sumCount`:
+``` 
+final long sumCount() {
+    CounterCell[] as = counterCells;
+     CounterCell a;
+    long sum = baseCount;
+    if (as != null) {
+        for (int i = 0; i < as.length; ++i) {
+            if ((a = as[i]) != null)
+                sum += a.value;
+        }
+    }
+    return sum;
+}
+```
+这里可以看到，当 counterCell 不是 null，就遍历元素，并和 baseCount 累加。
+`baseCount`和`counterCells`属性:
+```
+// 如果没有竞争的时候，就用这个计数器 
+private transient volatile long baseCount;
+```
+这里怎么理解呢，每次put结束都会调用`addCount`方法，会对这个变量做CAS加法，如果并发导致CAS失败，就使用`counterCell`,一直自旋到成功。
 ### 参考资料
 
 - [ConcurrentHashMap的演进](http://www.jasongj.com/java/concurrenthashmap/)
