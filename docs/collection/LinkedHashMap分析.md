@@ -90,6 +90,13 @@ protected boolean removeEldestEntry(Map.Entry<K,V> eldest) {
 ```
 
 
+利用 `LinkedHashMap` 实现一个LRU很简单，只需要重写 `removeEldestEntry` 在元素数量大于 `MAX_SIZE`时返回true就可以了:
+``` 
+protected boolean removeEldestEntry(Map.Entry eldest) {
+    return size() > MAX_ENTRIES;
+}
+```
+
 
 
 

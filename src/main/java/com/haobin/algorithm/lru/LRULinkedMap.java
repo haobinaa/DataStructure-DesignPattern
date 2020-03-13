@@ -13,6 +13,7 @@ import java.util.Map;
  * @version $Id: LRULinkedMap.java, v0.1 2019/1/10 11:30 HaoBin 
  */
 public class LRULinkedMap<K, V> extends LinkedHashMap<K, V>{
+
     private static final int MAX_ENTRIES = 3; // 最大容量
 
     /**
