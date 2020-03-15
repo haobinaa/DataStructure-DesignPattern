@@ -18,7 +18,7 @@
   */
  transient LinkedHashMap.Entry<K,V> tail;
  ```
-accessOrder 决定了顺序，默认为 false，此时维护的是插入顺序。
+accessOrder 决定了顺序，默认为 false，此时维护的是插入顺序。如果为true则是访问顺序(LRU)
 ``` 
 final boolean accessOrder;
 ```
