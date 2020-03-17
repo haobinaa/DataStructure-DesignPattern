@@ -153,11 +153,12 @@
  - [死锁案例](/src/main/java/com/haobin/codeBlock/DeadLock.java)
  - [线程间通信-交互打印奇偶数](/src/main/java/com/haobin/codeBlock/PrintOddEvenNumber.java)
  - [线程间通信-交替打印abc](/src/main/java/com/haobin/codeBlock/ThreadABC.java)
- 、
  - [缓存击穿解决方法](/src/main/java/com/haobin/codeBlock/CacheBreakdown.java)
  - [传统IO模型](/src/main/java/com/haobin/codeBlock/IOModel/ClassicServerLoop.java) 
  - [IO-reactor模式(单线程)](/src/main/java/com/haobin/codeBlock/IOModel/SingleReactor.java)
   - [IO-reactor模式(多线程)](/src/main/java/com/haobin/codeBlock/IOModel/MultiReactor.java)
+  - [redis分布式锁错误示范](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLock.java)
+  - [分布式锁概述](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLock.java)
 
 #### 处理大数据量思路
   - [统计大文件单词出现的频率](/src/main/java/com/haobin/bigdata/wordcount/WordCount.java)

@@ -1,4 +1,4 @@
-package com.haobin.codeBlock;
+package com.haobin.codeBlock.writefileio;
 
 import java.io.File;
 import java.nio.MappedByteBuffer;

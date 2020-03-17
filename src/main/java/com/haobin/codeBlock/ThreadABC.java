@@ -53,7 +53,6 @@ public class ThreadABC {
                 } else {
                     return;
                 }
-                // 代表哪个可以打印
                 threadAbc.threadCode = (threadAbc.threadCode + 1) % 3;
 
                 condition.signalAll();
