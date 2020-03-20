@@ -157,6 +157,7 @@
  - [传统IO模型](/src/main/java/com/haobin/codeBlock/IOModel/ClassicServerLoop.java) 
  - [IO-reactor模式(单线程)](/src/main/java/com/haobin/codeBlock/IOModel/SingleReactor.java)
   - [IO-reactor模式(多线程)](/src/main/java/com/haobin/codeBlock/IOModel/MultiReactor.java)
+  - [JavaIO模型参考资料](http://www.jasongj.com/java/nio_reactor/)
   - [redis分布式锁错误示范](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLock.java)
   - [分布式锁概述](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLock.java)
 
