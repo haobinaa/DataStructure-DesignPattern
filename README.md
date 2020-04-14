@@ -158,8 +158,8 @@
  - [IO-reactor模式(单线程)](/src/main/java/com/haobin/codeBlock/IOModel/SingleReactor.java)
   - [IO-reactor模式(多线程)](/src/main/java/com/haobin/codeBlock/IOModel/MultiReactor.java)
   - [JavaIO模型参考资料](http://www.jasongj.com/java/nio_reactor/)
-  - [redis分布式锁错误示范](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLock.java)
-  - [分布式锁概述](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLock.java)
+  - [redis分布式锁错误示范](src/main/java/com/haobin/codeBlock/lock/RedisDistributeLockWrong.java)
+  - [分布式锁概述](src/main/java/com/haobin/codeBlock/lock/README.md)
 
 #### 处理大数据量思路
   - [统计大文件单词出现的频率](/src/main/java/com/haobin/bigdata/wordcount/WordCount.java)

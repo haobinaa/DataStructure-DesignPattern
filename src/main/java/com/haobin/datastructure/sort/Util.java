@@ -3,6 +3,9 @@
  */
 package com.haobin.datastructure.sort;
 
+import java.awt.SystemTray;
+import java.util.Date;
+
 /**
  *
  *
@@ -28,5 +31,9 @@ public class Util {
             System.out.print(data[i] + "\t");
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Date());
     }
 }
