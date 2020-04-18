@@ -17,9 +17,7 @@ public class LRULinkedMap<K, V> extends LinkedHashMap<K, V>{
     private static final int MAX_ENTRIES = 3; // 最大容量
 
     /**
-     * 覆盖 LinkedHashMap 的 removeEldesEntry ， 在节点多于 MAX_ENTRIES 就会删除最近最久未使用
-     * @param eldest
-     * @return
+     * 覆盖 LinkedHashMap 的 removeEldestEntry ， 在节点多于 MAX_ENTRIES 就会删除最近最久未使用
      */
     protected boolean removeEldestEntry(Map.Entry eldest) {
         return size() > MAX_ENTRIES;

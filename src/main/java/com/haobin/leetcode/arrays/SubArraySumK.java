@@ -1,5 +1,8 @@
 package com.haobin.leetcode.arrays;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author HaoBin
  * @Create 2020/2/23 22:21
@@ -31,6 +34,7 @@ public class SubArraySumK {
         for (int i = 1; i <= nums.length; i++) {
             sum[i] = sum[i-1] + nums[i-1];
         }
+        // 穷举所有子数组
         for (int start = 0; start < nums.length; start++) {
             for (int end = start+1; end <= nums.length; end++) {
                 if (sum[end] - sum[start] == k) {
