@@ -63,7 +63,7 @@ public class MinWindow {
             }
             // window 已经包含了所有的 need
             while(match == needs.size()){
-                if (minLen > (right-left)) {
+                if (ans.length() == 0 || ans.length() > (right-left)) {
                     minLen = right - left + 1;
                     ans = s.substring(left, right+1);
                 }

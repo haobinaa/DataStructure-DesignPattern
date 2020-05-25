@@ -31,6 +31,7 @@
 - [(动态规划)01背包问题 | 已选择物品](src/main/java/com/haobin/algorithm/Backpack.java)
 - [(动态规划)多重背包问题](src/main/java/com/haobin/algorithm/ManyBackpack.java)
 - [(动态规划)完全背包问题](src/main/java/com/haobin/algorithm/CompleteBackpack.java)
+- [微信红包算法](src/main/java/com/haobin/algorithm/RedPacket.java)
 
 
 #### 剑指offer
@@ -88,6 +89,7 @@
     - [搜索排序旋转数组](src/main/java/com/haobin/leetcode/arrays/SearchRotation.java)
     - [和为K的连续子数组](src/main/java/com/haobin/leetcode/arrays/SubArraySumK.java)
     - [数组分成相等的三个部分](src/main/java/com/haobin/leetcode/arrays/ThreePartsSumEquals.java)
+    - [数组右移K位](src/main/java/com/haobin/leetcode/arrays/Rotate.java)
 - 字符串
     - [无重复字符最长无子串](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
     - [电话号码的字母组合](src/main/java/com/haobin/leetcode/string/LongestSubString.java)
@@ -122,6 +124,8 @@
     - [完全平方数](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
     - [最长上升子序列](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
     - [分割等和数组](src/main/java/com/haobin/leetcode/dp/CanPartition.java)
+- 贪心
+    - [根据身高重建队列]
 - 回溯
     - [全排列](src/main/java/com/haobin/leetcode/dfs/Permute.java)
     - [搜索单词](src/main/java/com/haobin/leetcode/dfs/SearchWord.java)
