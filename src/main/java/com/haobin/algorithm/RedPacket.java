@@ -53,9 +53,9 @@ public class RedPacket {
             return moneys ;
         }
 
-        //计算出最大红包
+        //计算出最大红包（平均值的 TIMES 倍）
         int max = (int) ((money / count) * TIMES);
-        max = max > MAX_MONEY ? MAX_MONEY : max;
+        max = Math.min(MAX_MONEY, max);
 
         for (int i = 0; i < count; i++) {
             //随机获取红包
@@ -81,9 +81,10 @@ public class RedPacket {
         //如果最大金额大于了剩余金额 则用剩余金额 因为这个 money 每分配一次都会减小
         maxMoney = maxMoney > totalMoney ? totalMoney : maxMoney;
 
-        //在 minMoney到maxMoney 生成一个随机红包
+        //在 minMoney 到 maxMoney 生成一个随机红包
         int redPacket = (int) (Math.random() * (maxMoney - minMoney) + minMoney);
 
+        // 剩余金额
         int lastMoney = totalMoney - redPacket;
 
         int status = checkMoney(lastMoney, count - 1);
@@ -126,7 +127,6 @@ public class RedPacket {
         RedPacket redPacket = new RedPacket();
         List<Integer> redPackets = redPacket.splitRedPacket(100, 10);
         System.out.println(redPackets);
-
         int sum = 0;
         for (Integer red : redPackets) {
             sum += red;
