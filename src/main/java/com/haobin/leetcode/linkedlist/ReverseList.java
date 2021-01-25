@@ -12,6 +12,7 @@ public class ReverseList {
     public static class ListNode {
         int val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
         }
@@ -36,8 +37,20 @@ public class ReverseList {
         return pre;
     }
 
+    public static ListNode buildList() {
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(4);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        return node1;
+    }
+
     /**
      * 递归解法
+     *
      * @param head
      * @return
      */
@@ -46,21 +59,15 @@ public class ReverseList {
             return head;
         }
         ListNode cur = reverseList1(head.next);
-        head.next.next  = head;
+        head.next.next = head;
         head.next = null;
         return cur;
     }
 
     public static void main(String[] args) {
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(4);
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        ListNode head = reverseList(node1);
-        while (head!=null) {
+        ListNode head = buildList();
+//        head = reverseList(head);
+        while (head != null) {
             System.out.println(head.val);
             head = head.next;
         }
