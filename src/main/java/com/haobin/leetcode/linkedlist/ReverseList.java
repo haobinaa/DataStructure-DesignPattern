@@ -85,6 +85,21 @@ public class ReverseList {
         return last;
     }
 
+    /**
+     * 反转链表的一一部分
+     * 给一个索引区间 [m,n]（索引从 1 开始），仅仅反转区间中的链表元素。
+     * @return
+     */
+    public static ListNode reverseBetween(ListNode head, int m, int n) {
+        if (m == 1) {
+            // 如果m=1， 相当于反转前 n 个元素
+            return reverseNList(head, n);
+        }
+        // 将 head.next 的索引设为1， 一直往 base case 前进
+        head.next = reverseBetween(head.next, m-1 ,n-1);
+        return head;
+    }
+
     public static void main(String[] args) {
         ListNode head = buildList();
 //        head = reverseList(head);
