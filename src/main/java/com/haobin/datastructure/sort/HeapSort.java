@@ -58,7 +58,7 @@ public class HeapSort {
     /**
      * 堆排序
      */
-    public static void heapSort1(int[] array, int heapSize) {
+    public static void heapSort(int[] array, int heapSize) {
         buildMaxHeadp(array, heapSize);
         for (int i = heapSize - 1; i > 0; i--) {
             Util.swap(array, 0, i);
@@ -69,7 +69,7 @@ public class HeapSort {
 
     public static void main(String[] args) {
         int[] intArr = {100, 908, 1000001, 100, 0, 9999};
-        heapSort1(intArr, intArr.length);
+        heapSort(intArr, intArr.length);
         Util.print(intArr);
     }
 }

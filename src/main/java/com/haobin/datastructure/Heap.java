@@ -15,7 +15,7 @@ public class Heap {
     private int count; // 堆中已经存储的数据个数
 
     public Heap(int capacity) {
-        // 索引0不存储数据
+        // 索引0不存储数据, left 为 2i, right 为 2i + 1, parent 为 i/2
         a = new int[capacity + 1];
         n = capacity;
         count = 0;
