@@ -4,6 +4,7 @@
 
 - [MySQL 专题](./mysql.md)
 - [系统设计](./Design.md)
+- [数据结构与算法](./datastructure.md)
 - [leetcode hot 题解](./algorithm.md)
 - [200刷题计划 - 算法思维养成(要比上一个目录更加体系化)](./200.md)  
 - [jdk/guava 源码探索](./jdkUsage.md)
