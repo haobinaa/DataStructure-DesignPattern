@@ -1,5 +1,7 @@
 package com.haobin.datastructure;
 
+import java.util.PriorityQueue;
+
 /**
  * @Author HaoBin
  * @Create 2020/2/10 23:24
@@ -74,5 +76,12 @@ public class Heap {
             swap(a, i , maxPos);
             i = maxPos;
         }
+    }
+
+
+    public static void main(String[] args) {
+        PriorityQueue queue = new PriorityQueue();
+        queue.add(2);
+        queue.add(4);
     }
 }

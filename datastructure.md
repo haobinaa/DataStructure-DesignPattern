@@ -5,7 +5,7 @@
 - [散列](./docs/datastructure/HashTable.md)
 - [二叉树对应的实现](src/main/java/com/haobin/datastructure/tree/BinarySearchTree.java)
 - [平衡二叉树对应的实现](src/main/java/com/haobin/datastructure/tree/AVLTree.java)
-    - [查找算法:二分查找|跳表](./docs/datastructure/Search.md)
+- [查找算法:二分查找|跳表](./docs/datastructure/Search.md)
 - [B-Tree](./docs/datastructure/B-Tree.md)
 - [B+Tree](./docs/datastructure/B+Tree.md)
 - [RB-Tree 红黑树](./docs/datastructure/RedBlackTree.md)
