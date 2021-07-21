@@ -66,7 +66,7 @@ public interface Tree<T extends Comparable> {
     /**
      * 找到节点
      */
-    BinaryNode findNode(T data);
+    BinaryTreeNode findNode(T data);
 
     /**
      * 是否包含某个值

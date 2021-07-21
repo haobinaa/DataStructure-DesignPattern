@@ -7,19 +7,19 @@ import java.io.Serializable;
  * @Create 2019/12/20 16:36
  * @Description: 二叉树节点
  **/
-public class BinaryNode <T extends Comparable> implements Serializable {
-    public BinaryNode<T> left;
-    public BinaryNode<T> right;
+public class BinaryTreeNode<T extends Comparable> implements Serializable {
+    public BinaryTreeNode<T> left;
+    public BinaryTreeNode<T> right;
 
     public T data;
 
-    public BinaryNode(BinaryNode<T> left, BinaryNode<T> right, T data) {
+    public BinaryTreeNode(BinaryTreeNode<T> left, BinaryTreeNode<T> right, T data) {
         this.left = left;
         this.right = right;
         this.data = data;
     }
 
-    public BinaryNode(T data) {
+    public BinaryTreeNode(T data) {
         this.data = data;
     }
 

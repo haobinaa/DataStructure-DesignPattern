@@ -10,7 +10,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     /**
      * 根节点
      */
-    protected BinaryNode<T> root;
+    protected BinaryTreeNode<T> root;
 
     @Override
     public boolean isEmpty() {
@@ -25,7 +25,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     /**
      * 递归求 size
      */
-    private int size(BinaryNode<T> subtree) {
+    private int size(BinaryTreeNode<T> subtree) {
         if (subtree == null) {
             return 0;
         } else {
@@ -43,7 +43,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * 递归求深度
      * @param subtree 子树
      */
-    private int height(BinaryNode<T> subtree) {
+    private int height(BinaryTreeNode<T> subtree) {
         if (subtree == null) {
             return 0;
         } else {
@@ -58,7 +58,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         return preOrder(root);
     }
 
-    private String preOrder(BinaryNode<T> subTree) {
+    private String preOrder(BinaryTreeNode<T> subTree) {
         StringBuffer sb = new StringBuffer();
         if (subTree != null) {
             sb.append(subTree.data).append(",");
@@ -91,7 +91,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         insert(data, this.root);
     }
 
-    private BinaryNode<T> insert(T data, BinaryNode<T> p) {
+    private BinaryTreeNode<T> insert(T data, BinaryTreeNode<T> p) {
         int compareResult = data.compareTo(p.data);
         if (compareResult < 0) {
             p.left = insert(data, p.left);
@@ -114,7 +114,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
      * 2. 拥有一个子节点，则直接用孩子节点替换
      * 3. 有两个子节点，找到右子树最小节点替换，并递归删除用于替换的节点
      */
-    private BinaryNode<T> remove(T data, BinaryNode<T> p) {
+    private BinaryTreeNode<T> remove(T data, BinaryTreeNode<T> p) {
         // 没有找到对应的节点，则结束递归
         if (p == null) {
             return null;
@@ -143,7 +143,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     /**
      * 找到最小的节点，即左子树最小值
      */
-    private BinaryNode<T> findMin(BinaryNode<T> p) {
+    private BinaryTreeNode<T> findMin(BinaryTreeNode<T> p) {
         if (p == null) {
             // 结束条件
             return null;
@@ -162,7 +162,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     /**
      * 最大节点即右子树最大值
      */
-    private BinaryNode<T> findMax(BinaryNode<T> p) {
+    private BinaryTreeNode<T> findMax(BinaryTreeNode<T> p) {
         if (p == null) {
             return null;
         } else if (p.right == null) {
@@ -172,7 +172,7 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
     @Override
-    public BinaryNode findNode(T data) {
+    public BinaryTreeNode findNode(T data) {
         return null;
     }
 
