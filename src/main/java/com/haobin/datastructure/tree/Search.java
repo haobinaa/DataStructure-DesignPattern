@@ -89,6 +89,7 @@ public class Search {
         while (!stack.isEmpty()) {
             BinaryTreeNode<Integer> cur = stack.pop();
             queue.add(cur.data);
+            // 因为要从尾到头遍历队列，左节点需要后入队， 这里先压入左节点(后面会先弹出右节点所以后压入的先入队)
             if (cur.left != null) {
                 stack.push(cur.left);
             }
