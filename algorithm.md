@@ -89,7 +89,8 @@
     - [统计回文子串](src/main/java/com/haobin/leetcode/dp/CountPalindromeSubString.java)
     - [不同路径](src/main/java/com/haobin/leetcode/dp/UniquePath.java)
     - [完全平方数](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
-    - [最长上升子序列](src/main/java/com/haobin/leetcode/dp/NumSquares.java)
+    - [最长上升子序列](src/main/java/com/haobin/leetcode/dp/LongestSubArray.java)
+    - [子数组最大累加和](src/main/java/com/haobin/leetcode/dp/MaxSubArray.java)
     - [分割等和数组](src/main/java/com/haobin/leetcode/dp/CanPartition.java)
 - 贪心
     - [根据身高重建队列]
