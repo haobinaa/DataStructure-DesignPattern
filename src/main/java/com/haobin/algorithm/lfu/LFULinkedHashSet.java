@@ -5,16 +5,17 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 
 /**
+ * LinkedHashSet 存储频次链表
  * @Date 2022/1/25 3:11 下午
  * @author: leobhao
  */
 public class LFULinkedHashSet {
 
     // 缓存内容
-    Map<Integer, Node> cache;
+    Map<Integer, DoublyNode> cache;
 
     // 频次对应的双向链表
-    Map<Integer, LinkedHashSet<Node>> freqMap;
+    Map<Integer, LinkedHashSet<DoublyNode>> freqMap;
 
     int size;
 
@@ -29,7 +30,7 @@ public class LFULinkedHashSet {
     }
 
     public int get(int key) {
-        Node node = cache.get(key);
+        DoublyNode node = cache.get(key);
         if(node == null) {
             return -1;
         }
@@ -37,10 +38,10 @@ public class LFULinkedHashSet {
         return node.value;
     }
 
-    void freqInc(Node node) {
+    void freqInc(DoublyNode node) {
         // 从原freq对应的链表里移除, 并更新min
         int freq = node.freq;
-        LinkedHashSet<Node> set = freqMap.get(freq);
+        LinkedHashSet<DoublyNode> set = freqMap.get(freq);
         // 从频次列表中移除
         set.remove(node);
         if (freq == min && set.size() == 0) {
@@ -48,7 +49,7 @@ public class LFULinkedHashSet {
         }
         // 加入新freq对应的链表
         node.freq++;
-        LinkedHashSet<Node> newSet = freqMap.get(freq + 1);
+        LinkedHashSet<DoublyNode> newSet = freqMap.get(freq + 1);
         if (newSet == null) {
             newSet = new LinkedHashSet<>();
             freqMap.put(freq + 1, newSet);
@@ -60,17 +61,17 @@ public class LFULinkedHashSet {
         if (capacity == 0) {
             return;
         }
-        Node node = cache.get(key);
+        DoublyNode node = cache.get(key);
         if (node != null) {
             node.value = value;
             freqInc(node);
         } else {
             if (size == capacity) {
-                Node removeNode = removeNode();
+                DoublyNode removeNode = removeNode();
                 cache.remove(removeNode.key);
                 size--;
             }
-            Node newNode = new Node(key, value);
+            DoublyNode newNode = new DoublyNode(key, value);
             cache.put(key, newNode);
             // 加入频次链表
             addNode(newNode);
@@ -78,15 +79,15 @@ public class LFULinkedHashSet {
         }
     }
 
-    Node removeNode() {
-        LinkedHashSet<Node> set = freqMap.get(min);
-        Node deadNode = set.iterator().next();
+    DoublyNode removeNode() {
+        LinkedHashSet<DoublyNode> set = freqMap.get(min);
+        DoublyNode deadNode = set.iterator().next();
         set.remove(deadNode);
         return deadNode;
     }
 
-    void addNode(Node node) {
-        LinkedHashSet<Node> set = freqMap.get(1);
+    void addNode(DoublyNode node) {
+        LinkedHashSet<DoublyNode> set = freqMap.get(1);
         if (set == null) {
             set = new LinkedHashSet<>();
             freqMap.put(1, set);
