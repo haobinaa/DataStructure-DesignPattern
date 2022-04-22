@@ -14,30 +14,31 @@ import java.util.Set;
  * @author: HaoBin
  * @create: 2019/10/23 8:49
  * @description: 单线程 reactor 模式
- *
+ * <p>
  * reactor 和 handler 在一个线程里面
- *
- *
- *#####################################
+ * <p>
+ * <p>
+ * #####################################
  * reactor 模型各个组件
  * reactor: 负责响应事件，将事件分发给绑定了该事件的handler
  * handler: 绑定了某类事件的处理器， 负责执行对事件的处理
  * Acceptor: 特殊的Handler， 绑定了 connect 事件， 客户端的 connect 事件会分发给 Acceptor
  **/
-public class SingleReactor implements Runnable{
+public class SingleReactor implements Runnable {
 
     private Selector selector;
     private ServerSocketChannel serverSocket;
 
     public SingleReactor(int port) throws Exception {
         selector = Selector.open();
-        serverSocket= ServerSocketChannel.open();
+        serverSocket = ServerSocketChannel.open();
         serverSocket.socket().bind(new InetSocketAddress(port));
         // 设置成非阻塞
         serverSocket.configureBlocking(false);
         // 只关注 accept 事件
         SelectionKey selectionKey = serverSocket.register(selector, SelectionKey.OP_ACCEPT);
-        selectionKey.attach(new Acceptr());
+        // 注册 attach 对象
+        selectionKey.attach(new Acceptor());
         System.out.println("Listen port:" + port);
     }
 
@@ -69,7 +70,7 @@ public class SingleReactor implements Runnable{
         }
     }
 
-    class Acceptr implements Runnable {
+    class Acceptor implements Runnable {
         @Override
         public void run() {
             try {
@@ -78,7 +79,7 @@ public class SingleReactor implements Runnable{
                 if (socket != null) {
                     socket.write(ByteBuffer.wrap("single reactor".getBytes()));
                     System.out.println("Accept and handler - " + socket.socket().getLocalSocketAddress());
-                    // handler 处理
+                    // 分发给对应的 handler
                     new BasicHandler(selector, socket);
                 }
             } catch (IOException ioex) {
