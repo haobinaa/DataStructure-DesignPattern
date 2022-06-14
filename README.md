@@ -6,7 +6,7 @@
 - [系统设计](./Design.md)
 - [数据结构与算法](./datastructure.md)
 - [leetcode hot 题解](./algorithm.md)
-- [日常刷题)](./200.md)  
+- [日常刷题](./200.md)  
 - [jdk/guava 源码探索](./jdkUsage.md)
 
 
